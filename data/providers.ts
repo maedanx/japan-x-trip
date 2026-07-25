@@ -1,3 +1,5 @@
+import { getGeneralAffiliateLink } from "./affiliateLinks";
+
 export type ConnectionType = "esim" | "physical-sim" | "pocket-wifi";
 
 export type ProviderId =
@@ -58,7 +60,7 @@ export const providers: Provider[] = [
       "Check the exact plan because activation, data, pickup, and hotspot conditions differ.",
     priceLabel: "Check current plans",
     officialUrl: "https://www.sakuramobile.jp/",
-    affiliateUrl: "",
+    affiliateUrl: getGeneralAffiliateLink("sakuraMobile"),
   },
   {
     id: "airalo",
@@ -139,7 +141,7 @@ export const providers: Provider[] = [
       "Confirm device support, coverage, validity, and hotspot conditions before purchase.",
     priceLabel: "Check current plans",
     officialUrl: "https://cellulardata.ubigi.com/",
-    affiliateUrl: "",
+    affiliateUrl: getGeneralAffiliateLink("ubigi"),
   },
 ];
 

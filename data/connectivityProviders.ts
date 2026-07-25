@@ -1,3 +1,5 @@
+import { affiliateLinks, getGeneralAffiliateLink } from "./affiliateLinks";
+
 export type ConnectivityProvider = {
   slug: string;
   name: string;
@@ -27,6 +29,11 @@ export type ConnectivityProvider = {
   officialUrl?: string;
   affiliateUrl?: string;
   affiliateStatus: "approved" | "pending" | "unavailable";
+  /** Optional per-product affiliate CTAs shown when a provider has more than one confirmed plan link. */
+  products?: {
+    label: string;
+    affiliateUrl: string;
+  }[];
   /** Affiliate network/program name, for internal bookkeeping only. */
   affiliateNetwork?: string;
   /** Optional per-provider disclosure line to show next to an active affiliate CTA. */
@@ -79,8 +86,13 @@ export const connectivityProviders: ConnectivityProvider[] = [
     ],
     reviewHref: "/reviews/sakura-mobile",
     officialUrl: "https://www.sakuramobile.jp/",
-    affiliateUrl: "",
-    affiliateStatus: "pending",
+    affiliateUrl: getGeneralAffiliateLink("sakuraMobile"),
+    affiliateStatus: "approved",
+    products: [
+      { label: "Travel eSIM", affiliateUrl: affiliateLinks.sakuraMobile.travelEsim },
+      { label: "Travel SIM", affiliateUrl: affiliateLinks.sakuraMobile.travelSim },
+      { label: "Travel Pocket WiFi", affiliateUrl: affiliateLinks.sakuraMobile.travelPocketWifi },
+    ],
   },
   {
     slug: "airalo",
@@ -127,6 +139,12 @@ export const connectivityProviders: ConnectivityProvider[] = [
     officialUrl: "https://www.airalo.com/",
     affiliateUrl: "",
     affiliateStatus: "unavailable",
+    products: [
+      { label: "20GB", affiliateUrl: affiliateLinks.airalo.twentyGb },
+      { label: "10GB", affiliateUrl: affiliateLinks.airalo.tenGb },
+      { label: "Unlimited 10 Days", affiliateUrl: affiliateLinks.airalo.unlimitedTenDays },
+      { label: "5GB", affiliateUrl: affiliateLinks.airalo.fiveGb },
+    ],
   },
   {
     slug: "ubigi",
@@ -171,8 +189,16 @@ export const connectivityProviders: ConnectivityProvider[] = [
     ],
     reviewHref: "/reviews/ubigi",
     officialUrl: "https://cellulardata.ubigi.com/",
-    affiliateUrl: "",
-    affiliateStatus: "unavailable",
+    affiliateUrl: getGeneralAffiliateLink("ubigi"),
+    affiliateStatus: "approved",
+    products: [
+      { label: "General", affiliateUrl: affiliateLinks.ubigi.general },
+      { label: "Unlimited 15 Days", affiliateUrl: affiliateLinks.ubigi.unlimitedFifteenDays },
+      { label: "Unlimited 30 Days", affiliateUrl: affiliateLinks.ubigi.unlimitedThirtyDays },
+      { label: "25GB", affiliateUrl: affiliateLinks.ubigi.twentyFiveGb },
+      { label: "10GB", affiliateUrl: affiliateLinks.ubigi.tenGb },
+      { label: "5GB", affiliateUrl: affiliateLinks.ubigi.fiveGb },
+    ],
   },
   {
     slug: "nomad-esim",

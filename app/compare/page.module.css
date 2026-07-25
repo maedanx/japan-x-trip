@@ -419,3 +419,28 @@
     width: 100%;
   }
 }
+
+/* Phase 20: connection-type comparison illustration */
+.comparisonVisual {
+  width: 100%;
+  margin: 40px auto 48px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 37, 64, 0.1);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15, 37, 64, 0.1);
+}
+
+.comparisonImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .comparisonVisual {
+    margin: 28px auto 36px;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(15, 37, 64, 0.09);
+  }
+}

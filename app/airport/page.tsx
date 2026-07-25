@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
@@ -298,6 +299,18 @@ export default function AirportPage() {
                 latest pickup and return instructions directly with the
                 provider before traveling.
               </p>
+
+              <figure className={styles.heroIllustration}>
+                <Image
+                  src="/images/airport/airport-arrival-connection-guide.png"
+                  alt="Traveler following the steps to get connected after arriving at a Japanese airport"
+                  width={1672}
+                  height={941}
+                  sizes="(max-width: 960px) 100vw, 720px"
+                  className={styles.heroIllustrationImage}
+                  priority
+                />
+              </figure>
             </div>
 
             <aside className={styles.heroCard}>

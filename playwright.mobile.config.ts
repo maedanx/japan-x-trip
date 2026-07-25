@@ -23,4 +23,12 @@ export default defineConfig({
     locale: "en-US",
     timezoneId: "Asia/Tokyo",
   },
+  projects: [
+    { name: "iphone-13-pro-max-webkit", use: { browserName: "webkit", viewport: { width: 428, height: 926 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: "iphone-standard-webkit", use: { browserName: "webkit", viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: "iphone-small-webkit", use: { browserName: "webkit", viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: "android-360-chromium", use: { browserName: "chromium", viewport: { width: 360, height: 800 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: "android-412-chromium", use: { browserName: "chromium", viewport: { width: 412, height: 915 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
+    { name: "desktop-chromium", use: { browserName: "chromium", viewport: { width: 1440, height: 1000 }, isMobile: false, hasTouch: false, deviceScaleFactor: 1 } },
+  ],
 });

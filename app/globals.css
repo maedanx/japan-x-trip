@@ -2638,6 +2638,23 @@ legend > span {
   color: #fff;
 }
 
+
+.provider-match-illustration {
+  width: 100%;
+  margin: 34px 0 40px;
+  overflow: hidden;
+  border: 1px solid #dce6f1;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(7, 31, 73, 0.1);
+}
+
+.provider-match-illustration-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .top-picks-heading {
   margin-top: 84px;
 }
@@ -3143,6 +3160,12 @@ legend > span {
 @media (max-width: 620px) {
   .provider-experience {
     padding: 70px 14px;
+  }
+
+
+  .provider-match-illustration {
+    margin: 24px 0 30px;
+    border-radius: 20px;
   }
 
   .provider-intro h2 {
@@ -4753,6 +4776,23 @@ legend > span {
 .v2-mountain--back { right:-8%; bottom:-18px; width:70%; height:66%; opacity:.45; }
 .v2-tower { position:absolute; right:8%; bottom:-10px; width:20px; height:260px; background:linear-gradient(90deg,#dc2626 0 22%,#fff 22% 44%,#dc2626 44% 66%,#fff 66% 78%,#dc2626 78%); clip-path:polygon(44% 0,56% 0,58% 26%,77% 100%,23% 100%,42% 26%); opacity:.65; }
 
+/* Phase 19: homepage Hero photo (desktop: absolutely positioned behind the
+   title block, right side; mobile: stacked below the copy via the
+   --mobile modifier) */
+.v29-hero-media { position:absolute; top:20px; right:0; bottom:20px; left:46%; overflow:hidden; border-radius:32px; pointer-events:none; z-index:1; }
+.v29-hero-image { object-fit:cover; object-position:70% center; }
+
+.v29-hero-media--mobile { position:relative; top:auto; right:auto; bottom:auto; left:auto; width:100%; aspect-ratio:16/10; margin-top:20px; border-radius:24px; z-index:auto; pointer-events:auto; }
+.v29-hero-media--mobile .v29-hero-image { object-position:65% center; }
+
+@media (max-width:1180px) {
+  .v29-hero-media { left:52%; border-radius:24px; }
+}
+
+@media (max-width:999px) {
+  .v29-hero-media:not(.v29-hero-media--mobile) { display:none; }
+}
+
 .v2-planner-layout { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(320px,.75fr); gap:28px; align-items:stretch; }
 .v2-planner-card,.v2-kit-card { border:1px solid rgba(226,232,240,.92); border-radius:26px; background:rgba(255,255,255,.94); box-shadow:var(--v2-shadow); backdrop-filter:blur(14px); }
 .v2-planner-card { padding:30px; }
@@ -4837,6 +4877,34 @@ legend > span {
 .v2-final p { color:#93c5fd; }
 .v2-final h2 { max-width:700px; margin:0; font-size:clamp(2.1rem,4vw,3.8rem); }
 .v2-primary-cta--light { flex:0 0 auto; min-width:260px; margin:0; color:var(--v2-blue); background:#fff; box-shadow:none; }
+
+/* Phase 18: homepage diagnosis entry points */
+.v28-hero-secondary-cta { display:flex; min-height:46px; align-items:center; justify-content:center; gap:8px; margin-top:12px; border:1.5px solid rgba(37,99,235,.3); border-radius:15px; padding:0 18px; color:var(--v2-blue); background:transparent; font-size:.88rem; font-weight:800; transition:background .18s ease; }
+.v28-hero-secondary-cta svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
+.v28-hero-secondary-cta:hover { background:#eff6ff; }
+
+.v28-diagnosis-microcopy { margin:9px 0 0; color:#5d6f89; font-size:.82rem; line-height:1.4; }
+
+.v28-diagnosis-intro { background:var(--v2-soft); }
+.v28-diagnosis-intro-inner { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.85fr); gap:40px; align-items:center; }
+.v28-diagnosis-eyebrow { margin-bottom:12px; color:var(--v2-blue); font-size:.76rem; font-weight:900; letter-spacing:.15em; }
+.v28-diagnosis-intro-copy h2 { margin:0; color:var(--v2-navy); font-size:clamp(1.8rem,3.4vw,2.6rem); line-height:1.15; }
+.v28-diagnosis-intro-copy > p:last-child { margin:16px 0 0; max-width:480px; color:var(--v2-muted); line-height:1.75; }
+.v28-diagnosis-intro-panel { padding:28px; border:1px solid var(--v2-border); border-radius:20px; background:#fff; box-shadow:0 12px 34px rgba(15,23,42,.06); }
+.v28-diagnosis-steps { display:grid; gap:12px; margin:0 0 22px; padding:0; list-style:none; }
+.v28-diagnosis-steps li { display:flex; align-items:center; gap:12px; color:var(--v2-navy); font-size:.92rem; font-weight:700; }
+.v28-diagnosis-steps span { display:grid; width:28px; height:28px; flex:0 0 auto; place-items:center; border-radius:50%; color:var(--v2-blue); background:#eff6ff; font-size:.78rem; font-weight:900; }
+.v28-diagnosis-intro-cta { display:flex; min-height:50px; align-items:center; justify-content:center; gap:10px; border-radius:13px; color:#fff; background:linear-gradient(135deg,var(--v2-blue),#0b55ed); font-weight:850; box-shadow:0 12px 28px rgba(37,99,235,.26); }
+.v28-diagnosis-intro-cta svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; }
+.v28-diagnosis-intro-note { margin:12px 0 0; color:var(--v2-muted); font-size:.72rem; text-align:center; }
+
+.v28-diagnosis-nudge { margin:26px 0 0; color:var(--v2-muted); font-size:.9rem; text-align:center; }
+.v28-diagnosis-nudge a { display:inline-flex; min-height:44px; align-items:center; color:var(--v2-blue); font-weight:800; }
+
+@media (max-width: 760px) {
+  .v28-diagnosis-intro-inner { grid-template-columns:1fr; gap:24px; }
+  .v28-diagnosis-intro-panel { padding:22px; }
+}
 
 @media (max-width: 980px) {
   .v2-planner-layout { grid-template-columns:1fr; }
@@ -5355,4 +5423,28 @@ legend > span {
   .v28-card-price { grid-column:2; text-align:left; }
   .v28-card-price small { margin-left:0; }
   .v28-card-actions { grid-template-columns:1fr; }
+}
+
+
+/* Phase 22 */
+.setup-illustration{
+  margin:32px 0;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid rgba(15,37,64,.1);
+  background:#fff;
+  box-shadow:0 18px 48px rgba(15,37,64,.10);
+}
+
+.setup-illustration-image{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+@media (max-width:768px){
+  .setup-illustration{
+    margin:24px 0;
+    border-radius:18px;
+  }
 }

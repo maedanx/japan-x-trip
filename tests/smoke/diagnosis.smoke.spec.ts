@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { affiliateLinks } from "@/data/affiliateLinks";
 
 function attachDiagnostics(page: import("@playwright/test").Page) {
   const failures: string[] = [];
@@ -47,6 +48,22 @@ test("diagnosis supports navigation, result, comparison, and restart", async ({ 
   await expect(page.getByRole("heading", { name: /How the three methods fit/i })).toBeVisible();
   await expect(page.getByText("This is a fit comparison based on your answers")).toBeVisible();
   await expect(page.getByRole("link", { name: /Japan eSIM guide/i }).first()).toBeVisible();
+
+  const recommendedCard = page.locator("article", {
+    hasText: "Recommended for you",
+  });
+  await expect(recommendedCard).toBeVisible();
+  await expect(recommendedCard.getByText("Airalo", { exact: true })).toBeVisible();
+  await expect(recommendedCard.getByText("10GB", { exact: true })).toBeVisible();
+
+  const recommendedCta = recommendedCard.getByRole("link", {
+    name: /Check price and availability for Airalo 10GB/i,
+  });
+  await expect(recommendedCta).toBeVisible();
+  await expect(recommendedCta).toHaveAttribute("href", affiliateLinks.airalo.tenGb);
+  await expect(
+    recommendedCard.getByText(/Japan X Trip may earn a commission/i),
+  ).toBeVisible();
 
   await page.getByRole("button", { name: /start again/i }).click();
   await expect(page.getByText("Question 1 of 7")).toBeVisible();

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import { siteConfig } from "@/data/site";
 import {
   connectivityProviders,
@@ -192,6 +194,17 @@ export default function ComparePage() {
               </p>
             </div>
 
+            <figure className={styles.comparisonVisual}>
+              <Image
+                className={styles.comparisonImage}
+                src="/images/comparisons/esim-sim-pocket-wifi-comparison.png"
+                alt="Visual comparison of eSIM, physical SIM card, and pocket Wi-Fi options for travelers in Japan"
+                width={1672}
+                height={941}
+                sizes="(max-width: 768px) calc(100vw - 32px), 1120px"
+              />
+            </figure>
+
             <div className={styles.typeGrid}>
               {connectionTypes.map((type) => (
                 <article className={styles.typeCard} key={type.name}>
@@ -288,14 +301,17 @@ export default function ComparePage() {
                     </Link>
 
                     {hasProviderOutboundUrl(provider) ? (
-                      <a
+                      <AffiliateCtaLink
                         className={styles.pendingButton}
-                        href={getProviderDestination(provider)}
+                        href={getProviderDestination(provider)!}
                         rel={isAffiliateProviderLink(provider) ? "sponsored nofollow noopener" : "noopener"}
-                        target="_blank"
+                        page="/compare"
+                        provider={provider.name}
+                        product="General"
+                        placement="card"
                       >
                         {getProviderCtaLabel(provider, "Visit provider website")}
-                      </a>
+                      </AffiliateCtaLink>
                     ) : (
                       <span
                         className={styles.pendingButton}

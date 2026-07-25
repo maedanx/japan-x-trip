@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import { siteConfig } from "@/data/site";
+import type { AffiliateCtaPlacement } from "@/lib/analytics";
 import {
   connectivityProviders,
   getProviderDestination,
@@ -140,10 +142,12 @@ function getOrderedProviders(): ConnectivityProvider[] {
 function ProviderExternalLink({
   provider,
   className,
+  placement,
   children,
 }: {
   provider: ConnectivityProvider;
   className: string;
+  placement: AffiliateCtaPlacement;
   children: React.ReactNode;
 }) {
   const affiliate = isAffiliateProviderLink(provider);
@@ -152,18 +156,21 @@ function ProviderExternalLink({
   if (!destination) return null;
 
   return (
-    <a
+    <AffiliateCtaLink
       className={className}
       href={destination}
-      target="_blank"
       rel={
         affiliate
           ? "sponsored nofollow noopener noreferrer"
           : "noopener noreferrer"
       }
+      page="/best-esim-japan"
+      provider={provider.name}
+      product="General"
+      placement={placement}
     >
       {children}
-    </a>
+    </AffiliateCtaLink>
   );
 }
 
@@ -391,6 +398,7 @@ export default function BestEsimJapanPage() {
                             <ProviderExternalLink
                               provider={provider}
                               className="best-esim-table-link"
+                              placement="table"
                             >
                               See latest price
                               <span aria-hidden="true">→</span>
@@ -472,6 +480,7 @@ export default function BestEsimJapanPage() {
                       <ProviderExternalLink
                         provider={provider}
                         className="best-esim-provider-external"
+                        placement="compare-detail"
                       >
                         See current plans
                       </ProviderExternalLink>

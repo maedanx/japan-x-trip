@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const steps = [
@@ -39,6 +40,18 @@ export default function SetupSteps() {
             </p>
           </div>
         </div>
+
+
+        <figure className="setup-illustration">
+          <Image
+            src="/images/setup/setup-guide-4-step-connection.png"
+            alt="Illustration showing the four basic steps for setting up internet in Japan"
+            width={1672}
+            height={941}
+            sizes="(max-width: 768px) 100vw, 900px"
+            className="setup-illustration-image"
+          />
+        </figure>
 
         <div className="step-list">
           {steps.map((step) => (

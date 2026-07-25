@@ -397,6 +397,83 @@
   color: #071f49;
 }
 
+.recommendedCard {
+  margin-top: 28px;
+  border: 2px solid #ffcec5;
+  background: #fff9f8;
+  padding: 26px;
+}
+
+.recommendedIdentity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 16px 0 14px;
+}
+
+.recommendedEyebrow {
+  display: block;
+  margin-bottom: 4px;
+  color: #8a95a6;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recommendedProvider,
+.recommendedPlan {
+  margin: 0;
+  color: #071f49;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.recommendedReason {
+  margin: 0 0 16px;
+  color: #59677b;
+  line-height: 1.65;
+}
+
+.recommendedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.recommendedTags li {
+  border: 1px solid #ffcec5;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 6px 13px;
+  color: #a23324;
+  font-size: 0.76rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.recommendedDisclosure {
+  margin: 14px 0 0;
+  color: #7a8798;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 520px) {
+  .recommendedCard {
+    padding: 20px;
+  }
+
+  .recommendedIdentity {
+    gap: 16px;
+  }
+}
+
 .positiveList,
 .cautionList {
   display: grid;
@@ -1014,5 +1091,154 @@
 
   .bottomCta a {
     width: 100%;
+  }
+}
+
+/* Phase 16: separate transport planning options shown after the internet result */
+.transportOptions {
+  margin-top: 30px;
+  border: 1px solid #dfe6ee;
+  border-radius: 22px;
+  background: #f7f9fc;
+  padding: 26px;
+}
+
+.transportOptionsHeading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.transportOptionsHeading span {
+  display: block;
+  margin-bottom: 8px;
+  color: #d73829;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.transportOptionsHeading h3 {
+  margin: 0;
+  color: #071f49;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.transportOptionsHeading p {
+  margin: 0;
+  color: #657386;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.transportOptionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 23px;
+}
+
+.transportOptionCard {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid #dce4ee;
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.transportOptionCard > span {
+  color: #0b4f9f;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.transportOptionCard h4 {
+  margin: 7px 0 9px;
+  color: #071f49;
+  font-size: 1.08rem;
+}
+
+.transportOptionCard p {
+  flex: 1;
+  margin: 0;
+  color: #657386;
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+.transportOptionCard a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: #071f49;
+  padding: 0 17px;
+  color: #ffffff;
+  font-size: 0.83rem;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+}
+
+.transportOptionCard a:hover {
+  background: #0b4f9f;
+}
+
+.transportDisclosure {
+  margin: 17px 0 0;
+  color: #7a8798;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 820px) {
+  .transportOptionsHeading {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .transportOptionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .transportOptions {
+    padding: 20px;
+  }
+}
+
+/* Phase 21: diagnosis explanation illustration */
+.diagnosisVisual {
+  width: 100%;
+  margin: 40px auto 48px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 37, 64, 0.1);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15, 37, 64, 0.1);
+}
+
+.diagnosisImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .diagnosisVisual {
+    margin: 28px auto 36px;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(15, 37, 64, 0.09);
   }
 }

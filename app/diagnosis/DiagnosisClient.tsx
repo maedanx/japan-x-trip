@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { affiliateLinks } from "@/data/affiliateLinks";
 import { connectivityProviders } from "@/data/connectivityProviders";
+import { getProductRecommendation } from "@/data/productRecommendations";
+import { trackAffiliateCtaClick } from "@/lib/analytics";
 import styles from "./page.module.css";
 
 type Method = "esim" | "sim" | "wifi" | "check";
@@ -163,6 +166,8 @@ const results: Record<Method, ResultDefinition> = {
   },
 };
 
+const durationQuestionIndex = questions.findIndex((question) => question.id === "duration");
+
 function trackDiagnosis(eventName: string, parameters: Record<string, string | number> = {}) {
   const browserWindow = window as typeof window & {
     gtag?: (command: "event", eventName: string, parameters?: Record<string, string | number>) => void;
@@ -244,6 +249,16 @@ export default function DiagnosisClient() {
   }
 
   const result = results[analysis.primary];
+
+  const productRecommendation = useMemo(
+    () =>
+      getProductRecommendation({
+        primary: analysis.primary,
+        flags: analysis.flags,
+        durationIndex: answers[durationQuestionIndex],
+      }),
+    [analysis, answers],
+  );
 
   const rankedMethods = (["esim", "sim", "wifi"] as const)
     .map((method) => ({ method, score: analysis.scores[method] }))
@@ -340,6 +355,153 @@ export default function DiagnosisClient() {
                 <ul className={styles.cautionList}>{result.cautions.map((caution) => <li key={caution}><span>!</span>{caution}</li>)}</ul>
               </article>
             </div>
+
+            {productRecommendation ? (
+              <article className={`${styles.resultPanel} ${styles.recommendedCard}`}>
+                <span className={styles.resultBadge}>Recommended for you</span>
+
+                <div className={styles.recommendedIdentity}>
+                  <div>
+                    <span className={styles.recommendedEyebrow}>Provider</span>
+                    <p className={styles.recommendedProvider}>{productRecommendation.providerName}</p>
+                  </div>
+                  <div>
+                    <span className={styles.recommendedEyebrow}>Plan</span>
+                    <p className={styles.recommendedPlan}>{productRecommendation.productLabel}</p>
+                  </div>
+                </div>
+
+                <p className={styles.recommendedReason}>{productRecommendation.reason}</p>
+
+                {productRecommendation.matchReasons.length > 0 ? (
+                  <ul className={styles.recommendedTags}>
+                    {productRecommendation.matchReasons.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                <a
+                  className={styles.resultPrimaryButton}
+                  href={productRecommendation.affiliateUrl}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  aria-label={`Check price and availability for ${productRecommendation.providerName} ${productRecommendation.productLabel}`}
+                  onClick={() =>
+                    trackAffiliateCtaClick({
+                      page: "/diagnosis",
+                      provider: productRecommendation.providerName,
+                      product: productRecommendation.productLabel,
+                      placement: "diagnosis-result",
+                    })
+                  }
+                >
+                  Check price and availability →
+                </a>
+
+                <p className={styles.recommendedDisclosure}>
+                  Prices, availability, and conditions are confirmed on the provider&apos;s site. Japan X Trip may earn a commission if you continue, at no additional cost to you.
+                </p>
+              </article>
+            ) : null}
+
+
+            <section
+              className={styles.transportOptions}
+              aria-labelledby="transport-options-title"
+            >
+              <div className={styles.transportOptionsHeading}>
+                <div>
+                  <span>Plan the rest of your trip</span>
+                  <h3 id="transport-options-title">
+                    Transportation options to check separately
+                  </h3>
+                </div>
+                <p>
+                  These options are not based on your internet answers. Choose
+                  them only when they match your route, arrival plan, and budget.
+                </p>
+              </div>
+
+              <div className={styles.transportOptionsGrid}>
+                <article className={styles.transportOptionCard}>
+                  <span>Intercity rail</span>
+                  <h4>Japan Bullet Train</h4>
+                  <p>
+                    Check Shinkansen tickets when your itinerary includes
+                    long-distance travel between major Japanese cities.
+                  </p>
+                  <a
+                    href={affiliateLinks.japanBulletTrain.general}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    onClick={() =>
+                      trackAffiliateCtaClick({
+                        page: "/diagnosis",
+                        provider: "Japan Bullet Train",
+                        product: "General",
+                        placement: "diagnosis-transport-options",
+                      })
+                    }
+                  >
+                    Check bullet train tickets →
+                  </a>
+                </article>
+
+                <article className={styles.transportOptionCard}>
+                  <span>Airport transfer</span>
+                  <h4>Airport Taxi</h4>
+                  <p>
+                    Check a private airport transfer when convenience, luggage,
+                    group travel, or arrival timing makes public transport less suitable.
+                  </p>
+                  <a
+                    href={affiliateLinks.airportTaxi.general}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    onClick={() =>
+                      trackAffiliateCtaClick({
+                        page: "/diagnosis",
+                        provider: "Airport Taxi",
+                        product: "General",
+                        placement: "diagnosis-transport-options",
+                      })
+                    }
+                  >
+                    Check airport taxi options →
+                  </a>
+                </article>
+
+                <article className={styles.transportOptionCard}>
+                  <span>Highway bus</span>
+                  <h4>Japan Bus Tickets</h4>
+                  <p>
+                    Check highway bus routes when you want another way to travel
+                    between cities or reach destinations outside your rail plan.
+                  </p>
+                  <a
+                    href={affiliateLinks.japanBusTickets.general}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    onClick={() =>
+                      trackAffiliateCtaClick({
+                        page: "/diagnosis",
+                        provider: "Japan Bus Tickets",
+                        product: "General",
+                        placement: "diagnosis-transport-options",
+                      })
+                    }
+                  >
+                    Check bus tickets →
+                  </a>
+                </article>
+              </div>
+
+              <p className={styles.transportDisclosure}>
+                Affiliate disclosure: Japan X Trip may earn a commission if you
+                book through these links, at no additional cost to you.
+              </p>
+            </section>
 
             {analysis.primary !== "check" ? (
               <section className={styles.fitComparison} aria-labelledby="fit-comparison-title">

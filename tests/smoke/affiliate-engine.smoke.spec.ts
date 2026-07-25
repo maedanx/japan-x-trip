@@ -57,6 +57,10 @@ test("a provider with no affiliate or official URL has no outbound destination",
 test("official URLs already in the data source keep their query strings unmodified", () => {
   for (const provider of connectivityProviders) {
     if (!provider.officialUrl) continue;
+    // Providers with an approved affiliate link intentionally resolve to
+    // that affiliate URL instead of officialUrl -- this check only applies
+    // to providers where officialUrl is actually the outbound destination.
+    if (isAffiliateProviderLink(provider)) continue;
     expect(getProviderDestination(provider)).toBe(provider.officialUrl);
   }
 });

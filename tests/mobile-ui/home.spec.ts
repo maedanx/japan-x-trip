@@ -186,7 +186,7 @@ async function ensureCities(page: Page, wanted: string[]) {
     let settled = false;
 
     for (let attempt = 0; attempt < 5; attempt += 1) {
-      let button = await visibleTestId(page, testId);
+      const button = await visibleTestId(page, testId);
       await expect(button).toBeVisible();
       await button.scrollIntoViewIfNeeded();
 

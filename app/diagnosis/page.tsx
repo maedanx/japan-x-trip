@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
@@ -195,6 +196,17 @@ export default function DiagnosisPage() {
                 setup confidence, data usage, and arrival logistics.
               </p>
             </div>
+
+            <figure className={styles.diagnosisVisual}>
+              <Image
+                className={styles.diagnosisImage}
+                src="/images/diagnosis/diagnosis-internet-option-quiz.png"
+                alt="Illustration showing a traveler answering questions to find the most suitable Japan internet option"
+                width={1672}
+                height={941}
+                sizes="(max-width: 768px) calc(100vw - 40px), 1120px"
+              />
+            </figure>
 
             <div className={styles.explanationGrid}>
               <article>

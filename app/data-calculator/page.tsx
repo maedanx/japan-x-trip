@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
@@ -104,6 +105,18 @@ export default function DataCalculatorPage() {
                 <span>Instant estimate</span>
                 <span>Adjustable usage</span>
               </div>
+
+              <figure className={styles.heroIllustration}>
+                <Image
+                  src="/images/calculators/mobile-data-usage-guide.png"
+                  alt="Visual guide comparing common mobile data activities and their estimated data usage"
+                  width={1672}
+                  height={941}
+                  sizes="(max-width: 1020px) 100vw, 760px"
+                  className={styles.heroIllustrationImage}
+                  priority
+                />
+              </figure>
             </div>
 
             <aside className={styles.heroCard}>

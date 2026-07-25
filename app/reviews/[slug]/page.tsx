@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import {
   connectivityProviders,
   getConnectivityProvider,
@@ -114,19 +115,22 @@ export default async function ProviderReviewPage({
 
             <div className="review-hero-actions">
               {destination ? (
-                <a
+                <AffiliateCtaLink
                   className="button"
                   href={destination}
-                  target="_blank"
                   rel={
                     affiliate
                       ? "sponsored nofollow noopener noreferrer"
                       : "noopener noreferrer"
                   }
+                  page={`/reviews/${provider.slug}`}
+                  provider={provider.name}
+                  product="General"
+                  placement="hero"
                 >
                   {ctaLabel}
                   <span aria-hidden="true">→</span>
-                </a>
+                </AffiliateCtaLink>
               ) : null}
 
               <Link
@@ -163,6 +167,37 @@ export default async function ProviderReviewPage({
             </aside>
 
             <article className="review-article">
+              {provider.products && provider.products.length > 0 ? (
+                <section className="review-section">
+                  <p className="eyebrow">Choose a plan</p>
+                  <h2>{provider.name} plan options</h2>
+
+                  <p>
+                    Select the plan you want to check, then confirm the
+                    exact price and data allowance on the checkout page.
+                  </p>
+
+                  <div className="review-hero-actions">
+                    {provider.products.map((product) => (
+                      <AffiliateCtaLink
+                        key={product.label}
+                        className="button button--small"
+                        href={product.affiliateUrl}
+                        rel="sponsored nofollow noopener noreferrer"
+                        ariaLabel={`View ${provider.name} ${product.label} plan`}
+                        page={`/reviews/${provider.slug}`}
+                        provider={provider.name}
+                        product={product.label}
+                        placement="plan-picker"
+                      >
+                        {product.label}
+                        <span aria-hidden="true">→</span>
+                      </AffiliateCtaLink>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
               <section className="review-section">
                 <p className="eyebrow">Overview</p>
                 <h2>What to know about {provider.name}</h2>
@@ -270,19 +305,22 @@ export default async function ProviderReviewPage({
 
                 <div className="review-final-actions">
                   {destination ? (
-                    <a
+                    <AffiliateCtaLink
                       className="button"
                       href={destination}
-                      target="_blank"
                       rel={
                         affiliate
                           ? "sponsored nofollow noopener noreferrer"
                           : "noopener noreferrer"
                       }
+                      page={`/reviews/${provider.slug}`}
+                      provider={provider.name}
+                      product="General"
+                      placement="final"
                     >
                       {ctaLabel}
                       <span aria-hidden="true">→</span>
-                    </a>
+                    </AffiliateCtaLink>
                   ) : null}
 
                   <Link href="/#provider-list">

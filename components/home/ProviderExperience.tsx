@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import {
   getProviderUrl,
@@ -9,6 +10,10 @@ import {
   type Provider,
   type ProviderId,
 } from "@/data/providers";
+import {
+  trackAffiliateCtaClick,
+  type AffiliateCtaPlacement,
+} from "@/lib/analytics";
 
 type DiagnosisAnswers = {
   esim?: string;
@@ -132,10 +137,12 @@ function sortProviders(
 function ProviderLink({
   provider,
   className,
+  placement,
   children,
 }: {
   provider: Provider;
   className: string;
+  placement: AffiliateCtaPlacement;
   children: React.ReactNode;
 }) {
   const affiliate = isAffiliateLink(provider);
@@ -151,32 +158,40 @@ function ProviderLink({
           : "noopener noreferrer"
       }
       aria-label={`View current ${provider.name} plans`}
+      onClick={() =>
+        trackAffiliateCtaClick({
+          page: "/",
+          provider: provider.name,
+          product: "General",
+          placement,
+        })
+      }
     >
       {children}
     </a>
   );
 }
 
+function getInitialAnswers(): DiagnosisAnswers | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const saved = window.localStorage.getItem("jmc-diagnosis");
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    // The comparison still works when storage is unavailable.
+    return null;
+  }
+}
+
 export default function ProviderExperience() {
   const [answers, setAnswers] =
-    useState<DiagnosisAnswers | null>(null);
+    useState<DiagnosisAnswers | null>(getInitialAnswers);
   const [activeFilter, setActiveFilter] =
     useState<FilterType>("all");
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(
-        "jmc-diagnosis",
-      );
-
-      if (saved) {
-        setAnswers(JSON.parse(saved));
-      }
-    } catch {
-      // The comparison still works when storage is unavailable.
-    }
-
     const handleDiagnosis = (event: Event) => {
       const customEvent =
         event as CustomEvent<DiagnosisAnswers>;
@@ -267,6 +282,18 @@ export default function ProviderExperience() {
             setup, and return requirements before choosing.
           </p>
         </header>
+
+
+        <figure className="provider-match-illustration">
+          <Image
+            src="/images/recommendations/best-internet-match-guide.png"
+            alt="Visual guide for matching travelers with eSIM, physical SIM, or pocket Wi-Fi options in Japan"
+            width={1672}
+            height={941}
+            sizes="(max-width: 760px) 100vw, 1180px"
+            className="provider-match-illustration-image"
+          />
+        </figure>
 
         {recommendation ? (
           <aside className="personal-match">
@@ -381,6 +408,7 @@ export default function ProviderExperience() {
                 <ProviderLink
                   provider={provider}
                   className="pick-button"
+                  placement="top-pick"
                 >
                   <span>{provider.priceLabel}</span>
                   <span aria-hidden="true">→</span>
@@ -520,6 +548,7 @@ export default function ProviderExperience() {
                   <ProviderLink
                     provider={provider}
                     className="detail-button"
+                    placement="compare-detail"
                   >
                     <span>{provider.priceLabel}</span>
                     <span aria-hidden="true">→</span>

@@ -1,3 +1,5 @@
+import { affiliateLinks } from "./affiliateLinks";
+
 export type JapanWirelessServiceCategory =
   | "pocket-wifi"
   | "esim"
@@ -89,24 +91,24 @@ export const japanWirelessServices: JapanWirelessService[] = [
     sourceNotes: ["Official affiliate ZIP and copywriting swipe file supplied 2026-07-23.", "Commission terms beyond the percentage were not supplied."],
   },
   {
-    id: "japan-bullet-train", providerId: "japan-wireless", slug: "japan-bullet-train", name: "Japan Bullet Train", category: "train", status: "asset-only",
-    officialUrl: null, affiliateUrl: null, affiliateLinkStatus: "pending-link",
+    id: "japan-bullet-train", providerId: "japan-wireless", slug: "japan-bullet-train", name: "Japan Bullet Train", category: "train", status: "available",
+    officialUrl: "https://www.japan-bullettrain.com/", affiliateUrl: affiliateLinks.japanBulletTrain.general, affiliateLinkStatus: "active",
     commission: { model: "fixed", value: 1000, currency: "JPY", note: "Per booking, supplied by the campaign participant." },
     features: [], marketingClaims: [], trustSignals: [], ctaOptions: [],
     assets: { logo: "/assets/affiliates/japan-wireless/shinkansen/logo/japan-bullet-train-logo-white.png", representativeBanner: "/assets/affiliates/japan-wireless/shinkansen/banners/japan-bullet-train-1200x628.webp", assetDirectory: "/assets/affiliates/japan-wireless/shinkansen", seasonal: true },
     sourceNotes: ["Seasonal festival and fireworks assets are stored but not intended for permanent display."],
   },
   {
-    id: "airport-taxi", providerId: "japan-wireless", slug: "airport-taxi", name: "Airport Taxi", category: "airport-transfer", status: "asset-only",
-    officialUrl: null, affiliateUrl: null, affiliateLinkStatus: "pending-link",
+    id: "airport-taxi", providerId: "japan-wireless", slug: "airport-taxi", name: "Airport Taxi", category: "airport-transfer", status: "available",
+    officialUrl: "https://www.airport-taxi.tokyo/en", affiliateUrl: affiliateLinks.airportTaxi.general, affiliateLinkStatus: "active",
     commission: { model: "fixed", value: 1100, currency: "JPY", note: "Per booking, supplied by the campaign participant." },
     features: [], marketingClaims: [], trustSignals: [], ctaOptions: [],
     assets: { logo: "/assets/affiliates/japan-wireless/airport-taxi/logo/airport-taxi-logo-01.png", representativeBanner: "/assets/affiliates/japan-wireless/airport-taxi/banners/family-group/airport-taxi-family-group-1200x628.webp", assetDirectory: "/assets/affiliates/japan-wireless/airport-taxi", audience: ["business-elite", "family-group"] },
     sourceNotes: ["Business Elite and Family & Group variants are kept as separate audience assets."],
   },
   {
-    id: "japan-bus-tickets", providerId: "japan-wireless", slug: "japan-bus-tickets", name: "Japan Bus Tickets", category: "bus", status: "asset-only",
-    officialUrl: null, affiliateUrl: null, affiliateLinkStatus: "pending-link",
+    id: "japan-bus-tickets", providerId: "japan-wireless", slug: "japan-bus-tickets", name: "Japan Bus Tickets", category: "bus", status: "available",
+    officialUrl: "https://www.japan-bus-tickets.com/", affiliateUrl: affiliateLinks.japanBusTickets.general, affiliateLinkStatus: "active",
     commission: { model: "fixed", value: 300, currency: "JPY", note: "Per booking, supplied by the campaign participant." },
     features: [], marketingClaims: [], trustSignals: [], ctaOptions: [],
     assets: { logo: "/assets/affiliates/japan-wireless/bus-tickets/logo/japan-bus-tickets-logo.png", representativeBanner: "/assets/affiliates/japan-wireless/bus-tickets/banners/japan-bus-tickets-mt-fuji-1200x628.webp", assetDirectory: "/assets/affiliates/japan-wireless/bus-tickets" },

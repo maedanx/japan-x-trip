@@ -1,6 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState, type ReactNode } from "react";
+import { trackDiagnosisEntryClick } from "@/lib/analytics";
+
+const heroImageSrc = "/images/home/japan-x-trip-hero-traveler-city.png";
+const heroImageAlt = "Traveler using a smartphone while exploring a modern Japanese city";
 
 const airports = [
   { label: "Narita", code: "NRT" },
@@ -159,7 +164,7 @@ export default function HomeV2() {
         bestFor: "Travelers making several expensive intercity journeys",
         highlights: ["Compare total route cost", "Avoid unnecessary pass spending"],
         caution: "A nationwide pass is not automatically cheaper for every multi-city trip.",
-        href: "/compare",
+        href: "/diagnosis",
         officialHref: "/diagnosis",
       });
     } else {
@@ -252,12 +257,30 @@ export default function HomeV2() {
         <div className="v24-mobile-hero v25-mobile-hero">
           <p className="v24-eyebrow">YOUR JAPAN TRIP, SORTED</p>
           <h1>Japan travel,<br />sorted in 60 seconds.</h1>
-          <a className="v25-hero-cta" href="#mobile-planner">
+          <a
+            className="v25-hero-cta"
+            href="/diagnosis"
+            onClick={() => trackDiagnosisEntryClick("home-hero-diagnosis")}
+          >
+            Find Your Best Internet Option <ArrowIcon />
+          </a>
+          <p className="v28-diagnosis-microcopy">Quick Japan internet finder — no sign-up needed</p>
+          <a className="v28-hero-secondary-cta" href="#mobile-planner">
             Start My Travel Plan <ArrowIcon />
           </a>
           <p>Choose your route and travel style. Your recommendations update instantly.</p>
           <div className="v25-hero-proof" aria-label="Planner benefits">
             <span>Independent picks</span><span>No sponsored ranking</span>
+          </div>
+          <div className="v29-hero-media v29-hero-media--mobile">
+            <Image
+              src={heroImageSrc}
+              alt={heroImageAlt}
+              fill
+              priority
+              sizes="(max-width: 760px) 100vw, 0px"
+              className="v29-hero-image"
+            />
           </div>
         </div>
 
@@ -391,12 +414,14 @@ export default function HomeV2() {
       </section>
 
       <section className="v2-hero v22-hero v23-hero" id="planner">
-        <div className="v2-hero-scene v22-hero-scene" aria-hidden="true">
-          <span className="v2-sun" />
-          <span className="v2-mountain v2-mountain--back" />
-          <span className="v2-mountain v2-mountain--front" />
-          <span className="v2-tower" />
-          <span className="v22-haze" />
+        <div className="v29-hero-media">
+          <Image
+            src={heroImageSrc}
+            alt={heroImageAlt}
+            fill
+            sizes="(min-width: 1000px) 45vw, 0px"
+            className="v29-hero-image"
+          />
         </div>
 
         <div className="container v2-hero-inner v22-hero-inner v23-hero-inner">
@@ -435,10 +460,17 @@ export default function HomeV2() {
                 ))}
               </div>
 
-              <a className="v2-primary-cta v22-primary-cta" href="#travel-kit">
+              <a
+                className="v2-primary-cta v22-primary-cta"
+                href="/diagnosis"
+                onClick={() => trackDiagnosisEntryClick("home-hero-diagnosis")}
+              >
+                Find Your Best Internet Option <ArrowIcon />
+              </a>
+              <p className="v2-microcopy"><span>✓</span> Quick Japan internet finder — no sign-up needed</p>
+              <a className="v28-hero-secondary-cta" href="#travel-kit">
                 Build My Travel Kit <ArrowIcon />
               </a>
-              <p className="v2-microcopy"><span>✓</span> Takes less than 60 seconds</p>
             </div>
 
             <aside className="v2-kit-card v22-kit-card v23-kit-card" id="travel-kit">
@@ -478,6 +510,35 @@ export default function HomeV2() {
         </div>
       </section>
 
+      <section className="v2-section v28-diagnosis-intro" aria-labelledby="diagnosis-intro-title">
+        <div className="container v28-diagnosis-intro-inner">
+          <div className="v28-diagnosis-intro-copy">
+            <p className="v28-diagnosis-eyebrow">NOT SURE WHERE TO START?</p>
+            <h2 id="diagnosis-intro-title">Not sure if you need eSIM, a SIM card, or pocket Wi-Fi?</h2>
+            <p>
+              Answer a few questions about your trip length, phone compatibility, and data
+              needs, and the finder points you to a practical starting option.
+            </p>
+          </div>
+
+          <div className="v28-diagnosis-intro-panel">
+            <ol className="v28-diagnosis-steps">
+              <li><span>1</span>Trip length</li>
+              <li><span>2</span>Phone compatibility</li>
+              <li><span>3</span>Data needs</li>
+            </ol>
+            <a
+              className="v28-diagnosis-intro-cta"
+              href="/diagnosis"
+              onClick={() => trackDiagnosisEntryClick("home-hero-diagnosis")}
+            >
+              Start the Japan Internet Finder <ArrowIcon />
+            </a>
+            <p className="v28-diagnosis-intro-note">A separate, independent tool — no sign-up required</p>
+          </div>
+        </div>
+      </section>
+
       <section className="v2-section" id="explore">
         <div className="container">
           <div className="v2-section-heading"><div><p>EXPLORE JAPAN</p><h2>Everything for a smoother trip.</h2></div><a href="/compare">Browse comparison →</a></div>
@@ -504,6 +565,15 @@ export default function HomeV2() {
               </a>
             ))}
           </div>
+          <p className="v28-diagnosis-nudge">
+            Still not sure?{" "}
+            <a
+              href="/diagnosis"
+              onClick={() => trackDiagnosisEntryClick("home-mid-diagnosis")}
+            >
+              Take the quick Japan internet finder →
+            </a>
+          </p>
         </div>
       </section>
 

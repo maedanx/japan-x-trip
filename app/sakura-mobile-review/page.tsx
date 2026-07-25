@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
+import { affiliateLinks, getGeneralAffiliateLink } from "@/data/affiliateLinks";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -14,6 +16,8 @@ const officialUrls = {
   sim: "https://www.sakuramobile.jp/travel/sim/",
   pickup: "https://www.sakuramobile.jp/travel/pickup-return/",
 };
+
+const sakuraMobileCtaUrl = getGeneralAffiliateLink("sakuraMobile");
 
 export const metadata: Metadata = {
   title: "Sakura Mobile Review 2026: eSIM, SIM & Pocket WiFi",
@@ -131,6 +135,7 @@ const productRows = [
     delivery: "Digital installation",
     keyCheck: "Compatibility, activation timing, hotspot rules",
     guide: "/esim",
+    affiliateUrl: affiliateLinks.sakuraMobile.travelEsim,
   },
   {
     product: "Physical SIM",
@@ -138,6 +143,7 @@ const productRows = [
     delivery: "Pickup or supported delivery",
     keyCheck: "SIM lock, SIM size, APN, pickup location",
     guide: "/sim-card",
+    affiliateUrl: affiliateLinks.sakuraMobile.travelSim,
   },
   {
     product: "Pocket WiFi",
@@ -145,6 +151,7 @@ const productRows = [
     delivery: "Pickup or supported delivery",
     keyCheck: "Battery, pickup, return, connected-device use",
     guide: "/pocket-wifi",
+    affiliateUrl: affiliateLinks.sakuraMobile.travelPocketWifi,
   },
 ];
 
@@ -282,14 +289,17 @@ export default function SakuraMobileReviewPage() {
               </p>
 
               <div className={styles.heroActions}>
-                <a
+                <AffiliateCtaLink
                   className={styles.primaryButton}
-                  href={officialUrls.travel}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                  href={sakuraMobileCtaUrl}
+                  rel="sponsored noopener noreferrer"
+                  page="/sakura-mobile-review"
+                  provider="Sakura Mobile"
+                  product="General"
+                  placement="hero"
                 >
                   Check official plans
-                </a>
+                </AffiliateCtaLink>
 
                 <Link className={styles.secondaryButton} href="/compare">
                   Compare all options
@@ -299,8 +309,9 @@ export default function SakuraMobileReviewPage() {
               <p className={styles.disclosure}>
                 Japan X Trip has not yet completed a hands-on network test.
                 This assessment is based on official provider information
-                checked in July 2026. We will clearly label affiliate links
-                after partnership approval.
+                checked in July 2026. This site may receive a commission when
+                a visitor purchases through an affiliate link, at no
+                additional cost to the visitor.
               </p>
             </div>
 
@@ -363,6 +374,7 @@ export default function SakuraMobileReviewPage() {
                     <th>Receipt</th>
                     <th>Check before buying</th>
                     <th>Guide</th>
+                    <th>Check price</th>
                   </tr>
                 </thead>
 
@@ -375,6 +387,19 @@ export default function SakuraMobileReviewPage() {
                       <td>{row.keyCheck}</td>
                       <td>
                         <Link href={row.guide}>Read guide</Link>
+                      </td>
+                      <td>
+                        <AffiliateCtaLink
+                          href={row.affiliateUrl}
+                          rel="sponsored nofollow noopener noreferrer"
+                          ariaLabel={`Check Sakura Mobile ${row.product} price`}
+                          page="/sakura-mobile-review"
+                          provider="Sakura Mobile"
+                          product={row.product}
+                          placement="table"
+                        >
+                          Check price
+                        </AffiliateCtaLink>
                       </td>
                     </tr>
                   ))}
@@ -618,14 +643,17 @@ export default function SakuraMobileReviewPage() {
             </p>
 
             <div className={styles.heroActions}>
-              <a
+              <AffiliateCtaLink
                 className={styles.primaryButton}
-                href={officialUrls.travel}
-                rel="noopener noreferrer"
-                target="_blank"
+                href={sakuraMobileCtaUrl}
+                rel="sponsored noopener noreferrer"
+                page="/sakura-mobile-review"
+                provider="Sakura Mobile"
+                product="General"
+                placement="final"
               >
                 View official plans
-              </a>
+              </AffiliateCtaLink>
 
               <Link className={styles.secondaryButton} href="/compare">
                 Compare internet options

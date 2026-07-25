@@ -39,8 +39,9 @@ export default function PrivacyPolicyPage() {
         {
           title: "Analytics and advertising",
           paragraphs: [
-            "Japan X Trip does not currently claim to use Google Analytics, an advertising network, personalized advertising, or a newsletter-tracking service.",
-            "If analytics, advertising, consent tools, or other tracking technologies are introduced later, this policy should be updated to describe the relevant services and choices.",
+            "Japan X Trip uses Google Analytics (GA4) to understand overall visitor traffic and how pages and links perform, including clicks on outbound links to provider websites.",
+            "This analytics data is used in aggregate to improve the site and is not used to build an individual advertising profile. Japan X Trip does not currently use an advertising network, personalized advertising, or a newsletter-tracking service.",
+            "If additional analytics, advertising, or consent tools are introduced later, this policy will be updated to describe the relevant services and choices.",
           ],
         },
         {
@@ -53,7 +54,8 @@ export default function PrivacyPolicyPage() {
         {
           title: "Cookies and browser storage",
           paragraphs: [
-            "The current site may use browser storage required for the 30-second recommendation experience. Hosting or security providers may also use necessary technologies to deliver and protect the website.",
+            "The current site may use browser storage required for the 30-second recommendation experience. Google Analytics also sets its own cookies to measure visits and page interactions.",
+            "Hosting or security providers may also use necessary technologies to deliver and protect the website.",
             "The site does not currently state that it uses marketing cookies or behavioral advertising cookies.",
           ],
         },
