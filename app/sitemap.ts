@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${siteConfig.url}/pocket-wifi-for-family-japan`,
+      lastModified: updated,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/compare`,
       lastModified: updated,
       changeFrequency: "weekly",

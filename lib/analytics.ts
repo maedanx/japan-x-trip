@@ -25,7 +25,8 @@ export type AffiliateCtaPlacement =
   | "top-pick"
   | "compare-detail"
   | "diagnosis-result"
-  | "diagnosis-transport-options";
+  | "diagnosis-transport-options"
+  | "family-diagnosis-result";
 
 export type AffiliateCtaEvent = {
   /** The page the click happened on, e.g. "/reviews/airalo" or "/diagnosis". */
@@ -66,4 +67,27 @@ export function trackDiagnosisEntryClick(placement: DiagnosisEntryPlacement): vo
   if (typeof window === "undefined") return;
 
   window.gtag?.("event", "diagnosis_entry_click", { placement });
+}
+
+export type FamilyWifiEventName =
+  | "family_wifi_page_view"
+  | "family_wifi_diagnosis_start"
+  | "family_wifi_diagnosis_complete"
+  | "family_wifi_result_pocket_wifi"
+  | "family_wifi_result_esim"
+  | "family_wifi_result_hybrid"
+  | "family_wifi_click_sakura_wifi"
+  | "family_wifi_click_esim_compare";
+
+/**
+ * Page-specific family funnel events. Uses the existing GA4 gtag instance
+ * and does not create storage, cookies, or another analytics dependency.
+ */
+export function trackFamilyWifiEvent(
+  eventName: FamilyWifiEventName,
+  parameters: Record<string, string> = {},
+): void {
+  if (typeof window === "undefined") return;
+
+  window.gtag?.("event", eventName, parameters);
 }

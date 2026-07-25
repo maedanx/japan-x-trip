@@ -12,6 +12,24 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+
+    // Local generated files and test reports:
+    ".open-next/**",
+    "reports/**",
+    "artifacts/**",
+    "playwright-report/**",
+    "test-results/**",
+    "coverage/**",
+    "blob-report/**",
+    "logs/**",
+    "backups/**",
+    "mobile-touch-diagnostic/**",
+    "ui-redesign-package/**",
+
+    // Local source backups:
+    ".provider-reviews-backup-*/**",
+    ".structure-backup-*/**",
+    ".*-backup-*/**",
   ]),
 ]);
 
