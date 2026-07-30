@@ -1,3 +1,5 @@
+@import "../styles/mobile/tokens.css";
+
 :root {
   --ink: #102c3b;
   --ink-soft: #49626f;
