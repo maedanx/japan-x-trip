@@ -7,7 +7,7 @@ import CTAButton from "./CTAButton";
 
 const MOBILE_BENEFITS = [
   {
-    title: "Compare eSIM, SIM & Pocket Wi-Fi",
+    title: "Compare the best plans",
     icon: "calendar",
   },
   {
@@ -15,7 +15,7 @@ const MOBILE_BENEFITS = [
     icon: "shield",
   },
   {
-    title: "Clear provider guides",
+    title: "Clear setup support",
     icon: "support",
   },
 ] as const;
@@ -107,7 +107,8 @@ function MobileHero() {
           </h1>
 
           <p className="jxm-hero-v2__description">
-            Find the perfect internet option for your trip.
+            Find the best SIM, eSIM or Pocket WiFi
+            for your trip in seconds.
           </p>
 
           <ul
@@ -130,7 +131,7 @@ function MobileHero() {
               className="jxm-hero-v2__primary"
               onClick={() => trackDiagnosisEntryClick("home-hero-primary")}
             >
-              Find My Best Option
+              Find My Perfect Plan
               <ArrowIcon />
             </Link>
 
