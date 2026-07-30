@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { chromium, devices, expect } from "@playwright/test";
 import fs from "node:fs";
-import { networkInterfaces } from "node:os";
 
 console.log("===== STATIC SOURCE CHECKS =====");
 
@@ -76,16 +75,16 @@ execFileSync("npx", ["tsc", "--noEmit"], { stdio: "inherit" });
 console.log("PASS: TypeScriptエラーなし");
 console.log("");
 
-const localIp = Object.values(networkInterfaces())
-  .flatMap((interfaces) => interfaces ?? [])
-  .find(
-    (network) =>
-      network.family === "IPv4" &&
-      !network.internal &&
-      network.address.startsWith("192.168."),
-  )?.address;
-
-const BASE_URL = `http://${localIp ?? "localhost"}:3000`;
+// Always use localhost, never the machine's LAN IP: this Playwright browser
+// runs on the same machine as the dev server, and hitting the dev server via
+// a LAN-IP Host header made the Next.js dev server reject the HMR WebSocket
+// handshake ("Error during WebSocket handshake"), which in turn left client
+// hydration incomplete -- the accordion's keyboard handlers never attached,
+// so Enter/Space appeared to silently do nothing. This reproduced 100% of
+// the time (cold AND warm dev server) when accessed via the LAN IP, and
+// never reproduced via localhost -- confirmed by direct manual repro, not a
+// timing flake.
+const BASE_URL = "http://localhost:3000";
 console.log(`[QA URL] ${BASE_URL}`);
 
 const OUTPUT_DIR = "qa/faq-mobile";
