@@ -89,8 +89,8 @@ function MobileHero() {
     >
       <div className="jxm-hero-v2__scene">
         <Image
-          src="/images/mobile/hero/japan-x-trip-western-couple-hero.png"
-          alt="A European couple visiting Japan with Mount Fuji and a Japanese pagoda in the background"
+          src="/images/mobile/home/hero/japan-x-trip-home-hero-mobile.png"
+          alt="Travelers visiting Japan with Mount Fuji, cherry blossoms and a Japanese pagoda in the background"
           fill
           priority
           sizes="(max-width: 900px) 100vw, 0px"
