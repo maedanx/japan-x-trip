@@ -70,3 +70,34 @@ ui-redesign-package/
 *.backup-*
 playwright-report/
 blob-report/
+# Dependencies
+node_modules/
+# Next.js and Cloudflare build output
+dist/
+build/
+.turbo/
+.cache/
+# Test and QA output
+coverage/
+# Local backup output
+.structure-backup-*/
+.homepage-backup-*/
+.hero-v2-backup-*/
+.pages-provider-backup-*/
+.priority-1-4-backup-*/
+.provider-reviews-backup-*/
+.best-esim-japan-backup-*/
+# Archives and temporary files
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.tmp
+*.temp
+*.bak
+*.old
+*~
+# Local environment
+.env
+.env.*
+.dev.vars
