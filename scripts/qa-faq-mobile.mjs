@@ -158,6 +158,26 @@ async function ourEvents(page, eventName) {
   );
 }
 
+// Focuses `locator` and presses `key`, then polls (via Playwright's
+// auto-retrying locator assertion, not a fixed sleep) until aria-expanded
+// becomes "true". A cold dev-server's first compile can still be finishing
+// client hydration when the keypress lands, so a single bounded retry
+// re-fires focus+keypress once before failing -- this never masks a real
+// accordion regression, since both attempts require the same true state.
+async function pressAndWaitExpanded(page, locator, key, label) {
+  const attempt = async (timeout) => {
+    await locator.focus();
+    await page.keyboard.press(key);
+    await expect(locator, label).toHaveAttribute("aria-expanded", "true", { timeout });
+  };
+
+  try {
+    await attempt(3_000);
+  } catch {
+    await attempt(3_000);
+  }
+}
+
 try {
   // ---------- A. Page load + metadata ----------
   console.log("===== A. PAGE LOAD / METADATA =====");
@@ -217,16 +237,20 @@ try {
     const { consoleErrors, pageErrors } = await withErrorTracking(page);
     await page.goto(`${BASE_URL}/faq`, { waitUntil: "networkidle", timeout: 30_000 });
 
+    // Wait for the first question to be interactive (not a fixed sleep --
+    // a cold dev-server's first compile can leave the page painted before
+    // client hydration finishes attaching the click/keyboard handlers).
+    const firstQuestion = page.locator(".jxm-faq-preview__question").nth(0);
+    await expect(firstQuestion).toBeVisible({ timeout: 10_000 });
+    await expect(firstQuestion).toBeEnabled({ timeout: 10_000 });
+
     const initiallyOpen = await page.locator(".jxm-faq-preview__answer:not([hidden])").count();
     assert.equal(initiallyOpen, 0, "FAQが初期状態ですべて閉じていません");
 
-    const firstQuestion = page.locator(".jxm-faq-preview__question").nth(0);
     assert.equal(await firstQuestion.evaluate((el) => el.tagName.toLowerCase()), "button", "FAQ質問がbutton要素ではありません");
     assert.equal(await firstQuestion.getAttribute("aria-expanded"), "false", "aria-expanded初期値がfalseではありません");
 
-    await firstQuestion.focus();
-    await page.keyboard.press("Enter");
-    assert.equal(await firstQuestion.getAttribute("aria-expanded"), "true", "Enterで開きません");
+    await pressAndWaitExpanded(page, firstQuestion, "Enter", "Enterで開きません");
     const controlsId = await firstQuestion.getAttribute("aria-controls");
     assert.ok(controlsId, "aria-controlsがありません");
     assert.equal(await page.locator(`#${controlsId}`).getAttribute("hidden"), null, "aria-controlsが指す回答が表示されていません");
@@ -235,12 +259,13 @@ try {
 
     // second item opens independently -- both open simultaneously allowed
     const secondQuestion = page.locator(".jxm-faq-preview__question").nth(1);
-    await secondQuestion.focus();
-    await page.keyboard.press(" ");
+    await expect(secondQuestion).toBeVisible({ timeout: 5_000 });
+    await pressAndWaitExpanded(page, secondQuestion, " ", "Spaceで開きません(2問目)");
     const bothOpen = await page.locator(".jxm-faq-preview__answer:not([hidden])").count();
     assert.equal(bothOpen, 2, `2問同時オープンができていません(実際: ${bothOpen})`);
 
     await firstQuestion.click();
+    await expect(firstQuestion, "クリックで閉じません").toHaveAttribute("aria-expanded", "false", { timeout: 5_000 });
     const oneOpenAfterClose = await page.locator(".jxm-faq-preview__answer:not([hidden])").count();
     assert.equal(oneOpenAfterClose, 1, "1問目を閉じても2問目が独立して開いたままになっていません");
 

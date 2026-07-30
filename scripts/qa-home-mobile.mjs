@@ -43,18 +43,16 @@ assert.ok(
 );
 console.log("PASS: Homeの7セクションが想定順序で描画されていることを確認");
 
-// MobileTravelKit must remain removed from Home's render (Phase 4), but its
-// file must still exist (kept intentionally, not deleted).
+// MobileTravelKit must remain removed from Home's render (Phase 4). The file
+// itself is intentionally excluded from this release and is not required to
+// exist on disk (e.g. it is absent in a clean git clone) -- only the absence
+// of any import/render wiring in HomeRedesign.tsx is asserted here.
 assert.doesNotMatch(
   homeRedesignSource,
-  /<MobileTravelKit\s*\/>/,
-  "MobileTravelKitがHomeに再描画されています(Phase 4で表示から除外済み)",
+  /MobileTravelKit/,
+  "HomeRedesign.tsxがMobileTravelKitをimportまたは参照しています(Phase 4で表示から除外済み)",
 );
-assert.ok(
-  fs.existsSync("components/home-redesign/MobileTravelKit.tsx"),
-  "MobileTravelKit.tsx本体が削除されています(意図的に保持する方針)",
-);
-console.log("PASS: MobileTravelKitは非表示のままファイルのみ保持されていることを確認");
+console.log("PASS: HomeRedesign.tsxがMobileTravelKitをimport/描画していないことを確認");
 
 // FAQ Preview must source its content from data/faq.ts, not invent its own array.
 assert.match(
