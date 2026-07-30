@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
 import DataCalculatorClient from "./DataCalculatorClient";
 import styles from "./page.module.css";
 
+import "@/styles/home-redesign.css";
 const pageUrl = `${siteConfig.url}/data-calculator`;
 
 export const metadata: Metadata = {

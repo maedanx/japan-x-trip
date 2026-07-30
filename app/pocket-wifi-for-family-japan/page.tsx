@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
 import FamilyWifiDiagnosis from "./FamilyWifiDiagnosis";
 import styles from "./page.module.css";
 
+import "@/styles/home-redesign.css";
 const pageTitle =
   "Best Pocket WiFi for Families in Japan: Is One Router Enough?";
 const pageDescription =

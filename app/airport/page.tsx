@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
 
+import "@/styles/home-redesign.css";
 const pageUrl = `${siteConfig.url}/airport`;
 
 export const metadata: Metadata = {

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import { affiliateLinks, getGeneralAffiliateLink } from "@/data/affiliateLinks";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
 
+import "@/styles/home-redesign.css";
 const pageUrl = `${siteConfig.url}/sakura-mobile-review`;
 
 const officialUrls = {

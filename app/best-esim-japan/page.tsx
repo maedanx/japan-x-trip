@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import { siteConfig } from "@/data/site";
 import type { AffiliateCtaPlacement } from "@/lib/analytics";
+import "@/styles/home-redesign.css";
 import {
   connectivityProviders,
   getProviderDestination,

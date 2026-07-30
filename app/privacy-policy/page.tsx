@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/layout/LegalPage";
 
+import "@/styles/home-redesign.css";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:

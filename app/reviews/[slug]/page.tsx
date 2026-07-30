@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
+import "@/styles/home-redesign.css";
 import {
   connectivityProviders,
   getConnectivityProvider,
