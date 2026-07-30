@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
@@ -179,22 +180,50 @@ export default async function ProviderReviewPage({
                   </p>
 
                   <div className="review-hero-actions">
-                    {provider.products.map((product) => (
-                      <AffiliateCtaLink
-                        key={product.label}
-                        className="button button--small"
-                        href={product.affiliateUrl}
-                        rel="sponsored nofollow noopener noreferrer"
-                        ariaLabel={`View ${provider.name} ${product.label} plan`}
-                        page={`/reviews/${provider.slug}`}
-                        provider={provider.name}
-                        product={product.label}
-                        placement="plan-picker"
-                      >
-                        {product.label}
-                        <span aria-hidden="true">→</span>
-                      </AffiliateCtaLink>
-                    ))}
+                    {provider.products.map((product) =>
+                      product.image ? (
+                        <div className="review-product-card" key={product.label}>
+                          <div className="review-product-card__image">
+                            <Image
+                              src={product.image.src}
+                              alt={product.image.alt}
+                              fill
+                              sizes="(max-width: 620px) 40vw, 168px"
+                              style={{ objectFit: "contain" }}
+                            />
+                          </div>
+
+                          <AffiliateCtaLink
+                            className="button button--small review-product-card__cta"
+                            href={product.affiliateUrl}
+                            rel="sponsored nofollow noopener noreferrer"
+                            ariaLabel={`View ${provider.name} ${product.label} plan`}
+                            page={`/reviews/${provider.slug}`}
+                            provider={provider.name}
+                            product={product.label}
+                            placement="plan-picker"
+                          >
+                            {product.label}
+                            <span aria-hidden="true">→</span>
+                          </AffiliateCtaLink>
+                        </div>
+                      ) : (
+                        <AffiliateCtaLink
+                          key={product.label}
+                          className="button button--small"
+                          href={product.affiliateUrl}
+                          rel="sponsored nofollow noopener noreferrer"
+                          ariaLabel={`View ${provider.name} ${product.label} plan`}
+                          page={`/reviews/${provider.slug}`}
+                          provider={provider.name}
+                          product={product.label}
+                          placement="plan-picker"
+                        >
+                          {product.label}
+                          <span aria-hidden="true">→</span>
+                        </AffiliateCtaLink>
+                      ),
+                    )}
                   </div>
                 </section>
               ) : null}

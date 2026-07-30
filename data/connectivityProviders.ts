@@ -33,6 +33,11 @@ export type ConnectivityProvider = {
   products?: {
     label: string;
     affiliateUrl: string;
+    /** Optional official product photo shown on the review page's plan picker. */
+    image?: {
+      src: string;
+      alt: string;
+    };
   }[];
   /** Affiliate network/program name, for internal bookkeeping only. */
   affiliateNetwork?: string;
@@ -335,8 +340,34 @@ export const connectivityProviders: ConnectivityProvider[] = [
     ],
     reviewHref: "/reviews/ninja-wifi",
     officialUrl: "https://ninjawifi.com/en/",
-    affiliateUrl: "",
-    affiliateStatus: "pending",
+    affiliateUrl: getGeneralAffiliateLink("ninjaWifi"),
+    affiliateStatus: "approved",
+    products: [
+      {
+        label: "NINJA WiFi Pocket WiFi",
+        affiliateUrl: affiliateLinks.ninjaWifi.travelPocketWifi,
+        image: {
+          src: "/images/providers/ninja-wifi-pocket-wifi-k4.png",
+          alt: "NINJA WiFi pocket WiFi device",
+        },
+      },
+      {
+        label: "SHOGUN SIM",
+        affiliateUrl: affiliateLinks.ninjaWifi.travelSim,
+        image: {
+          src: "/images/providers/ninja-wifi-shogun-sim.png",
+          alt: "SHOGUN SIM card",
+        },
+      },
+      {
+        label: "NINJA WiFi eSIM",
+        affiliateUrl: affiliateLinks.ninjaWifi.travelEsim,
+        image: {
+          src: "/images/providers/ninja-wifi-esim.png",
+          alt: "NINJA WiFi eSIM",
+        },
+      },
+    ],
   },
 ];
 

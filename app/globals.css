@@ -3683,6 +3683,32 @@ legend > span {
   margin-top: 34px;
 }
 
+/* Optional per-product photo card, used only when a product supplies an
+   official image (see ConnectivityProvider["products"][number]["image"]).
+   Providers without product images keep the plain inline button above,
+   unaffected by these rules. */
+.review-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 168px;
+  max-width: 42vw;
+}
+
+.review-product-card__image {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.review-product-card__cta {
+  width: 100%;
+}
+
 .review-secondary-link {
   color: rgba(255, 255, 255, 0.77);
   font-size: 0.78rem;

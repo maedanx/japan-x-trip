@@ -30,6 +30,15 @@ export const affiliateLinks = {
     travelSim: "https://p.sakuramobile.jp/idevaffiliate.php?id=568&url=78",
     travelPocketWifi: "https://p.sakuramobile.jp/idevaffiliate.php?id=568&url=79",
   },
+  // Product-specific URLs transcribed verbatim from the official NINJA WiFi
+  // affiliate email (cross-checked against public/images/providers/README.txt).
+  // Do not shorten, decode, re-encode, or reorder their query parameters.
+  ninjaWifi: {
+    general: "https://ninjawifi.com?pr_vmaf=bzowEyT7Ik",
+    travelPocketWifi: "https://ninjawifi.com/en/application/order?pr_vmaf=lDtsR8PxB8",
+    travelSim: "https://ninjawifi.com/en/simapplication/order?pr_vmaf=eWlyjatZ38",
+    travelEsim: "https://ninjawifi.com/en/esimapplication/order?pr_vmaf=bHtGSzbNoj",
+  },
   japanBulletTrain: {
     general: "https://www.japan-bullettrain.com/?via=koichi",
   },
@@ -45,11 +54,13 @@ export type AffiliateProvider = keyof typeof affiliateLinks;
 export type AiraloProduct = keyof typeof affiliateLinks.airalo;
 export type UbigiProduct = keyof typeof affiliateLinks.ubigi;
 export type SakuraMobileProduct = keyof typeof affiliateLinks.sakuraMobile;
+export type NinjaWifiProduct = keyof typeof affiliateLinks.ninjaWifi;
 
 /** Providers that currently have a brand-level General link. */
 type ProviderWithGeneralLink =
   | "ubigi"
   | "sakuraMobile"
+  | "ninjaWifi"
   | "japanBulletTrain"
   | "airportTaxi"
   | "japanBusTickets";
