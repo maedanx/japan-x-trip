@@ -1,0 +1,30 @@
+.heading {
+  font-family: inherit;
+}
+
+.check {
+  color: rgb(16, 42, 64);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.diagnosis {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-align: center;
+}
+
+.provider {
+  color: rgb(16, 39, 60);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-align: left;
+}

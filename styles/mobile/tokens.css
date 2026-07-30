@@ -1,0 +1,101 @@
+:root {
+  /* Brand */
+  --jxt-red-50: #fff1f2;
+  --jxt-red-100: #ffe0e3;
+  --jxt-red-500: #ff4048;
+  --jxt-red-600: #ed3039;
+  --jxt-red-700: #d9232d;
+
+  --jxt-blue-50: #eff6ff;
+  --jxt-blue-100: #dbeafe;
+  --jxt-blue-500: #2563eb;
+  --jxt-blue-600: #1d4ed8;
+
+  --jxt-navy-900: #08273a;
+  --jxt-navy-800: #0d3148;
+  --jxt-navy-700: #173f58;
+
+  /* Text */
+  --jxt-text-primary: #10243a;
+  --jxt-text-secondary: #52657a;
+  --jxt-text-muted: #7b8a9c;
+  --jxt-text-inverse: #ffffff;
+
+  /* Surfaces */
+  --jxt-bg-page: #f7faff;
+  --jxt-bg-soft-blue: #eef7ff;
+  --jxt-bg-soft-red: #fff4f4;
+  --jxt-bg-soft-green: #f2faf5;
+  --jxt-bg-soft-purple: #f7f3ff;
+  --jxt-bg-surface: #ffffff;
+  --jxt-bg-footer: #072b40;
+
+  /* Borders */
+  --jxt-border-soft: #dce6f2;
+  --jxt-border-medium: #c8d7e7;
+  --jxt-border-focus: #2563eb;
+
+  /* Layout */
+  --jxt-mobile-width-min: 360px;
+  --jxt-mobile-width-reference: 390px;
+  --jxt-mobile-width-max: 430px;
+
+  --jxt-page-padding: 18px;
+  --jxt-page-padding-small: 16px;
+
+  --jxt-section-space-small: 32px;
+  --jxt-section-space: 44px;
+  --jxt-section-space-large: 56px;
+
+  --jxt-gap-2xs: 4px;
+  --jxt-gap-xs: 8px;
+  --jxt-gap-sm: 12px;
+  --jxt-gap-md: 16px;
+  --jxt-gap-lg: 20px;
+  --jxt-gap-xl: 24px;
+  --jxt-gap-2xl: 32px;
+
+  /* Radius */
+  --jxt-radius-xs: 8px;
+  --jxt-radius-sm: 12px;
+  --jxt-radius-input: 16px;
+  --jxt-radius-card: 22px;
+  --jxt-radius-card-large: 26px;
+  --jxt-radius-pill: 999px;
+
+  /* Shadows */
+  --jxt-shadow-subtle:
+    0 6px 18px rgba(23, 63, 88, 0.06);
+
+  --jxt-shadow-card:
+    0 12px 32px rgba(23, 63, 88, 0.09);
+
+  --jxt-shadow-card-hover:
+    0 16px 38px rgba(23, 63, 88, 0.13);
+
+  --jxt-shadow-cta:
+    0 14px 30px rgba(255, 64, 72, 0.25);
+
+  --jxt-shadow-floating:
+    0 18px 44px rgba(13, 49, 72, 0.16);
+
+  /* Controls */
+  --jxt-tap-target: 44px;
+  --jxt-button-height: 54px;
+  --jxt-button-height-large: 58px;
+  --jxt-input-height: 52px;
+
+  /* Motion */
+  --jxt-motion-fast: 160ms;
+  --jxt-motion-normal: 240ms;
+  --jxt-motion-slow: 420ms;
+  --jxt-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --jxt-ease-pop: cubic-bezier(0.2, 1.35, 0.4, 1);
+
+  /* Z-index */
+  --jxt-z-base: 1;
+  --jxt-z-header: 50;
+  --jxt-z-menu: 80;
+  --jxt-z-floating: 90;
+  --jxt-z-modal: 100;
+}
