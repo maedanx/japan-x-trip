@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
+import PocketWifiMobile from "@/components/mobile/PocketWifiMobile";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
+import "@/styles/home-redesign.css";
 
 const pageUrl = `${siteConfig.url}/pocket-wifi`;
 
@@ -238,6 +240,9 @@ export default function PocketWifiPage() {
       <Header />
 
       <main>
+        <PocketWifiMobile />
+
+        <div className={styles.desktopContent}>
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>
@@ -588,6 +593,7 @@ export default function PocketWifiPage() {
             </div>
           </div>
         </section>
+        </div>
       </main>
 
       <Footer />

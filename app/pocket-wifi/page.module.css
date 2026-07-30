@@ -594,3 +594,15 @@
     padding: 20px;
   }
 }
+
+
+/* Phase 6 Mobile Master switch */
+.desktopContent {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .desktopContent {
+    display: none;
+  }
+}
