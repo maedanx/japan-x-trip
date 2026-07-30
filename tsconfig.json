@@ -50,6 +50,12 @@
     "out",
     "dist",
     "coverage",
-    "**/*.zip"
+    "**/*.zip",
+    "review-packs",
+    "review-packs/**",
+    "backups/**",
+    "logs/**",
+    "test-results",
+    "test-results/**"
   ]
 }
