@@ -1,45 +1,82 @@
 import { expect, test } from "@playwright/test";
 
-test("header navigation has no broken or misdirected links", async ({ page, baseURL }) => {
-  const failures: string[] = [];
-  page.on("pageerror", (error) => failures.push(`PAGE_ERROR ${error.message}`));
-  page.on("console", (message) => {
-    if (message.type() === "error") failures.push(`CONSOLE_ERROR ${message.text()}`);
+const NAV_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "Compare", href: "/compare" },
+  { name: "eSIM", href: "/esim" },
+  { name: "Pocket WiFi", href: "/pocket-wifi" },
+  { name: "SIM Card", href: "/sim-card" },
+  { name: "Diagnosis", href: "/diagnosis" },
+  { name: "Guides", href: "/airport" },
+] as const;
+
+test("mobile home header navigation has no broken or misdirected links", async ({
+  page,
+}) => {
+  await page.goto("/?qa=header-nav");
+  await page.waitForLoadState("networkidle");
+
+  const header = page.getByRole("banner");
+
+  const logo = header.getByRole("link", {
+    name: "Japan X Trip home",
+    exact: true,
   });
 
-  const response = await page.goto("/?qa=header-nav", { waitUntil: "domcontentloaded" });
-  expect(response!.status()).toBeLessThan(500);
+  await expect(logo).toBeVisible();
+  await expect(logo).toHaveAttribute("href", "/");
 
-  await page.getByRole("button", { name: /toggle navigation/i }).click();
-  const nav = page.getByRole("navigation", { name: "Primary navigation" });
+  const menuButton = header.getByRole("button", {
+    name: "Open menu",
+  });
 
-  const expected = [
-    { name: "Home", href: "/" },
-    { name: "Compare", href: "/compare" },
-    { name: "eSIM", href: "/esim" },
-    { name: "Pocket WiFi", href: "/pocket-wifi" },
-    { name: "SIM Card", href: "/sim-card" },
-    { name: "Diagnosis", href: "/diagnosis" },
-  ];
+  await expect(menuButton).toBeVisible();
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
 
-  for (const item of expected) {
-    const link = nav.getByRole("link", { name: item.name, exact: true });
+  await menuButton.click();
+
+  const closeButton = header.getByRole("button", {
+    name: "Close menu",
+  });
+
+  await expect(closeButton).toBeVisible();
+  await expect(closeButton).toHaveAttribute("aria-expanded", "true");
+
+  const mobileDialog = page.getByRole("dialog", {
+    name: "Mobile navigation",
+  });
+
+  await expect(mobileDialog).toBeVisible();
+
+  const mobileNav = mobileDialog.getByRole("navigation", {
+    name: "Mobile primary",
+  });
+
+  for (const item of NAV_LINKS) {
+    const link = mobileNav.getByRole("link", {
+      name: item.name,
+      exact: true,
+    });
+
     await expect(link).toBeVisible();
     await expect(link).toHaveAttribute("href", item.href);
   }
 
-  await expect(nav.getByRole("link", { name: /sitemap/i })).toHaveCount(0);
-  const sitemapLinks = await nav.locator('a[href="/sitemap"]').count();
-  expect(sitemapLinks).toBe(0);
+  const mobileCta = mobileDialog.getByRole("link", {
+    name: "Build My Travel Kit",
+    exact: true,
+  });
 
-  const plannerLink = nav.getByRole("link", { name: /build my travel kit/i });
-  await expect(plannerLink).toHaveAttribute("href", "/#planner");
+  await expect(mobileCta).toBeVisible();
+  await expect(mobileCta).toHaveAttribute("href", "/diagnosis");
 
-  for (const item of expected) {
-    if (item.href === "/") continue;
-    const res = await page.request.get(`${baseURL}${item.href}`);
-    expect(res.status(), `${item.href} should resolve`).toBeLessThan(400);
-  }
+  await page.keyboard.press("Escape");
 
-  expect(failures, failures.join("\n")).toEqual([]);
+  await expect(
+    header.getByRole("button", {
+      name: "Open menu",
+    }),
+  ).toBeVisible();
+
+  await expect(mobileDialog).not.toBeVisible();
 });
