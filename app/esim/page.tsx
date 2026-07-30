@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
+import EsimMobile from "@/components/mobile/EsimMobile";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
+import "@/styles/home-redesign.css";
 
 const pageUrl = `${siteConfig.url}/esim`;
 
@@ -215,6 +217,9 @@ export default function EsimPage() {
       <Header />
 
       <main>
+        <EsimMobile />
+
+        <div className={styles.desktopContent}>
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>
@@ -475,6 +480,7 @@ export default function EsimPage() {
             </div>
           </div>
         </section>
+        </div>
       </main>
 
       <Footer />

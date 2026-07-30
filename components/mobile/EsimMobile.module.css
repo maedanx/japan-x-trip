@@ -1,0 +1,475 @@
+.mobilePage {
+  display: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .mobilePage {
+    display: block;
+    color: #0b2436;
+    background: #ffffff;
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Arial,
+      sans-serif;
+  }
+
+  .hero {
+    padding: 20px 19px 12px;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: #0a1f35;
+    font-size: 29px;
+    font-weight: 850;
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+  }
+
+  .intro {
+    margin: 10px 0 0;
+    color: #344b5f;
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .heroGrid {
+    display: grid;
+    grid-template-columns: 52% 48%;
+    align-items: center;
+    margin-top: 14px;
+  }
+
+  .phoneVisual {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+  }
+
+  .phoneGlow {
+    position: absolute;
+    inset: 30px 6px 7px;
+    border-radius: 29px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(226, 245, 255, 0.92),
+        rgba(239, 248, 255, 0.58)
+      );
+  }
+
+  .phoneImage {
+    object-fit: cover;
+    object-position: 0% 45%;
+    transform: scale(1.6);
+    transform-origin: left center;
+    border-radius: 20px;
+  }
+
+  .featureList {
+    display: grid;
+    gap: 14px;
+    padding-left: 4px;
+  }
+
+  .feature {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .featureIcon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    place-items: center;
+    border-radius: 50%;
+    color: #ff493f;
+    background: #fff0ee;
+  }
+
+  .featureIcon2 {
+    color: #2879dd;
+    background: #edf6ff;
+  }
+
+  .featureIcon3 {
+    color: #c58a17;
+    background: #fff8e5;
+  }
+
+  .featureIcon4 {
+    color: #3273d6;
+    background: #edf5ff;
+  }
+
+  .featureIcon svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .feature strong,
+  .feature small {
+    display: block;
+  }
+
+  .feature strong {
+    color: #172d42;
+    font-size: 10.5px;
+    line-height: 1.15;
+  }
+
+  .feature small {
+    margin-top: 2px;
+    color: #657889;
+    font-size: 8.5px;
+    line-height: 1.2;
+  }
+
+  .plans {
+    padding: 8px 15px 23px;
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 4px;
+    border-radius: 999px;
+    background: #f3f5f7;
+  }
+
+  .tabs span {
+    display: grid;
+    min-height: 38px;
+    place-items: center;
+    border-radius: 999px;
+    color: #23394d;
+    font-size: 9.5px;
+    font-weight: 750;
+  }
+
+  .tabs .activeTab {
+    color: #173d78;
+    background: #e7f1ff;
+  }
+
+  .planList {
+    display: grid;
+    gap: 8px;
+  }
+
+  .planCard {
+    padding: 14px;
+    border: 1px solid #e2e9f0;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 7px 20px rgba(11, 42, 65, 0.055);
+  }
+
+  .planTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 9px;
+  }
+
+  .planTop small {
+    display: block;
+    margin-bottom: 3px;
+    color: #758696;
+    font-size: 7.5px;
+    font-weight: 700;
+  }
+
+  .planTop h3 {
+    margin: 0;
+    color: #10273d;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  .planTop p {
+    margin: 3px 0 0;
+    color: #647789;
+    font-size: 8.8px;
+  }
+
+  .planBadge {
+    display: inline-flex;
+    min-height: 21px;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0 7px;
+    color: #ffffff;
+    background: #8d56e8;
+    font-size: 6.8px;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+  }
+
+  .planDescription {
+    margin: 10px 0;
+    color: #495f72;
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .planDetails {
+    display: grid;
+    gap: 5px;
+  }
+
+  .planDetails span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #31495d;
+    font-size: 8.8px;
+  }
+
+  .planDetails svg {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    fill: none;
+    stroke: #b65e52;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .planBottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .priceNotice small,
+  .priceNotice strong {
+    display: block;
+  }
+
+  .priceNotice small {
+    color: #7b8a97;
+    font-size: 7.5px;
+  }
+
+  .priceNotice strong {
+    margin-top: 2px;
+    color: #112b42;
+    font-size: 11px;
+  }
+
+  .morePlans {
+    display: flex;
+    width: fit-content;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 12px auto 0;
+    padding: 0 17px;
+    border: 1px solid #dde6ee;
+    border-radius: 999px;
+    color: #183d70;
+    background: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .morePlans svg,
+  .checkSection a svg,
+  .finalCta a svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .checkSection {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 10px;
+    margin: 0 15px 15px;
+    padding: 16px;
+    border: 1px solid #dce8f2;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #eff7ff, #ffffff);
+  }
+
+  .checkIcon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 13px;
+    color: #2676d5;
+    background: #e3f1ff;
+  }
+
+  .checkIcon svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .checkSection small {
+    color: #3476bd;
+    font-size: 7.5px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .checkSection h2 {
+    margin: 3px 0;
+    color: #102a40;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .checkSection p {
+    margin: 0;
+    color: #5e7283;
+    font-size: 8.8px;
+    line-height: 1.4;
+  }
+
+  .checkSection a {
+    grid-column: 1 / -1;
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 999px;
+    color: #ffffff;
+    background: #1b579e;
+    font-size: 10px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .finalCta {
+    margin: 0 15px 18px;
+    padding: 23px 17px;
+    border-radius: 17px;
+    color: #ffffff;
+    background:
+      radial-gradient(
+        circle at 85% 15%,
+        rgba(67, 138, 226, 0.28),
+        transparent 33%
+      ),
+      linear-gradient(145deg, #0b3156, #06243d);
+    text-align: center;
+  }
+
+  .finalCta small {
+    color: #9acaff;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .finalCta h2 {
+    margin: 7px 0 8px;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: -0.035em;
+  }
+
+  .finalCta p {
+    margin: 0 0 14px;
+    color: rgba(235, 244, 251, 0.76);
+    font-size: 9.5px;
+    line-height: 1.5;
+  }
+
+  .finalCta a {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 999px;
+    color: #ffffff;
+    background: #ff3b40;
+    font-size: 11px;
+    font-weight: 820;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 374px) {
+  .hero {
+    padding-inline: 15px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .phoneVisual {
+    height: 205px;
+  }
+
+  .feature {
+    gap: 7px;
+  }
+
+  .featureIcon {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .plans {
+    padding-inline: 11px;
+  }
+
+  .planCard {
+    padding: 12px;
+  }
+
+  .checkSection,
+  .finalCta {
+    margin-inline: 11px;
+  }
+}
