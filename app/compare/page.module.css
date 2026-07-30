@@ -444,3 +444,15 @@
     box-shadow: 0 12px 32px rgba(15, 37, 64, 0.09);
   }
 }
+
+
+/* Phase 4 Mobile Master switch */
+.desktopContent {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .desktopContent {
+    display: none;
+  }
+}

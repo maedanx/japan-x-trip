@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
+import CompareMobile from "@/components/mobile/CompareMobile";
 import { siteConfig } from "@/data/site";
 import {
   connectivityProviders,
@@ -13,6 +14,7 @@ import {
   isAffiliateProviderLink,
 } from "@/data/connectivityProviders";
 import styles from "./page.module.css";
+import "@/styles/home-redesign.css";
 
 const pageUrl = `${siteConfig.url}/compare`;
 
@@ -92,26 +94,33 @@ const connectionTypes = [
 
 const providers = connectivityProviders;
 
+/**
+ * Single source of truth for Compare's FAQ content -- used both for the
+ * FAQPage structured data below and for the visible FAQ list rendered by
+ * CompareMobile, so the two can never drift apart. Built from the site's
+ * existing eSIM/SIM/pocket-Wi-Fi guidance and disclosure language; no new
+ * claims are introduced.
+ */
 const faqs = [
   {
-    question: "What is the easiest internet option for Japan?",
+    question: "How do I choose between eSIM, a physical SIM, and pocket Wi-Fi?",
     answer:
-      "For many solo travelers with an unlocked compatible phone, an eSIM is the simplest option because it does not require physical pickup. Travelers with incompatible phones may prefer a physical SIM, while groups often benefit from pocket Wi-Fi.",
+      "For many solo travelers with an unlocked, compatible phone, eSIM is the simplest option because it does not require physical pickup. Travelers whose phone is not compatible often prefer a physical SIM, while groups usually benefit from pocket Wi-Fi.",
   },
   {
-    question: "Is eSIM always better than a physical SIM?",
+    question: "How do I know if my phone supports eSIM or is carrier-unlocked?",
     answer:
-      "No. eSIM is convenient, but it requires a compatible unlocked device. A physical SIM may be more suitable for an older phone, while pocket Wi-Fi may work better for several travelers or devices.",
+      "Check your phone settings or manufacturer specifications for eSIM support, and confirm with your home carrier whether the phone is unlocked. Both eSIM and physical SIM depend on this, so it is worth checking before you buy.",
   },
   {
-    question: "Can several people share one eSIM?",
+    question: "Can several travelers share one connection?",
     answer:
-      "An eSIM normally operates on one phone. That phone may share data through tethering if the plan and device permit it. Pocket Wi-Fi is generally designed for several connected devices.",
+      "An eSIM or physical SIM is normally used on one phone. Pocket Wi-Fi is designed to connect several devices at once, which is why it is often a good fit for families or groups traveling together.",
   },
   {
-    question: "Are the provider purchase links available now?",
+    question: "Should I trust the prices and plans shown here?",
     answer:
-      "Provider partnerships and affiliate links are currently being prepared. Japan X Trip currently links to its own provider reviews so travelers can compare important conditions before purchasing.",
+      "Prices, data allowances, and plan conditions can change. Always confirm the current details on the provider's official website before booking.",
   },
 ];
 
@@ -153,6 +162,9 @@ export default function ComparePage() {
       <Header />
 
       <main>
+        <CompareMobile faqs={faqs} />
+
+        <div className={styles.desktopContent}>
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <p className={styles.eyebrow}>Japan internet comparison</p>
@@ -406,6 +418,7 @@ export default function ComparePage() {
             </Link>
           </div>
         </section>
+        </div>
       </main>
 
       <Footer />

@@ -1,0 +1,831 @@
+.mobilePage {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .mobilePage {
+    display: block;
+    color: #0b2436;
+    background: #ffffff;
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Arial,
+      sans-serif;
+  }
+
+  .hero {
+    padding: 21px 20px 19px;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: #0a1f35;
+    font-size: 29px;
+    font-weight: 850;
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+  }
+
+  .intro {
+    margin: 11px 0 0;
+    color: #344a5e;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .disclosure {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border: 1px solid #e4ebf2;
+    border-radius: 11px;
+    background: #f7f9fc;
+    color: #566a7c;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .disclosure a {
+    color: #17334b;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .diagnosisSummary {
+    margin: 0 15px 19px;
+    padding: 18px 16px 16px;
+    border: 2px solid #ff6a59;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(215, 56, 41, 0.1);
+  }
+
+  .diagnosisSummaryHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .diagnosisSummaryEyebrow {
+    margin: 0;
+    padding: 4px 0;
+    color: #ff3d43;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .changeAnswersLink {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 2px;
+    color: #0b4f9f;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .diagnosisSummaryLabelStrong {
+    margin: 2px 0 0;
+    color: #ff3d43;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .diagnosisSummary h2 {
+    margin: 4px 0 0;
+    color: #0b2436;
+    font-size: 19px;
+    letter-spacing: -0.025em;
+  }
+
+  .diagnosisSummaryBecause {
+    margin: 14px 0 0;
+    color: #7b8797;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .diagnosisReasonList {
+    display: grid;
+    gap: 8px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .diagnosisReasonList li {
+    position: relative;
+    padding-left: 20px;
+    color: #263f54;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .diagnosisReasonList li::before {
+    position: absolute;
+    left: 0;
+    color: #1f9d5c;
+    font-weight: 900;
+    content: "✓";
+  }
+
+  .diagnosisSummarySecondary {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #eef2f7;
+  }
+
+  .diagnosisSummaryLabel {
+    margin: 0;
+    color: #7b8797;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .diagnosisSummaryMethodName {
+    margin: 4px 0 0;
+    color: #0b2436;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .diagnosisSummaryNote {
+    margin: 6px 0 0;
+    color: #566a7c;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .diagnosisSummaryMuted {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f6f7f9;
+  }
+
+  .diagnosisSummaryMuted .diagnosisSummaryNote {
+    color: #4d5c6a;
+  }
+
+  .comparison {
+    margin: 0 15px 19px;
+    padding: 18px 14px 16px;
+    border: 1px solid #e4ebf2;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(12, 42, 65, 0.07);
+  }
+
+  .methodList {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .methodCard {
+    padding: 18px 16px;
+    border: 1px solid #e4ebf2;
+    border-radius: 16px;
+    background: #fbfcfe;
+  }
+
+  .methodCardBest {
+    border-color: #ff6a59;
+    box-shadow: 0 12px 28px rgba(215, 56, 41, 0.1);
+  }
+
+  .methodCardAlternative {
+    border-color: #9dbbdc;
+  }
+
+  .methodCardCheck {
+    border-color: #ecca9c;
+    background: #fffaf2;
+  }
+
+  .methodCardNotRecommended {
+    border-color: #d9dfe6;
+    background: #f6f7f9;
+  }
+
+  .methodBadge {
+    display: inline-flex;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 9.5px;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .methodBadgeBest {
+    color: #c93628;
+    background: #ffebe7;
+  }
+
+  .methodBadgeAlternative {
+    color: #145696;
+    background: #eaf2fb;
+  }
+
+  .methodBadgeCheck {
+    color: #a15b1f;
+    background: #fff3e2;
+  }
+
+  .methodBadgeNotRecommended {
+    color: #59636f;
+    background: #edf1f5;
+  }
+
+  .methodCard h3 {
+    margin: 0;
+    color: #0b2436;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+
+  .methodSummary {
+    margin: 6px 0 0;
+    color: #435268;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .methodDetails {
+    display: grid;
+    gap: 0;
+    margin: 14px 0 0;
+  }
+
+  .methodDetails > div {
+    padding: 10px 0;
+    border-top: 1px solid #eef2f7;
+  }
+
+  .methodDetails dt {
+    margin: 0 0 3px;
+    color: #ff3d43;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .methodDetails dd {
+    margin: 0;
+    color: #263f54;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .methodReasonNote {
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid #eef2f7;
+    color: #435268;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .methodLink {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: #0b2436;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .methodLink svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .diagnosisPrompt {
+    margin-top: 16px;
+    padding: 18px 15px;
+    border-radius: 13px;
+    background: #f4f8ff;
+    text-align: center;
+  }
+
+  .diagnosisPromptLabel {
+    margin: 0;
+    color: #ff3d43;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .diagnosisPromptText {
+    margin: 8px 0 15px;
+    color: #435268;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .diagnosisPromptButton,
+  .finalCta > a {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+
+  .diagnosisPromptButton {
+    border: 1px solid #d9e7f5;
+    color: #1853ba;
+    background: #ffffff;
+    box-shadow: 0 6px 15px rgba(23, 80, 169, 0.08);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .diagnosisPromptButton svg,
+  .finalCta a svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .disclosure a:focus-visible,
+  .methodLink:focus-visible,
+  .diagnosisPromptButton:focus-visible,
+  .changeAnswersLink:focus-visible {
+    outline: 3px solid #ff9a8f;
+    outline-offset: 2px;
+  }
+
+  .providers,
+  .faq {
+    padding: 24px 15px;
+  }
+
+  .providers {
+    background: #f5f8fc;
+  }
+
+  .sectionHeading {
+    margin-bottom: 15px;
+  }
+
+  .sectionHeading > p {
+    margin: 0 0 4px;
+    color: #ff3d43;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .sectionHeading h2 {
+    margin: 0;
+    color: #0b2436;
+    font-size: 22px;
+    letter-spacing: -0.035em;
+  }
+
+  .sectionHeading > span {
+    display: block;
+    margin-top: 6px;
+    color: #66798a;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .decisionGuide {
+    margin-bottom: 18px;
+    padding: 16px;
+    border: 1px solid #e0e8f0;
+    border-radius: 15px;
+    background: #ffffff;
+  }
+
+  .decisionGuideLabel {
+    margin: 0;
+    color: #ff3d43;
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .decisionGuideHeading {
+    margin: 5px 0 12px;
+    color: #0b2436;
+    font-size: 16px;
+  }
+
+  .decisionGuideList {
+    display: grid;
+    gap: 8px;
+  }
+
+  .decisionGuideItem {
+    border: 1px solid #e4ebf2;
+    border-radius: 11px;
+    background: #f9fafc;
+    padding: 0 13px;
+  }
+
+  .decisionGuideItem summary {
+    display: flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #17334b;
+    font-size: 13px;
+    font-weight: 780;
+    list-style: none;
+  }
+
+  .decisionGuideItem summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .decisionGuideItem summary svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.18s ease;
+  }
+
+  .decisionGuideItem[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .decisionGuideItem p {
+    margin: 0;
+    padding: 0 0 13px;
+    color: #4d6273;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .providerList {
+    display: grid;
+    gap: 10px;
+  }
+
+  .providerCard {
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    padding: 14px;
+    border: 1px solid #e0e8f0;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 7px 18px rgba(12, 42, 65, 0.055);
+  }
+
+  .providerHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .providerNumber {
+    display: grid;
+    width: 31px;
+    height: 31px;
+    flex: 0 0 31px;
+    place-items: center;
+    border-radius: 9px;
+    color: #ffffff;
+    background: #11355b;
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .providerHeader h3 {
+    margin: 0;
+    color: #10273c;
+    font-size: 16px;
+  }
+
+  .serviceTypeList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .serviceTypeChip {
+    border: 1px solid #d9e3ec;
+    border-radius: 999px;
+    background: #f5f8fc;
+    padding: 4px 10px;
+    color: #2c4258;
+    font-size: 11px;
+    font-weight: 750;
+  }
+
+  .providerMatchNote {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0 0;
+    color: #3a6ea5;
+    font-size: 11.5px;
+    font-weight: 750;
+  }
+
+  .providerMatchNote svg {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .providerBlock {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eef2f7;
+  }
+
+  .providerBlockLabel {
+    margin: 0 0 5px;
+    color: #6b7f90;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .providerFit {
+    margin: 0;
+    color: #354a5e;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .providerHighlights {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .providerHighlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    color: #263f54;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .providerHighlights li svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    margin-top: 1px;
+    fill: none;
+    stroke: #26a66a;
+    stroke-width: 2;
+  }
+
+  .providerCaution {
+    margin: 0;
+    color: #6f4b29;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .providerActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #eef2f7;
+  }
+
+  .providerActions > * {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .providerActions > a:first-child {
+    border: 1px solid #d9e3ec;
+    color: #17334b;
+    background: #ffffff;
+  }
+
+  .providerActions > a:focus-visible {
+    outline: 3px solid #ff9a8f;
+    outline-offset: 2px;
+  }
+
+  .providerPending {
+    color: #71808d;
+    background: #edf1f4;
+  }
+
+  .providerLinkNote {
+    margin: 8px 0 0;
+    color: #8290a1;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .reviewMethodologyLink {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    color: #4d6273;
+    font-size: 12px;
+    font-weight: 750;
+    text-decoration: underline;
+  }
+
+  .reviewMethodologyLink:focus-visible {
+    outline: 3px solid #ff9a8f;
+    outline-offset: 2px;
+  }
+
+  .faq {
+    background: #ffffff;
+  }
+
+  .faqList {
+    overflow: hidden;
+    border: 1px solid #e2eaf1;
+    border-radius: 14px;
+  }
+
+  .faqList details {
+    border-bottom: 1px solid #e2eaf1;
+  }
+
+  .faqList details:last-child {
+    border-bottom: 0;
+  }
+
+  .faqList summary {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 13px;
+    color: #193248;
+    font-size: 10.5px;
+    font-weight: 750;
+    list-style: none;
+  }
+
+  .faqList summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faqList summary svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.18s ease;
+  }
+
+  .faqList details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .faqList details p {
+    margin: 0;
+    padding: 0 13px 14px;
+    color: #607485;
+    font-size: 9.5px;
+    line-height: 1.55;
+  }
+
+  .finalCta {
+    margin: 0 15px 18px;
+    padding: 24px 18px;
+    border-radius: 17px;
+    color: #ffffff;
+    background:
+      radial-gradient(
+        circle at 87% 18%,
+        rgba(65, 139, 228, 0.28),
+        transparent 32%
+      ),
+      linear-gradient(145deg, #0b3156, #06243d);
+    text-align: center;
+  }
+
+  .finalCta small {
+    color: #98c7ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .finalCta h2 {
+    margin: 7px 0 9px;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  .finalCta p {
+    margin: 0 0 15px;
+    color: rgba(235, 244, 251, 0.78);
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .finalCta > a {
+    color: #ffffff;
+    background: #ff383e;
+    font-size: 12px;
+    font-weight: 820;
+  }
+}
+
+@media (max-width: 374px) {
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .comparison {
+    margin-inline: 11px;
+  }
+
+  .providers,
+  .faq {
+    padding-inline: 11px;
+  }
+
+  .finalCta {
+    margin-inline: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faqList summary svg,
+  .decisionGuideItem summary svg {
+    transition: none;
+  }
+}
