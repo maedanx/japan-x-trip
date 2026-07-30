@@ -501,3 +501,14 @@
     padding: 20px;
   }
 }
+
+/* Phase 9B Mobile Master switch */
+.desktopContent {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .desktopContent {
+    display: none;
+  }
+}

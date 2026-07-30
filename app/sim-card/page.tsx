@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
+import SimCardMobile from "@/components/mobile/SimCardMobile";
 import { siteConfig } from "@/data/site";
 import styles from "./page.module.css";
+import "@/styles/home-redesign.css";
 
 const pageUrl = `${siteConfig.url}/sim-card`;
 
@@ -238,6 +240,9 @@ export default function SimCardPage() {
       <Header />
 
       <main>
+        <SimCardMobile />
+
+        <div className={styles.desktopContent}>
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <div>
@@ -521,6 +526,7 @@ export default function SimCardPage() {
             </div>
           </div>
         </section>
+        </div>
       </main>
 
       <Footer />
