@@ -1,28 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { affiliateLinks } from "@/data/affiliateLinks";
 import { connectivityProviders } from "@/data/connectivityProviders";
+import { analyzeDiagnosis } from "@/data/diagnosisEngine";
+import {
+  diagnosisQuestions as questions,
+  durationQuestionIndex,
+  type DiagnosisMethod as Method,
+} from "@/data/diagnosisQuestions";
 import { getProductRecommendation } from "@/data/productRecommendations";
 import { trackAffiliateCtaClick } from "@/lib/analytics";
+import {
+  answerArrayToRecord,
+  answerRecordToArray,
+  clearDiagnosisState,
+  loadDiagnosisState,
+  saveDiagnosisState,
+} from "@/lib/diagnosisStorage";
 import styles from "./page.module.css";
-
-type Method = "esim" | "sim" | "wifi" | "check";
-
-type AnswerOption = {
-  label: string;
-  description?: string;
-  scores: Partial<Record<Exclude<Method, "check">, number>>;
-  flags?: string[];
-};
-
-type Question = {
-  id: string;
-  title: string;
-  helper: string;
-  options: AnswerOption[];
-};
 
 type ResultDefinition = {
   name: string;
@@ -36,84 +33,6 @@ type ResultDefinition = {
   secondaryHref: string;
   secondaryLabel: string;
 };
-
-const questions: Question[] = [
-  {
-    id: "esim",
-    title: "Does your phone support eSIM?",
-    helper: "Check your phone settings or manufacturer specifications when unsure.",
-    options: [
-      { label: "Yes", description: "My phone supports eSIM.", scores: { esim: 6, sim: 1 }, flags: ["esimSupported"] },
-      { label: "No", description: "My phone does not support eSIM.", scores: { sim: 6, wifi: 3 }, flags: ["noEsim"] },
-      { label: "I’m not sure", description: "I need to confirm compatibility.", scores: { wifi: 1 }, flags: ["unknownEsim"] },
-    ],
-  },
-  {
-    id: "unlocked",
-    title: "Is your phone carrier-unlocked?",
-    helper: "A locked phone may reject travel eSIMs and physical SIM cards.",
-    options: [
-      { label: "Yes", description: "It can use plans from other providers.", scores: { esim: 4, sim: 4 }, flags: ["unlocked"] },
-      { label: "No", description: "My carrier restricts other SIMs.", scores: { wifi: 8 }, flags: ["locked"] },
-      { label: "I’m not sure", description: "I have not checked yet.", scores: { wifi: 1 }, flags: ["unknownLock"] },
-    ],
-  },
-  {
-    id: "party",
-    title: "Who and what needs internet?",
-    helper: "Choose the closest match for your travel group and devices.",
-    options: [
-      { label: "1 person · 1 device", scores: { esim: 6, sim: 5 } },
-      { label: "1–2 people · 2–3 devices", scores: { esim: 4, sim: 3, wifi: 3 } },
-      { label: "3–4 people or 4–6 devices", scores: { wifi: 7, esim: 1 }, flags: ["sharedGroup"] },
-      { label: "5+ people or many devices", scores: { wifi: 9 }, flags: ["largeGroup"] },
-    ],
-  },
-  {
-    id: "duration",
-    title: "How long will you stay in Japan?",
-    helper: "Trip length affects plan size, rental logistics, and recharging needs.",
-    options: [
-      { label: "1–3 days", scores: { esim: 4, sim: 2, wifi: 1 } },
-      { label: "4–7 days", scores: { esim: 5, sim: 3, wifi: 3 } },
-      { label: "8–14 days", scores: { esim: 5, sim: 4, wifi: 4 } },
-      { label: "15 days or longer", scores: { sim: 5, esim: 4, wifi: 4 }, flags: ["longTrip"] },
-    ],
-  },
-  {
-    id: "usage",
-    title: "How much data will you use?",
-    helper: "Think about maps, social media, video, calls, uploads, and laptop use.",
-    options: [
-      { label: "Light", description: "Maps, messages, email, and occasional browsing.", scores: { esim: 4, sim: 3 } },
-      { label: "Regular", description: "Daily maps, social media, photos, and browsing.", scores: { esim: 5, sim: 4, wifi: 3 } },
-      { label: "Heavy", description: "Video, frequent uploads, streaming, or tethering.", scores: { wifi: 6, esim: 3, sim: 2 }, flags: ["heavyUse"] },
-      { label: "Remote work", description: "Laptop use, meetings, and reliable tethering.", scores: { wifi: 7, esim: 2 }, flags: ["remoteWork"] },
-    ],
-  },
-  {
-    id: "arrival",
-    title: "Do you need internet immediately after landing?",
-    helper: "Pre-installed eSIMs can be convenient, while rentals require pickup or delivery planning.",
-    options: [
-      { label: "Yes, immediately", scores: { esim: 5, sim: 2, wifi: 2 }, flags: ["arrivalPriority"] },
-      { label: "Airport pickup is fine", scores: { wifi: 5, sim: 3 }, flags: ["pickupOkay"] },
-      { label: "Hotel delivery is fine", scores: { wifi: 4, sim: 3 }, flags: ["deliveryOkay"] },
-      { label: "I can use airport Wi-Fi first", scores: { esim: 2, sim: 2, wifi: 2 } },
-    ],
-  },
-  {
-    id: "handling",
-    title: "Which setup are you comfortable handling?",
-    helper: "Choose the option that best matches your preferred level of setup and equipment.",
-    options: [
-      { label: "Digital setup only", description: "No pickup, SIM swap, or return.", scores: { esim: 7 }, flags: ["digitalOnly"] },
-      { label: "Changing a physical SIM is fine", scores: { sim: 7 }, flags: ["simOkay"] },
-      { label: "Carrying and returning a router is fine", scores: { wifi: 8 }, flags: ["rentalOkay"] },
-      { label: "Whichever is simplest for my situation", scores: { esim: 3, sim: 2, wifi: 3 } },
-    ],
-  },
-];
 
 const results: Record<Method, ResultDefinition> = {
   esim: {
@@ -166,7 +85,15 @@ const results: Record<Method, ResultDefinition> = {
   },
 };
 
-const durationQuestionIndex = questions.findIndex((question) => question.id === "duration");
+const whyWeAskCopy: Record<string, string> = {
+  esim: "Knowing your phone's eSIM support means we only recommend options that will actually work during your trip.",
+  unlocked: "Carrier-lock status decides whether a travel SIM or eSIM can even activate on your phone.",
+  party: "Group size and device count often make a shared pocket Wi-Fi more practical than individual SIMs.",
+  duration: "Trip length affects plan size, rental logistics, and whether a physical SIM is worth the extra step.",
+  usage: "Your data habits, from maps to video calls, decide how much bandwidth you'll actually need.",
+  arrival: "Arrival timing affects whether a pre-installed eSIM or an airport pickup fits your plan better.",
+  handling: "Your comfort with setup, SIM swapping, or carrying a router shapes which option feels effortless.",
+};
 
 function trackDiagnosis(eventName: string, parameters: Record<string, string | number> = {}) {
   const browserWindow = window as typeof window & {
@@ -179,38 +106,82 @@ export default function DiagnosisClient() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [hasRestoredState, setHasRestoredState] = useState(false);
+
+  const questionIds = useMemo(
+    () => questions.map((question) => question.id),
+    [],
+  );
+
+  useEffect(() => {
+    const stored = loadDiagnosisState();
+
+    if (stored) {
+      const restoredAnswers = answerRecordToArray(
+        questionIds,
+        stored.answers,
+      );
+
+      setAnswers(restoredAnswers);
+      setCurrentStep(
+        Math.min(
+          Math.max(stored.currentStep, 0),
+          questions.length - 1,
+        ),
+      );
+      setShowResult(
+        stored.showResult &&
+          questions.every(
+            (_, index) => restoredAnswers[index] !== undefined,
+          ),
+      );
+    }
+
+    setHasRestoredState(true);
+  }, [questionIds]);
+
+  useEffect(() => {
+    if (!hasRestoredState) return;
+
+    saveDiagnosisState({
+      answers: answerArrayToRecord(questionIds, answers),
+      currentStep,
+      showResult,
+    });
+  }, [
+    answers,
+    currentStep,
+    hasRestoredState,
+    questionIds,
+    showResult,
+  ]);
 
   const selectedAnswer = answers[currentStep];
   const progress = showResult ? 100 : Math.round((currentStep / questions.length) * 100);
 
-  const analysis = useMemo(() => {
-    const scores = { esim: 0, sim: 0, wifi: 0 };
-    const flags = new Set<string>();
+  const answerGroupRef = useRef<HTMLDivElement | null>(null);
+  const isFirstQuestionRenderRef = useRef(true);
+  const lastNavigationKeyRef = useRef<string | null>(null);
 
-    answers.forEach((answerIndex, questionIndex) => {
-      const option = questions[questionIndex]?.options[answerIndex];
-      if (!option) return;
-      Object.entries(option.scores).forEach(([method, score]) => {
-        scores[method as keyof typeof scores] += score ?? 0;
-      });
-      option.flags?.forEach((flag) => flags.add(flag));
-    });
+  useEffect(() => {
+    if (showResult) return;
 
-    if (flags.has("unknownEsim") || flags.has("unknownLock")) {
-      return { primary: "check" as Method, scores, flags };
+    if (isFirstQuestionRenderRef.current) {
+      isFirstQuestionRenderRef.current = false;
+      return;
     }
-    if (flags.has("locked")) {
-      return { primary: "wifi" as Method, scores, flags };
-    }
-    if (flags.has("noEsim")) scores.esim = -100;
-    if (flags.has("sharedGroup") || flags.has("largeGroup")) scores.wifi += 4;
-    if ((flags.has("remoteWork") || flags.has("heavyUse")) && flags.has("rentalOkay")) scores.wifi += 3;
-    if (flags.has("digitalOnly") && flags.has("esimSupported")) scores.esim += 5;
-    if (flags.has("simOkay") && flags.has("unlocked")) scores.sim += 4;
 
-    const primary = (Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0] || "wifi") as Method;
-    return { primary, scores, flags };
-  }, [answers]);
+    document
+      .getElementById("internet-finder")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const group = answerGroupRef.current;
+    const selected = group?.querySelector<HTMLButtonElement>('[aria-checked="true"]');
+    const fallback = group?.querySelector<HTMLButtonElement>("button");
+    (selected ?? fallback)?.focus({ preventScroll: true });
+  }, [currentStep, showResult]);
+
+  const analysis = useMemo(() => analyzeDiagnosis(answers), [answers]);
 
   function selectAnswer(optionIndex: number) {
     setAnswers((current) => {
@@ -221,8 +192,21 @@ export default function DiagnosisClient() {
     if (currentStep === 0 && answers[0] === undefined) trackDiagnosis("diagnosis_start");
   }
 
+  // Guards against a rapid double-click/tap firing the handler twice for the
+  // same render (before React has committed the resulting step change). The
+  // key is only ever repeated across two calls when no state change occurred
+  // in between, so it never blocks two distinct, legitimate actions.
+  function isRepeatNavigation() {
+    const key = `${showResult}:${currentStep}`;
+    if (lastNavigationKeyRef.current === key) return true;
+    lastNavigationKeyRef.current = key;
+    return false;
+  }
+
   function continueDiagnosis() {
     if (selectedAnswer === undefined) return;
+    if (isRepeatNavigation()) return;
+
     if (currentStep === questions.length - 1) {
       setShowResult(true);
       trackDiagnosis("diagnosis_complete", { result_type: analysis.primary, question_count: questions.length });
@@ -232,6 +216,8 @@ export default function DiagnosisClient() {
   }
 
   function goBack() {
+    if (isRepeatNavigation()) return;
+
     if (showResult) {
       setShowResult(false);
       setCurrentStep(questions.length - 1);
@@ -241,6 +227,7 @@ export default function DiagnosisClient() {
   }
 
   function restart() {
+    clearDiagnosisState();
     setAnswers([]);
     setCurrentStep(0);
     setShowResult(false);
@@ -260,27 +247,37 @@ export default function DiagnosisClient() {
     [analysis, answers],
   );
 
-  const rankedMethods = (["esim", "sim", "wifi"] as const)
-    .map((method) => ({ method, score: analysis.scores[method] }))
-    .sort((a, b) => b.score - a.score);
-
-  const scoreRange = Math.max(
-    1,
-    rankedMethods[0].score - rankedMethods[rankedMethods.length - 1].score,
-  );
-
   const methodLabels: Record<Exclude<Method, "check">, string> = {
-    esim: "eSIM",
-    sim: "Physical SIM",
+    esim: "Travel eSIM",
+    sim: "Physical SIM card",
     wifi: "Pocket Wi-Fi",
   };
 
-  function fitLabel(score: number) {
-    const distance = rankedMethods[0].score - score;
-    if (distance === 0) return "Best fit";
-    if (distance <= Math.max(3, Math.round(scoreRange * 0.35))) return "Good alternative";
-    return "Less suitable";
-  }
+  const methodHrefs: Record<Exclude<Method, "check">, string> = {
+    esim: "/esim",
+    sim: "/sim-card",
+    wifi: "/pocket-wifi",
+  };
+
+  const connectionMethods = ["esim", "sim", "wifi"] as const;
+
+  const bestMethod =
+    analysis.primary === "check" ? null : analysis.primary;
+
+  const alternativeMethod = analysis.alternative;
+
+  const unavailableMethods = connectionMethods.filter(
+    (method) =>
+      analysis.assessments[method].availability === "unavailable",
+  );
+
+  const remainingMethods = connectionMethods.filter(
+    (method) =>
+      method !== bestMethod &&
+      method !== alternativeMethod &&
+      analysis.assessments[method].availability !== "unavailable",
+  );
+
   const relevantProviders = connectivityProviders
     .filter((provider) => {
       if (analysis.primary === "esim") return provider.category.includes("eSIM");
@@ -298,43 +295,70 @@ export default function DiagnosisClient() {
             <p>{showResult ? "Your recommendation" : `Question ${currentStep + 1} of ${questions.length}`}</p>
             <span>{progress}% complete</span>
           </div>
-          <div aria-label={`${progress}% complete`} aria-valuemax={100} aria-valuemin={0} aria-valuenow={progress} className={styles.progressTrack} role="progressbar">
+          <div
+            aria-label={`Question ${Math.min(currentStep + 1, questions.length)} of ${questions.length}, ${progress}% complete`}
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={progress}
+            className={styles.progressTrack}
+            role="progressbar"
+          >
             <span style={{ width: `${progress}%` }} />
           </div>
         </div>
 
         {!showResult ? (
           <div className={styles.questionCard}>
-            <div className={styles.questionHeading}>
-              <span>{String(currentStep + 1).padStart(2, "0")}</span>
-              <div>
-                <h2>{questions[currentStep].title}</h2>
-                <p>{questions[currentStep].helper}</p>
+            <div className={styles.questionStage} key={currentStep}>
+              <div className={styles.questionHeading}>
+                <span>{String(currentStep + 1).padStart(2, "0")}</span>
+                <div>
+                  <h2>{questions[currentStep].title}</h2>
+                  <p>{questions[currentStep].helper}</p>
+                </div>
+              </div>
+
+              {whyWeAskCopy[questions[currentStep].id] ? (
+                <div className={styles.questionWhy}>
+                  <span className={styles.questionWhyLabel}>
+                    <i aria-hidden="true">i</i>
+                    Why we ask this
+                  </span>
+                  <p>{whyWeAskCopy[questions[currentStep].id]}</p>
+                </div>
+              ) : null}
+
+              <div className={styles.answerGrid} ref={answerGroupRef} role="radiogroup" aria-label={questions[currentStep].title}>
+                {questions[currentStep].options.map((option, optionIndex) => {
+                  const isSelected = selectedAnswer === optionIndex;
+                  return (
+                    <button aria-checked={isSelected} className={`${styles.answerButton} ${isSelected ? styles.answerSelected : ""}`} key={option.label} onClick={() => selectAnswer(optionIndex)} role="radio" type="button">
+                      <span className={styles.answerRadio} aria-hidden="true">{isSelected ? "✓" : ""}</span>
+                      <span><strong>{option.label}</strong>{option.description ? <small>{option.description}</small> : null}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            <div className={styles.answerGrid} role="radiogroup" aria-label={questions[currentStep].title}>
-              {questions[currentStep].options.map((option, optionIndex) => {
-                const isSelected = selectedAnswer === optionIndex;
-                return (
-                  <button aria-checked={isSelected} className={`${styles.answerButton} ${isSelected ? styles.answerSelected : ""}`} key={option.label} onClick={() => selectAnswer(optionIndex)} role="radio" type="button">
-                    <span className={styles.answerRadio} aria-hidden="true">{isSelected ? "✓" : ""}</span>
-                    <span><strong>{option.label}</strong>{option.description ? <small>{option.description}</small> : null}</span>
-                  </button>
-                );
-              })}
-            </div>
-
             <div className={styles.questionFooter}>
-              <button className={styles.backButton} disabled={currentStep === 0} onClick={goBack} type="button">← Previous</button>
+              <button aria-label="Back to previous question" className={styles.backButton} disabled={currentStep === 0} onClick={goBack} type="button">← Back</button>
               <button className={styles.continueButton} disabled={selectedAnswer === undefined} onClick={continueDiagnosis} type="button">
-                {currentStep === questions.length - 1 ? "See my result" : "Continue"} →
+                {currentStep === questions.length - 1 ? "See My Result" : "Next"} →
               </button>
             </div>
             <p className={styles.privacyNote}>Your answers stay in this browser and are not submitted as personal information.</p>
+
+            <div className={styles.mobileDecoration} aria-hidden="true">
+              <span className={styles.mobileFuji} />
+              <span className={styles.mobileTower} />
+              <span className={styles.mobileWifiOne}>⌁</span>
+              <span className={styles.mobileWifiTwo}>⌁</span>
+              <span className={styles.mobileGuideBoy} />
+            </div>
           </div>
         ) : (
-          <div className={styles.resultCard}>
+          <div className={`${styles.resultCard} ${styles.questionStage}`}>
             <div className={styles.resultTop}>
               <div>
                 <p className={styles.resultBadge}>{result.badge}</p>
@@ -343,17 +367,6 @@ export default function DiagnosisClient() {
                 <p className={styles.resultSummary}>{result.summary}</p>
               </div>
               <div className={styles.resultMark}><span>Result</span><strong>{result.shortName}</strong></div>
-            </div>
-
-            <div className={styles.resultColumns}>
-              <article className={styles.resultPanel}>
-                <h3>Why this fits</h3>
-                <ul className={styles.positiveList}>{result.reasons.map((reason) => <li key={reason}><span>✓</span>{reason}</li>)}</ul>
-              </article>
-              <article className={styles.resultPanel}>
-                <h3>Check before buying</h3>
-                <ul className={styles.cautionList}>{result.cautions.map((caution) => <li key={caution}><span>!</span>{caution}</li>)}</ul>
-              </article>
             </div>
 
             {productRecommendation ? (
@@ -404,6 +417,286 @@ export default function DiagnosisClient() {
                 </p>
               </article>
             ) : null}
+
+            <div className={styles.resultColumns}>
+              <article className={styles.resultPanel}>
+                <h3>Why this fits</h3>
+                <ul className={styles.positiveList}>
+                  {analysis.primaryReasons.map((reason) => (
+                    <li key={reason}>
+                      <span>✓</span>
+                      {reason}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+              <article className={styles.resultPanel}>
+                <h3>Check before buying</h3>
+                <ul className={styles.cautionList}>
+                  {analysis.primaryCautions.map((caution) => (
+                    <li key={caution}>
+                      <span>!</span>
+                      {caution}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+
+
+            <section
+              className={styles.recommendationOverview}
+              aria-labelledby="recommendation-overview-title"
+            >
+              <div className={styles.recommendationOverviewHeading}>
+                <div>
+                  <span>Your connection shortlist</span>
+                  <h3 id="recommendation-overview-title">
+                    How each method fits your trip
+                  </h3>
+                </div>
+
+                <Link
+                  href="/compare"
+                  onClick={() =>
+                    trackDiagnosis("diagnosis_cta_click", {
+                      result_type: analysis.primary,
+                      cta: "comparison",
+                    })
+                  }
+                >
+                  Open the full comparison →
+                </Link>
+              </div>
+
+              {analysis.primary === "check" ? (
+                <article className={styles.compatibilityAlert}>
+                  <span className={styles.compatibilityAlertIcon}>!</span>
+
+                  <div>
+                    <strong>Compatibility check required</strong>
+                    <p>
+                      Your phone&apos;s eSIM compatibility or carrier-lock
+                      status is not confirmed. Check both before purchasing an
+                      eSIM or physical SIM.
+                    </p>
+                  </div>
+                </article>
+              ) : null}
+
+              <div className={styles.recommendationCards}>
+                {bestMethod ? (
+                  <article
+                    className={`${styles.methodCard} ${styles.methodCardBest}`}
+                  >
+                    <div className={styles.methodCardHeader}>
+                      <span className={styles.methodStatusBest}>
+                        Best match
+                      </span>
+
+                      <span className={styles.methodAvailability}>
+                        {analysis.assessments[bestMethod].availability ===
+                        "conditional"
+                          ? "Check first"
+                          : "Available"}
+                      </span>
+                    </div>
+
+                    <h4>{methodLabels[bestMethod]}</h4>
+
+                    <p className={styles.methodCardIntro}>
+                      This method best matches your device, trip conditions,
+                      and setup preferences.
+                    </p>
+
+                    {analysis.assessments[bestMethod].reasons.length > 0 ? (
+                      <ul className={styles.methodReasonList}>
+                        {analysis.assessments[bestMethod].reasons.map(
+                          (reason) => (
+                            <li key={reason}>
+                              <span>✓</span>
+                              {reason}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    ) : null}
+
+                    <Link href={methodHrefs[bestMethod]}>
+                      Explore {methodLabels[bestMethod]} →
+                    </Link>
+                  </article>
+                ) : null}
+
+                {alternativeMethod ? (
+                  <article
+                    className={`${styles.methodCard} ${
+                      styles.methodCardAlternative
+                    } ${
+                      analysis.assessments[alternativeMethod].availability ===
+                      "conditional"
+                        ? styles.methodCardConditional
+                        : ""
+                    }`}
+                  >
+                    <div className={styles.methodCardHeader}>
+                      <span className={styles.methodStatusAlternative}>
+                        Strong alternative
+                      </span>
+
+                      <span className={styles.methodAvailability}>
+                        {analysis.assessments[alternativeMethod]
+                          .availability === "conditional"
+                          ? "Check first"
+                          : "Available"}
+                      </span>
+                    </div>
+
+                    <h4>{methodLabels[alternativeMethod]}</h4>
+
+                    <p className={styles.methodCardIntro}>
+                      Consider this option when its setup or handling fits your
+                      itinerary better than the top recommendation.
+                    </p>
+
+                    {analysis.assessments[alternativeMethod].reasons.length >
+                    0 ? (
+                      <ul className={styles.methodReasonList}>
+                        {analysis.assessments[
+                          alternativeMethod
+                        ].reasons.map((reason) => (
+                          <li key={reason}>
+                            <span>✓</span>
+                            {reason}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {analysis.assessments[alternativeMethod].cautions.length >
+                    0 ? (
+                      <p className={styles.methodCaution}>
+                        <strong>Before choosing:</strong>{" "}
+                        {
+                          analysis.assessments[alternativeMethod]
+                            .cautions[0]
+                        }
+                      </p>
+                    ) : null}
+
+                    <Link href={methodHrefs[alternativeMethod]}>
+                      Explore {methodLabels[alternativeMethod]} →
+                    </Link>
+                  </article>
+                ) : null}
+
+                {remainingMethods.map((method) => {
+                  const isConditional =
+                    analysis.assessments[method].availability ===
+                    "conditional";
+
+                  return (
+                    <article
+                      className={`${styles.methodCard} ${
+                        isConditional ? styles.methodCardConditional : ""
+                      }`}
+                      key={method}
+                    >
+                      <div className={styles.methodCardHeader}>
+                        <span className={styles.methodStatusOther}>
+                          {isConditional
+                            ? "Check before choosing"
+                            : "Other option"}
+                        </span>
+
+                        <span className={styles.methodAvailability}>
+                          {isConditional ? "Conditional" : "Available"}
+                        </span>
+                      </div>
+
+                      <h4>{methodLabels[method]}</h4>
+
+                      <p className={styles.methodCardIntro}>
+                        {isConditional
+                          ? "This depends on your phone's eSIM support or carrier-lock status, which is not yet confirmed."
+                          : "This can still work, but it is a weaker match for the answers you provided."}
+                      </p>
+
+                      {isConditional ? (
+                        analysis.assessments[method].cautions.length > 0 ? (
+                          <ul className={styles.methodCautionList}>
+                            {analysis.assessments[method].cautions.map(
+                              (caution) => (
+                                <li key={caution}>
+                                  <span>!</span>
+                                  {caution}
+                                </li>
+                              ),
+                            )}
+                          </ul>
+                        ) : null
+                      ) : analysis.assessments[method].cautions.length > 0 ? (
+                        <p className={styles.methodCaution}>
+                          <strong>Consider:</strong>{" "}
+                          {analysis.assessments[method].cautions[0]}
+                        </p>
+                      ) : null}
+
+                      <Link href={methodHrefs[method]}>
+                        Review {methodLabels[method]} →
+                      </Link>
+                    </article>
+                  );
+                })}
+
+                {unavailableMethods.map((method) => (
+                  <article
+                    className={`${styles.methodCard} ${styles.methodCardUnavailable}`}
+                    key={method}
+                  >
+                    <div className={styles.methodCardHeader}>
+                      <span className={styles.methodStatusUnavailable}>
+                        Not suitable
+                      </span>
+
+                      <span className={styles.methodAvailability}>
+                        Unavailable
+                      </span>
+                    </div>
+
+                    <h4>{methodLabels[method]}</h4>
+
+                    <p className={styles.methodCardIntro}>
+                      Based on your answers, this method is not currently
+                      usable with your phone.
+                    </p>
+
+                    {analysis.assessments[method].cautions.length > 0 ? (
+                      <ul className={styles.methodCautionList}>
+                        {analysis.assessments[method].cautions.map(
+                          (caution) => (
+                            <li key={caution}>
+                              <span>!</span>
+                              {caution}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    ) : null}
+
+                    <Link href={methodHrefs[method]}>
+                      Review compatibility requirements →
+                    </Link>
+                  </article>
+                ))}
+              </div>
+
+              <p className={styles.recommendationMethodNote}>
+                Recommendations are based on your answers about compatibility,
+                group size, usage, trip length, and setup preferences. They are
+                not speed guarantees or provider rankings.
+              </p>
+            </section>
 
 
             <section
@@ -503,44 +796,6 @@ export default function DiagnosisClient() {
               </p>
             </section>
 
-            {analysis.primary !== "check" ? (
-              <section className={styles.fitComparison} aria-labelledby="fit-comparison-title">
-                <div className={styles.fitComparisonHeading}>
-                  <div>
-                    <span>Quick comparison</span>
-                    <h3 id="fit-comparison-title">How the three methods fit your answers</h3>
-                  </div>
-                  <Link href="/compare" onClick={() => trackDiagnosis("diagnosis_cta_click", { result_type: analysis.primary, cta: "comparison" })}>
-                    Open the full comparison →
-                  </Link>
-                </div>
-
-                <div className={styles.fitRows}>
-                  {rankedMethods.map(({ method, score }, index) => {
-                    const relativeWidth = Math.max(
-                      18,
-                      Math.round(100 - ((rankedMethods[0].score - score) / scoreRange) * 58),
-                    );
-                    return (
-                      <div className={styles.fitRow} key={method}>
-                        <div>
-                          <strong>{methodLabels[method]}</strong>
-                          <span>{fitLabel(score)}</span>
-                        </div>
-                        <div className={styles.fitBar} aria-hidden="true">
-                          <span style={{ width: `${relativeWidth}%` }} />
-                        </div>
-                        <small>{index === 0 ? "Top match" : fitLabel(score)}</small>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <p className={styles.fitNote}>
-                  This is a fit comparison based on your answers, not a price, speed, or provider ranking.
-                </p>
-              </section>
-            ) : null}
 
             {relevantProviders.length > 0 ? (
               <div className={styles.providerSection}>

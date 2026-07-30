@@ -1,17 +1,19 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/layout/Header";
+import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
-import DiagnosisClient from "./DiagnosisClient";
+import DiagnosisExperience from "./DiagnosisExperience";
 import styles from "./page.module.css";
+import "@/styles/home-redesign.css";
 
 const pageUrl = `${siteConfig.url}/diagnosis`;
 
 export const metadata: Metadata = {
   title: "30-Second Japan Internet Finder",
   description:
-    "Answer eight quick questions to find whether an eSIM, physical SIM, pocket Wi-Fi, roaming, or a combined setup suits your Japan trip.",
+    "Answer seven quick questions to find whether an eSIM, physical SIM, or pocket Wi-Fi suits your Japan trip.",
   alternates: {
     canonical: pageUrl,
   },
@@ -96,8 +98,7 @@ export default function DiagnosisPage() {
 
               <p className={styles.heroText}>
                 Answer seven simple questions about your phone, travel group,
-                devices, data use, and arrival plan. We will recommend an eSIM,
-                physical SIM, pocket Wi-Fi, roaming, or a combined setup.
+                devices, data use, and arrival plan. We will recommend an eSIM, physical SIM, or pocket Wi-Fi and explain why it fits your trip.
               </p>
 
               <div className={styles.heroBadges}>
@@ -121,9 +122,19 @@ export default function DiagnosisPage() {
           </div>
         </section>
 
-        <DiagnosisClient />
+        <section className={styles.mobileIntro}>
+          <p className={styles.mobileBreadcrumb}>
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            Diagnosis
+          </p>
+
+        </section>
+
+        <DiagnosisExperience />
 
         <section
+          className={styles.nextToolSection}
           style={{
             background: "#ffffff",
             padding: "28px 24px 88px",
