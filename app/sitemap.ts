@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${siteConfig.url}/faq`,
+      lastModified: updated,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${siteConfig.url}/sakura-mobile-review`,
       lastModified: updated,
       changeFrequency: "weekly",

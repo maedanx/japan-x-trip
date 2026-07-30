@@ -54,8 +54,36 @@ export function trackAffiliateCtaClick(event: AffiliateCtaEvent): void {
   });
 }
 
-/** Where on the homepage a /diagnosis entry link was clicked. */
-export type DiagnosisEntryPlacement = "home-hero-diagnosis" | "home-mid-diagnosis";
+/** Where a /diagnosis entry link was clicked. */
+export type DiagnosisEntryPlacement =
+  | "home-hero-diagnosis"
+  | "home-mid-diagnosis"
+  /** The "Take the 30-second diagnosis" prompt under the method comparison cards. */
+  | "compare-method-diagnosis"
+  /** Compare's bottom-of-page final CTA into /diagnosis. */
+  | "compare-final-diagnosis"
+  /** "Change your answers" inside an existing Diagnosis Summary -- a return
+   * to an already-completed diagnosis, not a fresh start, so it is reported
+   * separately from the entry placements above. */
+  | "compare-change-answers"
+  /** Home Header's persistent "Build My Travel Kit" CTA (desktop layout). */
+  | "home-header-diagnosis"
+  /** Home Header's "Build My Travel Kit" CTA inside the open mobile menu drawer. */
+  | "home-mobile-menu-diagnosis"
+  /** Home Hero's primary CTA into /diagnosis -- shared by the Desktop and
+   * Mobile Hero variants, since only one is ever visible per viewport. */
+  | "home-hero-primary"
+  /** Home's Quick Diagnosis mini-form on ConnectionFinder, fired once on a
+   * valid (fully answered) submit only. */
+  | "home-quick-diagnosis"
+  /** The "Find My Best Option" tile within ConnectionFinder's connection grid. */
+  | "home-option-diagnosis"
+  /** MobileTravelKit's "Get Recommendation" CTA. */
+  | "home-travel-kit-diagnosis"
+  /** Home's bottom-of-page Final Diagnosis CTA, after FAQ Preview. */
+  | "home-final-diagnosis"
+  /** The /faq page's bottom-of-page Final Diagnosis CTA. */
+  | "faq-final-diagnosis";
 
 /**
  * Tracks a click on a link into the standalone /diagnosis tool. Distinct
@@ -67,6 +95,34 @@ export function trackDiagnosisEntryClick(placement: DiagnosisEntryPlacement): vo
   if (typeof window === "undefined") return;
 
   window.gtag?.("event", "diagnosis_entry_click", { placement });
+}
+
+/** Where a plain internal-navigation link on Home was clicked. Distinct from
+ * DiagnosisEntryPlacement (not a /diagnosis entry) and from
+ * AffiliateCtaPlacement (not an outbound affiliate/provider link). */
+export type HomeNavPlacement =
+  /** Home Hero's secondary "Compare Options" / "Compare All Options" CTA --
+   * shared by the Desktop and Mobile Hero variants. */
+  | "home-hero-compare"
+  | "home-option-esim"
+  | "home-option-pocket-wifi"
+  | "home-option-sim-card"
+  /** CompareIntroduction's single "Compare All Options" CTA into /compare. */
+  | "home-compare-all-options"
+  /** WhyJapanXTrip's "How We Review Providers" link. */
+  | "home-why-review-method"
+  /** WhyJapanXTrip's "Affiliate Disclosure" link. */
+  | "home-why-affiliate-disclosure";
+
+/**
+ * Tracks a click on a plain internal navigation link on Home. Uses the same
+ * fire-and-forget gtag mechanism as the rest of this file; not an affiliate
+ * click and not a /diagnosis entry, so it does not reuse those event names.
+ */
+export function trackHomeNavClick(placement: HomeNavPlacement): void {
+  if (typeof window === "undefined") return;
+
+  window.gtag?.("event", "home_nav_click", { placement });
 }
 
 export type FamilyWifiEventName =

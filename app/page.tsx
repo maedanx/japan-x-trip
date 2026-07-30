@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
-import HomeV2 from "@/components/home/HomeV2";
+import HomeRedesign from "@/components/HomeRedesign";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -51,13 +50,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteJsonLd),
+          __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <Header />
-      <main>
-        <HomeV2 />
-      </main>
+      <HomeRedesign />
       <Footer />
     </>
   );

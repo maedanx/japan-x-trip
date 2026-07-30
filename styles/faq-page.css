@@ -1,0 +1,39 @@
+/* ======================================================================= */
+/* JXT /faq page — Hero only. The FAQ list and Final CTA sections reuse    */
+/* the existing .jxm-faq-preview* / .jxm-final-cta* classes from           */
+/* styles/home-redesign.css for visual consistency with Home, so no new    */
+/* CSS is needed for them here.                                            */
+/* ======================================================================= */
+
+.jxfaq-hero {
+  padding: 32px 0 28px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.jxfaq-hero__eyebrow {
+  margin: 0 0 6px;
+  color: var(--jx-coral);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.jxfaq-hero__title {
+  margin: 0;
+  color: var(--jx-ink);
+  font-family: var(--jx-font);
+  font-size: clamp(28px, 7vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.jxfaq-hero__subtitle {
+  max-width: 480px;
+  margin: 12px auto 0;
+  color: var(--jx-ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
