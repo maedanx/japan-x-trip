@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import PrimaryButton from "./ui/PrimaryButton";
 import { affiliateLinks } from "@/data/affiliateLinks";
 import styles from "./EsimMobile.module.css";

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import PrimaryButton from "./ui/PrimaryButton";
 import {
   connectivityProviders,

@@ -17,7 +17,6 @@ for (const p of [homeRedesignPath, heroPath, faqPreviewPath, finalCtaPath, benef
 }
 
 const homeRedesignSource = fs.readFileSync(homeRedesignPath, "utf8");
-const heroSource = fs.readFileSync(heroPath, "utf8");
 const faqPreviewSource = fs.readFileSync(faqPreviewPath, "utf8");
 const finalCtaSource = fs.readFileSync(finalCtaPath, "utf8");
 

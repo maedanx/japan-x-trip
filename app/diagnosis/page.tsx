@@ -129,6 +129,9 @@ export default function DiagnosisPage() {
             Diagnosis
           </p>
 
+          <div className={styles.mobileIntroCopy}>
+            <h1>Find your best Japan internet option in 30 seconds</h1>
+          </div>
         </section>
 
         <DiagnosisExperience />
