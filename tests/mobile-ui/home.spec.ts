@@ -8,18 +8,6 @@ function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-
-async function prepareVisualSnapshot(page: Page) {
-  await page.addStyleTag({
-    content: `
-      .v23-mobile-sticky-cta,
-      .v25-mobile-sticky-cta {
-        display: none !important;
-      }
-    `,
-  });
-}
-
 async function collectLayoutReport(page: Page) {
   return page.evaluate(() => {
     const viewportWidth = document.documentElement.clientWidth;
@@ -117,115 +105,34 @@ async function collectLayoutReport(page: Page) {
   });
 }
 
-function testIdPart(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-}
-
-const choiceTestId = (name: string) => {
-  const airportCodes: Record<string, string> = {
-    Narita: "nrt",
-    Haneda: "hnd",
-    Kansai: "kix",
-    Fukuoka: "fuk",
-  };
-  if (airportCodes[name]) return `airport-${airportCodes[name]}`;
-  if (["3–5 days", "7 days", "14 days", "30+ days"].includes(name)) {
-    return `duration-${testIdPart(name)}`;
-  }
-  if (["Tokyo", "Kyoto", "Osaka", "Hokkaido"].includes(name)) {
-    return `city-${testIdPart(name)}`;
-  }
-  if (["Easy", "Budget", "Fast", "Family"].includes(name)) {
-    return `style-${testIdPart(name)}`;
-  }
-  return `need-${testIdPart(name)}`;
-};
-
-async function visibleTestId(page: Page, testId: string) {
-  const candidates = page.getByTestId(testId);
-  const count = await candidates.count();
-  for (let i = 0; i < count; i += 1) {
-    const candidate = candidates.nth(i);
-    if (await candidate.isVisible()) return candidate;
-  }
-  return candidates.first();
-}
-
-async function clickChoice(page: Page, name: string) {
-  const button = await visibleTestId(page, choiceTestId(name));
-  await expect(button, `Visible control not found: ${name}`).toBeVisible();
-  await button.scrollIntoViewIfNeeded();
-  await button.click();
-  await expect(button).toHaveAttribute("aria-pressed", "true");
-}
-
-async function waitForPressedState(
-  page: Page,
-  testId: string,
-  expected: "true" | "false",
-  timeout = 2500
-) {
-  const deadline = Date.now() + timeout;
-
-  while (Date.now() < deadline) {
-    const button = await visibleTestId(page, testId);
-    if ((await button.getAttribute("aria-pressed")) === expected) return true;
-    await page.waitForTimeout(100);
-  }
-
-  return false;
-}
-
-async function ensureCities(page: Page, wanted: string[]) {
-  for (const city of ["Tokyo", "Kyoto", "Osaka", "Hokkaido"]) {
-    const testId = `city-${testIdPart(city)}`;
-    const expected: "true" | "false" = wanted.includes(city)
-      ? "true"
-      : "false";
-
-    let settled = false;
-
-    for (let attempt = 0; attempt < 5; attempt += 1) {
-      const button = await visibleTestId(page, testId);
-      await expect(button).toBeVisible();
-      await button.scrollIntoViewIfNeeded();
-
-      if ((await button.getAttribute("aria-pressed")) === expected) {
-        settled = true;
-        break;
-      }
-
-      await button.click();
-      settled = await waitForPressedState(page, testId, expected);
-      if (settled) break;
-
-      // The compact iPhone layout can re-render the city row after a tap.
-      // Re-resolve the visible button before retrying instead of keeping a stale locator.
-      await page.waitForTimeout(200);
-    }
-
-    expect(
-      settled,
-      `${city} selection did not settle to ${expected} after retries`
-    ).toBe(true);
-
-    const finalButton = await visibleTestId(page, testId);
-    await expect(finalButton).toHaveAttribute("aria-pressed", expected);
-  }
-}
-
-
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
 });
 
+// The Home Hero renders both a Desktop (.jxt-hero-cta) and Mobile
+// (.jxm-hero) variant simultaneously; CSS hides whichever doesn't match the
+// viewport, but both stay in the DOM. Scoping to the matching container and
+// its own CTA copy avoids matching the other, hidden variant.
+function isMobileViewport(page: Page) {
+  const viewport = page.viewportSize();
+  return !viewport || viewport.width <= 900;
+}
+
+function heroPrimaryCta(page: Page, isMobile: boolean) {
+  return isMobile
+    ? page.locator(".jxm-hero").getByRole("link", { name: "Find My Perfect Plan" })
+    : page.locator(".jxt-hero-cta").getByRole("link", { name: "Build My Travel Kit" });
+}
+
+function heroSecondaryCta(page: Page, isMobile: boolean) {
+  return isMobile
+    ? page.locator(".jxm-hero").getByRole("link", { name: "Compare All Options" })
+    : page.locator(".jxt-hero-cta").getByRole("link", { name: "Compare Options" });
+}
+
 test("baseline layout, runtime health, and visual regression", async ({
   page,
 }, testInfo) => {
-  test.skip(
-    testInfo.project.name === "desktop-chromium",
-    "Mobile Travel Kit visual baseline is intentionally hidden on desktop"
-  );
   const consoleErrors: string[] = [];
   const pageErrors: string[] = [];
   const failedResponses: string[] = [];
@@ -241,8 +148,7 @@ test("baseline layout, runtime health, and visual regression", async ({
   });
 
   await page.goto("/?qa=baseline", { waitUntil: "domcontentloaded" });
-  await expect(page.getByText("Your Travel Kit").first()).toBeVisible();
-  await prepareVisualSnapshot(page);
+  await expect(page.locator("h1:visible")).toContainText("Stay Connected");
 
   const projectName = testInfo.project.name;
   const dir = path.join(outputRoot, projectName);
@@ -282,114 +188,77 @@ test("baseline layout, runtime health, and visual regression", async ({
     )
   ).toEqual([]);
 
+  // NOTE: the Header + Hero redesign replaced the previous homepage content,
+  // so this baseline screenshot needs a fresh snapshot approval
+  // (`npm run qa:update`) before this assertion will pass again.
   await expect(page).toHaveScreenshot("homepage-full.png", {
     fullPage: true,
     animations: "disabled",
   });
 });
 
-test("budget Tokyo recommendation", async ({ page }, testInfo) => {
-  test.skip(
-    testInfo.project.name === "desktop-chromium",
-    "Mobile planner recommendation flow is intentionally hidden on desktop"
-  );
+test("primary CTA is visible and routes to diagnosis", async ({
+  page,
+}, testInfo) => {
+  await page.goto("/?qa=primary-cta", { waitUntil: "domcontentloaded" });
 
-  await page.goto("/?qa=budget", { waitUntil: "domcontentloaded" });
-
-  await clickChoice(page, "Haneda");
-  await clickChoice(page, "3–5 days");
-  await ensureCities(page, ["Tokyo"]);
-  await clickChoice(page, "Budget");
-
-  const update = page.getByRole("link", {
-    name: /Update My Recommended Kit/i,
-  });
-  await update.scrollIntoViewIfNeeded();
-  await update.click();
-
-  const kit = page.locator("#mobile-travel-kit");
-  await prepareVisualSnapshot(page);
-  await expect(kit).toContainText("Lower-cost picks for Tokyo");
-  await expect(kit).toContainText("Travel eSIM");
-  await expect(kit).toContainText("Airport transfer");
-  await expect(kit).toContainText("IC transit card");
-  await expect(kit).toContainText("HND arrival considered");
-  await expect(kit).toContainText("1 city selected");
+  const primaryCta = heroPrimaryCta(page, isMobileViewport(page));
+  await primaryCta.scrollIntoViewIfNeeded();
+  await expect(primaryCta).toBeVisible();
+  await expect(primaryCta).toHaveAttribute("href", "/diagnosis");
 
   const dir = path.join(outputRoot, testInfo.project.name);
   ensureDir(dir);
-  await kit.screenshot({
-    path: path.join(dir, "budget-travel-kit.png"),
-    animations: "disabled",
-  });
-  await expect(kit).toHaveScreenshot("budget-travel-kit.png", {
-    animations: "disabled",
-  });
+  await primaryCta.screenshot({ path: path.join(dir, "hero-primary-cta.png") });
 });
 
-test("family multi-city recommendation", async ({ page }, testInfo) => {
-  test.skip(
-    testInfo.project.name === "desktop-chromium",
-    "Mobile planner recommendation flow is intentionally hidden on desktop"
-  );
+test("secondary CTA and benefits are visible", async ({ page }, testInfo) => {
+  await page.goto("/?qa=secondary-cta", { waitUntil: "domcontentloaded" });
 
-  await page.goto("/?qa=family", { waitUntil: "domcontentloaded" });
+  const mobile = isMobileViewport(page);
+  const secondaryCta = heroSecondaryCta(page, mobile);
+  await secondaryCta.scrollIntoViewIfNeeded();
+  await expect(secondaryCta).toBeVisible();
+  await expect(secondaryCta).toHaveAttribute("href", "/compare");
 
-  await clickChoice(page, "Narita");
-  await clickChoice(page, "7 days");
-  await ensureCities(page, ["Tokyo", "Kyoto", "Osaka"]);
-  await clickChoice(page, "Family");
+  // The Mobile Hero renders a benefits list (components/home-redesign/Hero.tsx
+  // MOBILE_BENEFITS); the Desktop Hero has no equivalent element, so this
+  // assertion only applies at mobile widths rather than inventing a Desktop
+  // stand-in that doesn't exist.
+  if (mobile) {
+    const benefits = page.locator(".jxm-hero-v2__benefits");
+    await expect(benefits).toBeVisible();
+    await expect(benefits).toContainText("Compare the best plans");
+    await expect(benefits).toContainText("Personalized recommendation");
+    await expect(benefits).toContainText("Clear setup support");
 
-  const update = page.getByRole("link", {
-    name: /Update My Recommended Kit/i,
-  });
-  await update.scrollIntoViewIfNeeded();
-  await update.click();
-
-  const kit = page.locator("#mobile-travel-kit");
-  await prepareVisualSnapshot(page);
-  await expect(kit).toContainText(
-    "Family-friendly picks for Tokyo + Kyoto + Osaka"
-  );
-  await expect(kit).toContainText("Pocket WiFi");
-  await expect(kit).toContainText("Long-distance rail check");
-  await expect(kit).toContainText("IC transit card");
-  await expect(kit).toContainText("NRT arrival considered");
-  await expect(kit).toContainText("3 cities selected");
-
-  const dir = path.join(outputRoot, testInfo.project.name);
-  ensureDir(dir);
-  await kit.screenshot({
-    path: path.join(dir, "family-travel-kit.png"),
-    animations: "disabled",
-  });
-  await expect(kit).toHaveScreenshot("family-travel-kit.png", {
-    animations: "disabled",
-  });
+    const dir = path.join(outputRoot, testInfo.project.name);
+    ensureDir(dir);
+    await benefits.screenshot({ path: path.join(dir, "hero-benefits-list.png") });
+  }
 });
 
-test("core touch controls remain selectable", async ({ page }, testInfo) => {
-  test.skip(
-    testInfo.project.name === "desktop-chromium",
-    "Mobile touch controls are intentionally hidden on desktop"
-  );
-
+test("core touch controls remain selectable", async ({ page }) => {
   await page.goto("/?qa=touch", { waitUntil: "domcontentloaded" });
 
-  await clickChoice(page, "Haneda");
-  await clickChoice(page, "14 days");
-  await clickChoice(page, "Budget");
+  const mobile = isMobileViewport(page);
+  const primaryCta = heroPrimaryCta(page, mobile);
+  const secondaryCta = heroSecondaryCta(page, mobile);
+  const controls = [primaryCta, secondaryCta];
 
-  const tokyo = await visibleTestId(page, "city-tokyo");
-  const kyoto = await visibleTestId(page, "city-kyoto");
+  // The hamburger button only exists below the header's desktop breakpoint;
+  // on wide viewports the inline nav replaces it, so skip it there.
+  const viewport = page.viewportSize();
+  if (!viewport || viewport.width <= 900) {
+    controls.push(page.getByRole("button", { name: /open menu/i }));
+  }
 
-  await tokyo.scrollIntoViewIfNeeded();
-  await expect(tokyo).toBeVisible();
-  await expect(kyoto).toBeVisible();
-
-  const startLink = page
-    .getByRole("link", { name: /Start My Travel Plan/i })
-    .first();
-  await expect(startLink).toBeVisible();
-  await expect(startLink).toBeEnabled();
+  for (const control of controls) {
+    await control.scrollIntoViewIfNeeded();
+    await expect(control).toBeVisible();
+    await expect(control).toBeEnabled();
+    const box = await control.boundingBox();
+    expect(box, "control should have a bounding box").not.toBeNull();
+    expect(box!.height, "touch target should be at least 44px tall").toBeGreaterThanOrEqual(44);
+  }
 });
