@@ -502,8 +502,7 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
             const destination = getProviderDestination(provider);
             const outbound = hasProviderOutboundUrl(provider);
             const isAffiliate = isAffiliateProviderLink(provider);
-            const primaryCtaFallback = isAffiliate ? "Check plans" : "Visit provider";
-            const ctaLabel = getProviderCtaLabel(provider, primaryCtaFallback);
+            const ctaLabel = getProviderCtaLabel(provider, "Visit provider website");
             const matchesBestMethod =
               bestMethod !== null &&
               provider.connectionTypes.includes(

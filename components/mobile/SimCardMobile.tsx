@@ -101,6 +101,31 @@ export default function SimCardMobile() {
         </div>
       </section>
 
+      <section className={styles.fitGuidance} aria-labelledby="mobile-sim-card-fit-title">
+        <span className={styles.fitGuidanceLabel}>Quick answer</span>
+
+        <h2 id="mobile-sim-card-fit-title">Who should consider a physical SIM?</h2>
+
+        <ul>
+          <li>Your unlocked phone does not support eSIM</li>
+          <li>You want data directly on one phone</li>
+          <li>You are comfortable removing your home SIM</li>
+          <li>You can collect or receive the card before use</li>
+        </ul>
+
+        <span className={styles.fitGuidanceLabel}>Less ideal if</span>
+
+        <ul>
+          <li>Your phone is carrier-locked</li>
+          <li>You would rather not remove your home SIM</li>
+        </ul>
+
+        <Link href="/sim-card-vs-esim">
+          Compare physical SIM and eSIM
+          <ArrowIcon />
+        </Link>
+      </section>
+
       <section
         className={styles.products}
         aria-labelledby="mobile-sim-card-title"
@@ -182,7 +207,7 @@ export default function SimCardMobile() {
             href="/compare#providers"
             variant="more"
           >
-            View More SIM Options
+            Browse SIM &amp; travel providers
           </SecondaryButton>
       </section>
 

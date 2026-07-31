@@ -108,6 +108,31 @@ export default function EsimMobile() {
         </div>
       </section>
 
+      <section className={styles.fitGuidance} aria-labelledby="mobile-esim-fit-title">
+        <span className={styles.fitGuidanceLabel}>Quick answer</span>
+
+        <h2 id="mobile-esim-fit-title">Who should start with eSIM?</h2>
+
+        <ul>
+          <li>You have an unlocked eSIM-compatible phone</li>
+          <li>You mainly need data on one smartphone</li>
+          <li>You want to prepare before arriving in Japan</li>
+          <li>You do not want to collect or return equipment</li>
+        </ul>
+
+        <span className={styles.fitGuidanceLabel}>Less ideal if</span>
+
+        <ul>
+          <li>Your phone is carrier-locked or does not support eSIM</li>
+          <li>Several travelers or devices need to share one connection</li>
+        </ul>
+
+        <Link href="/diagnosis">
+          Take the 30-sec check
+          <ArrowIcon />
+        </Link>
+      </section>
+
       <section
         className={styles.plans}
         aria-labelledby="mobile-esim-plans-title"

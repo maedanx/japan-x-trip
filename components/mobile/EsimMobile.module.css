@@ -303,6 +303,7 @@
 
   .morePlans svg,
   .checkSection a svg,
+  .fitGuidance a svg,
   .finalCta a svg {
     width: 16px;
     height: 16px;
@@ -377,6 +378,53 @@
     color: #ffffff;
     background: #1b579e;
     font-size: 10px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .fitGuidance {
+    margin: 0 15px 18px;
+    padding: 16px;
+    border: 1px solid #e2e9f0;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 7px 20px rgba(11, 42, 65, 0.055);
+  }
+
+  .fitGuidanceLabel {
+    display: block;
+    color: #3476bd;
+    font-size: 7.5px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .fitGuidance h2 {
+    margin: 3px 0 8px;
+    color: #102a40;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .fitGuidance ul {
+    margin: 0 0 12px;
+    padding-left: 18px;
+    color: #4a5b6a;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .fitGuidance li + li {
+    margin-top: 4px;
+  }
+
+  .fitGuidance a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #1b579e;
+    font-size: 11.5px;
     font-weight: 800;
     text-decoration: none;
   }
