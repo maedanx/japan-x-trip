@@ -71,9 +71,9 @@
   }
 
   .routerImage {
-    object-fit: contain;
-    object-position: center;
-    transform: scale(1.06);
+    object-fit: cover;
+    object-position: 100% 45%;
+    transform: scale(2.1);
     filter: drop-shadow(0 13px 17px rgba(13, 51, 78, 0.17));
   }
 
@@ -199,8 +199,9 @@
   }
 
   .providerImage {
-    object-fit: contain;
-    padding: 8px;
+    object-fit: cover;
+    object-position: 100% 45%;
+    transform: scale(2.1);
   }
 
   .providerContent {
@@ -309,8 +310,6 @@
   }
 
   .familyCard {
-    display: grid;
-    grid-template-columns: 43% 57%;
     margin: 0 15px 15px;
     overflow: hidden;
     border-radius: 17px;
@@ -324,19 +323,8 @@
       linear-gradient(145deg, #0a3157, #06233c);
   }
 
-  .familyMedia {
-    position: relative;
-    min-height: 176px;
-  }
-
-  .familyImage {
-    object-fit: contain;
-    object-position: center bottom;
-    padding: 10px 3px 0;
-  }
-
   .familyContent {
-    padding: 22px 14px 17px 3px;
+    padding: 24px 20px;
   }
 
   .familyContent small {

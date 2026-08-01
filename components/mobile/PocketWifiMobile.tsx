@@ -91,8 +91,8 @@ export default function PocketWifiMobile() {
             <div className={styles.routerGlow} aria-hidden="true" />
 
             <Image
-              src="/images/cards/pocket-wifi-sharing-3d.png"
-              alt="A portable Pocket WiFi router connecting several devices"
+              src="/images/comparisons/esim-sim-pocket-wifi-comparison.png"
+              alt="A portable Pocket WiFi router connecting a phone and laptop"
               fill
               priority
               sizes="52vw"
@@ -141,7 +141,7 @@ export default function PocketWifiMobile() {
             <article className={styles.providerCard} key={provider.name}>
               <div className={styles.providerMedia}>
                 <Image
-                  src="/images/cards/pocket-wifi-sharing-3d.png"
+                  src="/images/comparisons/esim-sim-pocket-wifi-comparison.png"
                   alt=""
                   fill
                   sizes="105px"
@@ -207,16 +207,6 @@ export default function PocketWifiMobile() {
       </section>
 
       <section className={styles.familyCard}>
-        <div className={styles.familyMedia}>
-          <Image
-            src="/images/cards/japan-x-trip-family-pocket-wifi.png"
-            alt="A family sharing a Pocket WiFi connection in Japan"
-            fill
-            sizes="42vw"
-            className={styles.familyImage}
-          />
-        </div>
-
         <div className={styles.familyContent}>
           <small>Traveling as a family?</small>
 
