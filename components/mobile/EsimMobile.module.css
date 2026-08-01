@@ -213,7 +213,8 @@
   .planTop p {
     margin: 3px 0 0;
     color: #647789;
-    font-size: 8.8px;
+    font-size: 10px;
+    line-height: 1.3;
   }
 
   .planBadge {
