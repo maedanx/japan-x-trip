@@ -230,6 +230,44 @@
   background: #ffffff;
 }
 
+@media (max-width: 900px) {
+  .tableWrap {
+    position: relative;
+  }
+
+  .tableWrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 32px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.92) 82%
+    );
+    pointer-events: none;
+  }
+
+  .tableWrap::after {
+    content: "Swipe to see more \2192";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #071f49;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(7, 31, 73, 0.28);
+    pointer-events: none;
+  }
+}
+
 .tableWrap table {
   width: 100%;
   min-width: 850px;
