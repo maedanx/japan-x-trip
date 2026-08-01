@@ -348,14 +348,6 @@ export default function DiagnosisClient() {
               </button>
             </div>
             <p className={styles.privacyNote}>Your answers stay in this browser and are not submitted as personal information.</p>
-
-            <div className={styles.mobileDecoration} aria-hidden="true">
-              <span className={styles.mobileFuji} />
-              <span className={styles.mobileTower} />
-              <span className={styles.mobileWifiOne}>⌁</span>
-              <span className={styles.mobileWifiTwo}>⌁</span>
-              <span className={styles.mobileGuideBoy} />
-            </div>
           </div>
         ) : (
           <div className={`${styles.resultCard} ${styles.questionStage}`}>

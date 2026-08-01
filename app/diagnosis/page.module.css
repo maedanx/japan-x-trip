@@ -1248,8 +1248,7 @@
    Mobile Master implementation — Phase 7 Diagnosis
    ========================================================= */
 
-.mobileIntro,
-.mobileDecoration {
+.mobileIntro {
   display: none;
 }
 
@@ -1513,181 +1512,6 @@
     backdrop-filter: blur(2px);
   }
 
-  .mobileDecoration {
-    position: absolute;
-    right: -16px;
-    bottom: 0;
-    left: -16px;
-    z-index: 1;
-    display: block;
-    height: 100px;
-    overflow: hidden;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(232, 246, 255, 0.58) 100%
-      );
-  }
-
-  .mobileDecoration::before {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 48px;
-    content: "";
-    opacity: 0.75;
-    background:
-      linear-gradient(
-        90deg,
-        transparent 0 4%,
-        #b8dcec 4% 8%,
-        transparent 8% 11%,
-        #c6e3ef 11% 17%,
-        transparent 17% 20%,
-        #acd4e7 20% 25%,
-        transparent 25% 29%,
-        #cce6f1 29% 37%,
-        transparent 37% 40%,
-        #afd7e9 40% 47%,
-        transparent 47% 51%,
-        #c6e3ef 51% 58%,
-        transparent 58% 62%,
-        #acd4e7 62% 68%,
-        transparent 68% 72%,
-        #cce6f1 72% 80%,
-        transparent 80% 84%,
-        #b8dcec 84% 91%,
-        transparent 91% 100%
-      );
-    clip-path: polygon(
-      0 77%,
-      4% 77%,
-      4% 39%,
-      8% 39%,
-      8% 71%,
-      11% 71%,
-      11% 51%,
-      17% 51%,
-      17% 78%,
-      20% 78%,
-      20% 26%,
-      25% 26%,
-      25% 71%,
-      29% 71%,
-      29% 45%,
-      37% 45%,
-      37% 76%,
-      40% 76%,
-      40% 31%,
-      47% 31%,
-      47% 70%,
-      51% 70%,
-      51% 46%,
-      58% 46%,
-      58% 77%,
-      62% 77%,
-      62% 35%,
-      68% 35%,
-      68% 70%,
-      72% 70%,
-      72% 25%,
-      80% 25%,
-      80% 73%,
-      84% 73%,
-      84% 48%,
-      91% 48%,
-      91% 76%,
-      100% 76%,
-      100% 100%,
-      0 100%
-    );
-  }
-
-  .mobileFuji {
-    position: absolute;
-    bottom: 21px;
-    left: 6px;
-    width: 81px;
-    height: 42px;
-    opacity: 0.58;
-    background: #9fcce2;
-    clip-path: polygon(
-      0 100%,
-      34% 58%,
-      48% 72%,
-      66% 23%,
-      100% 100%
-    );
-  }
-
-  .mobileFuji::after {
-    position: absolute;
-    top: 9px;
-    left: 41px;
-    width: 20px;
-    height: 11px;
-    content: "";
-    background: #ffffff;
-    clip-path: polygon(0 0, 100% 0, 77% 54%, 58% 35%, 39% 68%);
-  }
-
-  .mobileTower {
-    position: absolute;
-    right: 9px;
-    bottom: 16px;
-    width: 19px;
-    height: 66px;
-    opacity: 0.63;
-    background: #ef807a;
-    clip-path: polygon(
-      44% 0,
-      56% 0,
-      60% 28%,
-      73% 57%,
-      61% 57%,
-      72% 100%,
-      28% 100%,
-      39% 57%,
-      27% 57%,
-      40% 28%
-    );
-  }
-
-  .mobileGuideBoy {
-    position: absolute;
-    right: 17px;
-    bottom: -3px;
-    width: 83px;
-    height: 96px;
-    background:
-      url("/images/characters/japan-x-trip-male-guide-recommendation.png")
-      center bottom / contain no-repeat;
-    filter: drop-shadow(0 8px 11px rgba(18, 55, 80, 0.13));
-  }
-
-  .mobileWifiOne,
-  .mobileWifiTwo {
-    position: absolute;
-    color: #83bae0;
-    font-size: 18px;
-    font-weight: 800;
-    opacity: 0.42;
-    transform: rotate(90deg);
-  }
-
-  .mobileWifiOne {
-    top: 20px;
-    left: 92px;
-  }
-
-  .mobileWifiTwo {
-    top: 10px;
-    right: 77px;
-  }
-
   /* Mobile result */
   .resultCard {
     border: 0;
@@ -1930,11 +1754,6 @@
   .finderSection {
     padding-right: 13px;
     padding-left: 13px;
-  }
-
-  .mobileGuideBoy {
-    right: 14px;
-    width: 78px;
   }
 }
 
