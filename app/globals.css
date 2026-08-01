@@ -4483,6 +4483,34 @@ legend > span {
   font-size: 0.85rem;
   font-weight: 800;
   cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+  list-style: none;
+}
+
+.best-esim-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.best-esim-faq-list summary::marker {
+  display: none;
+}
+
+.best-esim-faq-list summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 21px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+.best-esim-faq-list details[open] summary::after {
+  transform: translateY(-35%) rotate(225deg);
 }
 
 .best-esim-faq-list details p {

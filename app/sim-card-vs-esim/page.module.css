@@ -374,6 +374,34 @@
   color: #172033;
   font-weight: 750;
   cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqItem summary::marker {
+  display: none;
+}
+
+.faqItem summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #172033;
+  border-bottom: 2px solid #172033;
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+.faqItem[open] summary::after {
+  transform: translateY(-35%) rotate(225deg);
 }
 
 .faqItem p {

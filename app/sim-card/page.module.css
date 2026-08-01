@@ -411,6 +411,34 @@
   color: #071f49;
   font-weight: 850;
   line-height: 1.5;
+  position: relative;
+  padding-right: 26px;
+  list-style: none;
+}
+
+.faqList summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqList summary::marker {
+  display: none;
+}
+
+.faqList summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #071f49;
+  border-bottom: 2px solid #071f49;
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+.faqList details[open] summary::after {
+  transform: translateY(-35%) rotate(225deg);
 }
 
 .faqList p {
