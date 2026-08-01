@@ -1,0 +1,140 @@
+{
+  "article_id": "A001",
+  "article_slug": "esim-vs-pocket-wifi-japan",
+  "phase": "Phase 7A — Image Implementation Preflight",
+  "generated_at": "2026-08-01T22:49:32",
+  "selected_image_count": 11,
+  "missing_image_count": 1,
+  "images": [
+    {
+      "id": "IMG-001",
+      "purpose": "Hero",
+      "filename": "esim-vs-pocket-wifi-japan-hero-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-hero-mobile.webp",
+      "exists": false
+    },
+    {
+      "id": "IMG-002",
+      "purpose": "3-Second Answer",
+      "filename": "esim-vs-pocket-wifi-japan-3-second-answer-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-3-second-answer-mobile.webp",
+      "exists": true,
+      "bytes": 1835218,
+      "width": 941,
+      "height": 1672,
+      "format": "PNG",
+      "sha256": "d1955156cc4b4ddacef79a694ec42ce09d37def47f64d1b589f6cebc404c7790"
+    },
+    {
+      "id": "IMG-004",
+      "purpose": "Quick Comparison",
+      "filename": "esim-vs-pocket-wifi-japan-quick-comparison-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-quick-comparison-mobile.webp",
+      "exists": true,
+      "bytes": 1551037,
+      "width": 864,
+      "height": 1821,
+      "format": "PNG",
+      "sha256": "46cb0bfa7f1e46fab674150ee1cffc90aba5aa4284248042bcec88f682f17af4"
+    },
+    {
+      "id": "IMG-007",
+      "purpose": "Price Comparison",
+      "filename": "esim-vs-pocket-wifi-japan-price-comparison-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-price-comparison-mobile.webp",
+      "exists": true,
+      "bytes": 1329759,
+      "width": 864,
+      "height": 1821,
+      "format": "PNG",
+      "sha256": "6c6bc0a9f75b6f1488bdb05290fae6f8a667ba9b670b3db3b35aa335359e52cd"
+    },
+    {
+      "id": "IMG-009",
+      "purpose": "Setup Guide",
+      "filename": "esim-vs-pocket-wifi-japan-setup-guide-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-setup-guide-mobile.webp",
+      "exists": true,
+      "bytes": 1481921,
+      "width": 1024,
+      "height": 1536,
+      "format": "PNG",
+      "sha256": "630c14874d5f700d6f669a5526421c53460a9adaf1c17a9a805a6ab64fd639c5"
+    },
+    {
+      "id": "IMG-010",
+      "purpose": "Coverage Guide",
+      "filename": "esim-vs-pocket-wifi-japan-coverage-guide-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-coverage-guide-mobile.webp",
+      "exists": true,
+      "bytes": 1909645,
+      "width": 864,
+      "height": 1821,
+      "format": "PNG",
+      "sha256": "80cd66de50355489e35beb6a9fa3f5b70e157fb7038d699811d7704cb3762eb2"
+    },
+    {
+      "id": "IMG-012",
+      "purpose": "Decision Tree",
+      "filename": "esim-vs-pocket-wifi-japan-decision-tree-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-decision-tree-mobile.webp",
+      "exists": true,
+      "bytes": 1472313,
+      "width": 1024,
+      "height": 1536,
+      "format": "PNG",
+      "sha256": "db3367d3b3bf04e1432acf88353959b2a55e8b4fa91dbfb067eea65719fa46b1"
+    },
+    {
+      "id": "IMG-013",
+      "purpose": "Common Mistakes",
+      "filename": "esim-vs-pocket-wifi-japan-common-mistakes-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-common-mistakes-mobile.webp",
+      "exists": true,
+      "bytes": 1741378,
+      "width": 863,
+      "height": 1823,
+      "format": "PNG",
+      "sha256": "554e28df64b4cb77943246893a444e2550f92eea26680daf141e5b5eea04b500"
+    },
+    {
+      "id": "IMG-015",
+      "purpose": "Provider Guide",
+      "filename": "esim-vs-pocket-wifi-japan-provider-guide-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-provider-guide-mobile.webp",
+      "exists": true,
+      "bytes": 1443241,
+      "width": 864,
+      "height": 1821,
+      "format": "PNG",
+      "sha256": "c1348ae93c7128bee631797aa880fcc61c379efbfa611af492c19a90b749c621"
+    },
+    {
+      "id": "IMG-016",
+      "purpose": "Final Recommendation",
+      "filename": "esim-vs-pocket-wifi-japan-final-recommendation-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-final-recommendation-mobile.webp",
+      "exists": true,
+      "bytes": 1653847,
+      "width": 941,
+      "height": 1672,
+      "format": "PNG",
+      "sha256": "1cf49bdc315127128d6bb6e0996cbeb8f10204860b1ca98aeeca3f0c698bd60d"
+    },
+    {
+      "id": "IMG-018",
+      "purpose": "Finder CTA",
+      "filename": "esim-vs-pocket-wifi-japan-finder-cta-mobile.webp",
+      "web_path": "/images/article/esim-vs-pocket-wifi-japan/esim-vs-pocket-wifi-japan-finder-cta-mobile.webp",
+      "exists": true,
+      "bytes": 1416146,
+      "width": 1122,
+      "height": 1402,
+      "format": "PNG",
+      "sha256": "53e133b25ee8c66efeb5d9da9cce3ef06f31566757adb7bbdb9905de30477e78"
+    }
+  ],
+  "article_candidates": [],
+  "recommended_target": null,
+  "next_completion_condition": "All 11 selected images exist and one article target is confirmed."
+}
