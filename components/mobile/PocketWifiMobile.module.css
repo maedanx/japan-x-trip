@@ -54,7 +54,10 @@
 
   .routerVisual {
     position: relative;
+    max-width: 182px;
     height: 205px;
+    overflow: hidden;
+    border-radius: 20px;
   }
 
   .routerGlow {
@@ -72,8 +75,9 @@
 
   .routerImage {
     object-fit: cover;
-    object-position: 100% 45%;
-    transform: scale(2.1);
+    object-position: 92% 45%;
+    transform-origin: 100% 50%;
+    transform: scale(1.55);
     filter: drop-shadow(0 13px 17px rgba(13, 51, 78, 0.17));
   }
 
