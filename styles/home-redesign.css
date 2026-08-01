@@ -3879,7 +3879,7 @@
 
   .jxm-footer-group a {
     display: flex;
-    min-height: 42px;
+    min-height: 44px;
     align-items: center;
     color: rgba(227, 239, 247, 0.78);
     font-size: 13px;
