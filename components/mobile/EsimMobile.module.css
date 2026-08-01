@@ -141,7 +141,7 @@
   .feature small {
     margin-top: 2px;
     color: #657889;
-    font-size: 8.5px;
+    font-size: 10px;
     line-height: 1.2;
   }
 
@@ -165,8 +165,9 @@
     place-items: center;
     border-radius: 999px;
     color: #23394d;
-    font-size: 9.5px;
+    font-size: 10px;
     font-weight: 750;
+    white-space: nowrap;
   }
 
   .tabs .activeTab {
@@ -198,7 +199,7 @@
     display: block;
     margin-bottom: 3px;
     color: #758696;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 700;
   }
 
@@ -223,9 +224,10 @@
     padding: 0 7px;
     color: #ffffff;
     background: #8d56e8;
-    font-size: 6.8px;
+    font-size: 9px;
     font-weight: 850;
     letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
   .planDescription {
@@ -245,7 +247,7 @@
     align-items: center;
     gap: 6px;
     color: #31495d;
-    font-size: 8.8px;
+    font-size: 10px;
   }
 
   .planDetails svg {
@@ -274,7 +276,7 @@
 
   .priceNotice small {
     color: #7b8a97;
-    font-size: 7.5px;
+    font-size: 9px;
   }
 
   .priceNotice strong {
@@ -347,7 +349,7 @@
 
   .checkSection small {
     color: #3476bd;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -394,7 +396,7 @@
   .fitGuidanceLabel {
     display: block;
     color: #3476bd;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -447,7 +449,7 @@
 
   .finalCta small {
     color: #9acaff;
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;

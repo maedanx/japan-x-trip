@@ -138,7 +138,7 @@
   .feature small {
     margin-top: 2px;
     color: #657889;
-    font-size: 7.9px;
+    font-size: 10px;
     line-height: 1.2;
   }
 
@@ -163,8 +163,9 @@
     place-items: center;
     border-radius: 999px;
     color: #23394d;
-    font-size: 9.1px;
+    font-size: 10px;
     font-weight: 750;
+    white-space: nowrap;
   }
 
   .tabs .activeTab {
@@ -217,7 +218,7 @@
     display: block;
     margin-bottom: 2px;
     color: #758696;
-    font-size: 6.8px;
+    font-size: 9px;
     font-weight: 700;
   }
 
@@ -237,10 +238,11 @@
     border-radius: 999px;
     padding: 0 6px;
     color: #ffffff;
-    font-size: 5.8px;
+    font-size: 9px;
     font-weight: 850;
     letter-spacing: 0.04em;
     background: #1e77b8;
+    white-space: nowrap;
   }
 
   .productDescription {
@@ -263,7 +265,7 @@
     align-items: flex-start;
     gap: 4px;
     color: #31495d;
-    font-size: 7.3px;
+    font-size: 10px;
     line-height: 1.25;
   }
 
@@ -291,7 +293,7 @@
 
   .productBottom small {
     color: #7b8a97;
-    font-size: 6.3px;
+    font-size: 9px;
   }
 
   .productBottom strong {
@@ -363,7 +365,7 @@
 
   .checkSection small {
     color: #3476bd;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -411,7 +413,7 @@
   .fitGuidanceLabel {
     display: block;
     color: #c4433a;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -480,7 +482,7 @@
 
   .notice small {
     color: #c05a1f;
-    font-size: 7.5px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -537,7 +539,7 @@
 
   .finalCta small {
     color: #9acaff;
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
