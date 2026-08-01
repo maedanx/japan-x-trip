@@ -215,6 +215,12 @@ const faqs = [
     answer:
       "Not yet. This version is an independent desk-based assessment using current official provider information. We do not present it as a hands-on performance test.",
   },
+  {
+    question:
+      "Does Sakura Mobile still use online identity verification (eKYC) for monthly plans?",
+    answer:
+      "No. Following changes to Japan's Residence Card system, Sakura Mobile now uses identity verification through Sagawa Express during delivery for monthly plans. Customers can still apply online, but the identity check takes place when the SIM is delivered.",
+  },
 ];
 
 export default function SakuraMobileReviewPage() {
@@ -235,7 +241,7 @@ export default function SakuraMobileReviewPage() {
       name: siteConfig.name,
     },
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
+    dateModified: "2026-08-01",
   };
 
   const breadcrumbSchema = {
@@ -310,7 +316,7 @@ export default function SakuraMobileReviewPage() {
               <p className={styles.disclosure}>
                 Japan X Trip has not yet completed a hands-on network test.
                 This assessment is based on official provider information
-                checked in July 2026. This site may receive a commission when
+                checked in August 2026. This site may receive a commission when
                 a visitor purchases through an affiliate link, at no
                 additional cost to the visitor.
               </p>
@@ -500,6 +506,35 @@ export default function SakuraMobileReviewPage() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.pickupSection}>
+          <div className={styles.container}>
+            <div className={styles.pickupBox}>
+              <div>
+                <p className={styles.eyebrow}>August 2026 update</p>
+                <h2>Monthly plan identity verification has changed</h2>
+
+                <p>
+                  Following changes to Japan&apos;s Residence Card system,
+                  Sakura Mobile now verifies identity for monthly plans through
+                  Sagawa Express during delivery instead of online eKYC.
+                  Customers can still complete the application online, but the
+                  identity check takes place when the SIM is delivered.
+                </p>
+              </div>
+
+              <div className={styles.pickupLinks}>
+                <a
+                  href={officialUrls.home}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Check the latest monthly plan requirements
+                </a>
+              </div>
             </div>
           </div>
         </section>
