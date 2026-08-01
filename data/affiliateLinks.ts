@@ -26,7 +26,10 @@ export const affiliateLinks = {
   },
   sakuraMobile: {
     general: "https://p.sakuramobile.jp/idevaffiliate.php?id=568",
-    travelEsim: "https://p.sakuramobile.jp/idevaffiliate.php?id=568&url=77",
+    // TEMPORARY: url=77 (eSIM) 404s on Sakura Mobile's side (see Site Audit
+    // Phase 2-A). Falling back to the general link until Sakura Mobile fixes
+    // the destination for ID 77.
+    travelEsim: "https://p.sakuramobile.jp/idevaffiliate.php?id=568",
     travelSim: "https://p.sakuramobile.jp/idevaffiliate.php?id=568&url=78",
     travelPocketWifi: "https://p.sakuramobile.jp/idevaffiliate.php?id=568&url=79",
   },
