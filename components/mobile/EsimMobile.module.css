@@ -231,8 +231,8 @@
   .planDescription {
     margin: 10px 0;
     color: #495f72;
-    font-size: 9px;
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .planDetails {
@@ -286,7 +286,7 @@
   .morePlans {
     display: flex;
     width: fit-content;
-    min-height: 42px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
     gap: 6px;
@@ -296,7 +296,7 @@
     border-radius: 999px;
     color: #183d70;
     background: #ffffff;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -363,8 +363,8 @@
   .checkSection p {
     margin: 0;
     color: #5e7283;
-    font-size: 8.8px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .checkSection a {
@@ -377,7 +377,7 @@
     border-radius: 999px;
     color: #ffffff;
     background: #1b579e;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -411,7 +411,7 @@
     margin: 0 0 12px;
     padding-left: 18px;
     color: #4a5b6a;
-    font-size: 11.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -421,10 +421,11 @@
 
   .fitGuidance a {
     display: inline-flex;
+    min-height: 44px;
     align-items: center;
     gap: 6px;
     color: #1b579e;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -462,7 +463,7 @@
   .finalCta p {
     margin: 0 0 14px;
     color: rgba(235, 244, 251, 0.76);
-    font-size: 9.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -475,7 +476,7 @@
     border-radius: 999px;
     color: #ffffff;
     background: #ff3b40;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 820;
     text-decoration: none;
   }

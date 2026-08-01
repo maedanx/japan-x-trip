@@ -191,6 +191,7 @@
   .productMedia {
     position: relative;
     min-height: 142px;
+    align-self: start;
     overflow: hidden;
     border-radius: 12px;
     background: #f0f5f9;
@@ -245,8 +246,8 @@
   .productDescription {
     margin: 7px 0;
     color: #566b7c;
-    font-size: 7.8px;
-    line-height: 1.36;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .productCard ul {
@@ -301,13 +302,13 @@
 
   .reviewLink {
     display: flex;
-    min-height: 28px;
+    min-height: 44px;
     align-items: center;
     justify-content: flex-end;
     gap: 4px;
     margin-top: 4px;
     color: #285a91;
-    font-size: 6.8px;
+    font-size: 12px;
     font-weight: 750;
     text-decoration: none;
   }
@@ -378,14 +379,14 @@
   .checkSection > div > p {
     margin: 0;
     color: #5e7283;
-    font-size: 8.8px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .checkSection a {
     grid-column: 1 / -1;
     display: flex;
-    min-height: 41px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
     gap: 6px;
@@ -393,7 +394,7 @@
     border-radius: 999px;
     color: #ffffff;
     background: #ff3b40;
-    font-size: 8.6px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -427,7 +428,7 @@
     margin: 0 0 12px;
     padding-left: 18px;
     color: #4a5b6a;
-    font-size: 11.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -437,10 +438,11 @@
 
   .fitGuidance a {
     display: inline-flex;
+    min-height: 44px;
     align-items: center;
     gap: 6px;
     color: #c4433a;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -503,15 +505,15 @@
     position: relative;
     padding-left: 12px;
     color: #5e7283;
-    font-size: 8.8px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .notice li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 6px;
+    top: 9px;
     width: 4px;
     height: 4px;
     border-radius: 50%;
@@ -551,7 +553,7 @@
   .finalCta p {
     margin: 0 0 14px;
     color: rgba(235, 244, 251, 0.76);
-    font-size: 9.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -564,7 +566,7 @@
     border-radius: 999px;
     color: #ffffff;
     background: #ff3b40;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 820;
     text-decoration: none;
   }

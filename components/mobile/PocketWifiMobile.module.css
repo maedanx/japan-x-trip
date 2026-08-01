@@ -298,7 +298,7 @@
   .moreDevices {
     display: flex;
     width: fit-content;
-    min-height: 42px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
     gap: 6px;
@@ -308,7 +308,7 @@
     border-radius: 999px;
     color: #183d70;
     background: #ffffff;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -349,20 +349,20 @@
   .familyContent p {
     margin: 0 0 12px;
     color: rgba(237, 245, 251, 0.77);
-    font-size: 8.8px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .familyContent a {
     display: flex;
-    min-height: 41px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
     gap: 6px;
     border-radius: 999px;
     color: #ffffff;
     background: #ff3b40;
-    font-size: 8.4px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
   }
@@ -416,8 +416,8 @@
   .notice p {
     margin: 0;
     color: #5e7283;
-    font-size: 8.8px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .finalCta {
@@ -453,7 +453,7 @@
   .finalCta p {
     margin: 0 0 14px;
     color: rgba(235, 244, 251, 0.76);
-    font-size: 9.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -466,7 +466,7 @@
     border-radius: 999px;
     color: #ffffff;
     background: #ff3b40;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 820;
     text-decoration: none;
   }
