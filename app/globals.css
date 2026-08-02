@@ -3951,6 +3951,146 @@ legend > span {
   text-align: center;
 }
 
+.review-not-ideal-list {
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+}
+
+.review-not-ideal-list li {
+  position: relative;
+  padding-left: 25px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.review-not-ideal-list li::before {
+  position: absolute;
+  left: 0;
+  color: #a67912;
+  content: "✕";
+  font-weight: 900;
+}
+
+.review-quick-verdict {
+  padding: 24px 28px;
+  margin-bottom: 40px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+}
+
+.review-quick-verdict p:not(.eyebrow) {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.review-at-a-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 28px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--line);
+}
+
+.review-at-a-glance-grid > div {
+  padding: 16px 19px;
+  background: #fff;
+}
+
+.review-at-a-glance-grid dt {
+  color: #819195;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.review-at-a-glance-grid dd {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.review-independent-test-note {
+  display: inline-block;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.review-faq {
+  display: grid;
+  gap: 12px;
+}
+
+.review-faq h2 {
+  margin-bottom: 4px;
+}
+
+.review-faq details {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.review-faq summary {
+  padding: 19px 21px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+  list-style: none;
+}
+
+.review-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-faq summary::marker {
+  display: none;
+}
+
+.review-faq summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 21px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+.review-faq details[open] summary::after {
+  transform: translateY(-35%) rotate(225deg);
+}
+
+.review-faq details p {
+  padding: 0 21px 20px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
 @media (max-width: 960px) {
   .provider-review-link-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3988,7 +4128,8 @@ legend > span {
   }
 
   .provider-review-link-grid,
-  .review-check-grid {
+  .review-check-grid,
+  .review-at-a-glance-grid {
     grid-template-columns: 1fr;
   }
 

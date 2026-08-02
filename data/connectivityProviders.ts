@@ -1,5 +1,17 @@
 import { affiliateLinks, getGeneralAffiliateLink } from "./affiliateLinks";
 
+/** A single compact fact shown in the review page's optional "At a glance" block. */
+export type ProviderAtAGlanceItem = {
+  label: string;
+  value: string;
+};
+
+/** A single FAQ entry. Shared source for both the visible FAQ section and FAQPage structured data. */
+export type ProviderFaq = {
+  question: string;
+  answer: string;
+};
+
 export type ConnectivityProvider = {
   slug: string;
   name: string;
@@ -15,6 +27,24 @@ export type ConnectivityProvider = {
   summary: string;
   /** Who may consider this provider (review page). */
   bestFor: string[];
+  /** Optional one-sentence synthesized verdict shown prominently on the review page. Omit until a verdict has been reviewed and approved. */
+  quickVerdict?: string;
+  /** Optional compact key-fact list for a scannable "At a glance" block. Omit to skip the block entirely. */
+  atAGlance?: ProviderAtAGlanceItem[];
+  /** Who this provider is a weaker fit for, shown alongside bestFor. Optional and safe to omit. */
+  notIdealFor?: string[];
+  /**
+   * Whether Japan X Trip independently tested this provider's service.
+   * Must only be set to true when independent testing has actually occurred;
+   * omit or set to false otherwise. Defaults to not shown.
+   */
+  independentlyTested?: boolean;
+  /**
+   * Optional FAQ list for this provider's review page. Shared source for both
+   * the visible FAQ section and FAQPage structured data, so the two can never
+   * drift apart. Omit to skip the FAQ section and schema entirely.
+   */
+  faqs?: ProviderFaq[];
   /** Short strengths list for the compare-page card. */
   strengths: string[];
   /** Longer strengths list for the review page. */

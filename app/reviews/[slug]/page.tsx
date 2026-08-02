@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/home-redesign/Header";
 import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import "@/styles/home-redesign.css";
+import { siteConfig } from "@/data/site";
 import {
   connectivityProviders,
   getConnectivityProvider,
@@ -88,6 +89,65 @@ export default async function ProviderReviewPage({
   const affiliate = isAffiliateProviderLink(provider);
   const destination = getProviderDestination(provider);
   const ctaLabel = getProviderCtaLabel(provider, "Check current plans");
+  const pageUrl = `${siteConfig.url}/reviews/${provider.slug}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${provider.name} Review for Japan Travelers`,
+    description: provider.summary,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: siteConfig.name,
+        item: siteConfig.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Reviews",
+        item: `${siteConfig.url}/#provider-list`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${provider.name} review`,
+        item: pageUrl,
+      },
+    ],
+  };
+
+  const faqSchema =
+    provider.faqs && provider.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: provider.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -161,6 +221,17 @@ export default async function ProviderReviewPage({
                 ))}
               </ul>
 
+              {provider.notIdealFor && provider.notIdealFor.length > 0 ? (
+                <>
+                  <h2>Not ideal for</h2>
+                  <ul className="review-not-ideal-list">
+                    {provider.notIdealFor.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+
               <p className="review-summary-note">
                 This assessment is based primarily on provider
                 information and practical traveler needs. It is
@@ -169,6 +240,29 @@ export default async function ProviderReviewPage({
             </aside>
 
             <article className="review-article">
+              {provider.quickVerdict ? (
+                <section className="review-quick-verdict">
+                  <p className="eyebrow">Quick verdict</p>
+                  <p>{provider.quickVerdict}</p>
+                </section>
+              ) : null}
+
+              {provider.atAGlance && provider.atAGlance.length > 0 ? (
+                <section className="review-section review-at-a-glance">
+                  <p className="eyebrow">At a glance</p>
+                  <h2>{provider.name} at a glance</h2>
+
+                  <dl className="review-at-a-glance-grid">
+                    {provider.atAGlance.map((item) => (
+                      <div key={item.label}>
+                        <dt>{item.label}</dt>
+                        <dd>{item.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              ) : null}
+
               {provider.products && provider.products.length > 0 ? (
                 <section className="review-section">
                   <p className="eyebrow">Choose a plan</p>
@@ -304,6 +398,13 @@ export default async function ProviderReviewPage({
                     condition.
                   </p>
 
+                  {provider.independentlyTested ? (
+                    <p className="review-independent-test-note">
+                      Japan X Trip independently tested {provider.name}
+                      &apos;s service as part of this review.
+                    </p>
+                  ) : null}
+
                   <p>
                     Affiliate relationships do not determine
                     rankings or recommendations. This site may
@@ -318,6 +419,20 @@ export default async function ProviderReviewPage({
                   </Link>
                 </div>
               </section>
+
+              {provider.faqs && provider.faqs.length > 0 ? (
+                <section className="review-section review-faq">
+                  <p className="eyebrow">Common questions</p>
+                  <h2>{provider.name} FAQ</h2>
+
+                  {provider.faqs.map((faq) => (
+                    <details key={faq.question}>
+                      <summary>{faq.question}</summary>
+                      <p>{faq.answer}</p>
+                    </details>
+                  ))}
+                </section>
+              ) : null}
 
               <section className="review-final-cta">
                 <div>
@@ -364,6 +479,27 @@ export default async function ProviderReviewPage({
       </main>
 
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      ) : null}
     </>
   );
 }
