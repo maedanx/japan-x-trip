@@ -4128,6 +4128,10 @@
     height: 43px;
   }
 
+  .jx-header .jx-header__logo {
+    min-height: 44px;
+  }
+
   .jx-header button.jx-header__menu-button {
     width: 44px !important;
     min-width: 44px !important;

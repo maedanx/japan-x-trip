@@ -583,7 +583,7 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
                     <PrimaryButton
                       href={destination}
                       variant="compact"
-                      rel={isAffiliate ? "sponsored nofollow noopener" : "noopener"}
+                      rel={isAffiliate ? "sponsored nofollow noopener noreferrer" : "noopener"}
                       ariaLabel={`${ctaLabel} on the ${provider.name} website, opens in a new tab`}
                       page="/compare"
                       provider={provider.name}

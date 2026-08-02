@@ -192,7 +192,7 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
                       href={provider.affiliateHref}
                       className={styles.primaryButton}
                       variant="provider"
-                      rel="sponsored nofollow noopener"
+                      rel="sponsored nofollow noopener noreferrer"
                       page="/pocket-wifi"
                       provider={provider.provider}
                       product="Travel Pocket WiFi"

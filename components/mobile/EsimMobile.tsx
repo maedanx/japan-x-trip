@@ -203,7 +203,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
                 <PrimaryButton
                   href={plan.href}
                   variant="plan"
-                  rel="sponsored nofollow noopener"
+                  rel="sponsored nofollow noopener noreferrer"
                   page="/esim"
                   provider="Airalo"
                   product={plan.allowance}

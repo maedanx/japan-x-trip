@@ -198,7 +198,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
                   href={PRODUCT.affiliateHref}
                   className={styles.primaryButton}
                   variant="provider"
-                  rel="sponsored noopener noreferrer"
+                  rel="sponsored nofollow noopener noreferrer"
                   page="/sim-card"
                   provider="Sakura Mobile"
                   product="Travel SIM"
