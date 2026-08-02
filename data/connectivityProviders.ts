@@ -144,6 +144,62 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "Travelers who prefer installation before flying",
       "People visiting multiple countries",
     ],
+    quickVerdict:
+      "Airalo is a practical option for travelers with an unlocked, eSIM-compatible phone who want to buy and install a Japan data plan digitally before departure. It offers both fixed-data and unlimited-labelled packages, and hotspot use may be available depending on the device and plan. It may be less suitable for travelers who need a physical product, guaranteed calls and SMS, in-person Japan-specific support, or one shared connection for several travelers — always confirm current plan details, activation, and network conditions on the official website before purchasing.",
+    atAGlance: [
+      { label: "Product type", value: "Travel eSIM (fixed-data and unlimited-labelled plans)" },
+      { label: "Setup", value: "Fully digital — no physical pickup required" },
+      { label: "Device requirement", value: "Unlocked, eSIM-compatible phone" },
+      { label: "Hotspot", value: "Supported when the device and plan permit it" },
+      { label: "Main limitation", value: "Package terms and activation rules vary by plan" },
+      {
+        label: "Review basis",
+        value: "Official Airalo information and editorial comparison criteria",
+      },
+    ],
+    notIdealFor: [
+      "Families or groups who want to share one connection across several devices",
+      "Travelers with a locked or non-eSIM-compatible phone",
+      "Travelers who need guaranteed calls or SMS",
+      "Travelers who prefer in-person, Japan-focused support",
+    ],
+    faqs: [
+      {
+        question: "Is Airalo good for Japan?",
+        answer:
+          "Airalo can be a good option for travelers with an unlocked, eSIM-compatible phone who want a fully digital setup with no physical pickup. Whether it is the right choice for you depends on your device, trip length, data needs, and whether you need a phone number or physical connectivity option.",
+      },
+      {
+        question: "Does Airalo include a phone number, calls, or SMS?",
+        answer:
+          "Many Airalo packages are positioned as data-only. Confirm the exact Plan Type for your selected package on the official Airalo website before purchasing, especially if you need calls or SMS.",
+      },
+      {
+        question: "Can I install Airalo before arriving in Japan?",
+        answer:
+          "Many Airalo eSIM packages can be installed digitally before departure. Confirm the exact activation timing for your selected package on the official website, since this can vary by product.",
+      },
+      {
+        question: "Can I use hotspot with Airalo?",
+        answer:
+          "Hotspot or tethering support can depend on your device and the selected package. Check the current package conditions on the official Airalo website before purchasing if hotspot use is important for your trip.",
+      },
+      {
+        question: "Is Airalo Unlimited really unlimited?",
+        answer:
+          "Packages labeled unlimited may still be subject to fair-use policies, speed reductions, or other conditions. Review the exact Fair Use terms for your selected package on the official website before purchasing.",
+      },
+      {
+        question: "What happens if my phone is locked?",
+        answer:
+          "A carrier-locked phone generally cannot use another provider's eSIM, including Airalo. Confirm your phone's unlock status with your home carrier before purchasing, or check compatibility using Japan X Trip's eSIM Compatibility Checker.",
+      },
+      {
+        question: "Can I get a refund from Airalo?",
+        answer:
+          "Refund eligibility can depend on the package status, usage, reason for the request, and Airalo's current policy. Review the official refund policy before purchasing if this is a concern.",
+      },
+    ],
     strengths: [
       "No physical collection",
       "Pre-trip installation",
@@ -174,6 +230,7 @@ export const connectivityProviders: ConnectivityProvider[] = [
     officialUrl: "https://www.airalo.com/",
     affiliateUrl: "",
     affiliateStatus: "unavailable",
+    ctaLabel: "Visit Airalo Official Site",
     products: [
       { label: "20GB", affiliateUrl: affiliateLinks.airalo.twentyGb },
       { label: "10GB", affiliateUrl: affiliateLinks.airalo.tenGb },
