@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Affiliate Disclosure",
   description:
     "Learn how affiliate links may be used on Japan X Trip and how they affect provider recommendations.",
+  alternates: {
+    canonical: "/affiliate-disclosure",
+  },
 };
 
 export default function AffiliateDisclosurePage() {

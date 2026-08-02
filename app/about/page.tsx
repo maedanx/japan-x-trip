@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "About Japan X Trip",
   description:
     "Learn why Japan X Trip was created and how it helps international travelers compare internet options for Japan.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

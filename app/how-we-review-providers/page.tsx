@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How We Review Providers",
   description:
     "See how Japan X Trip compares eSIM, physical SIM, and pocket Wi-Fi providers for international travelers.",
+  alternates: {
+    canonical: "/how-we-review-providers",
+  },
 };
 
 export default function ReviewMethodPage() {

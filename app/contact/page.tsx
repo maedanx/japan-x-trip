@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Current contact information and support limitations for Japan X Trip.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

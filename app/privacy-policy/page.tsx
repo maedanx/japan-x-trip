@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Read the privacy practices currently applicable to Japan X Trip.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
