@@ -43,7 +43,7 @@
     border-radius: 11px;
     background: #f7f9fc;
     color: #566a7c;
-    font-size: 11.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -73,7 +73,7 @@
     margin: 0;
     padding: 4px 0;
     color: #ff3d43;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 850;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -86,7 +86,7 @@
     min-height: 44px;
     padding: 0 2px;
     color: #0b4f9f;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 800;
     text-decoration: underline;
     white-space: nowrap;
@@ -227,7 +227,7 @@
     margin-bottom: 10px;
     border-radius: 999px;
     padding: 5px 11px;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 850;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -557,7 +557,7 @@
     background: #f5f8fc;
     padding: 4px 10px;
     color: #2c4258;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 750;
   }
 
@@ -567,7 +567,7 @@
     gap: 5px;
     margin: 10px 0 0;
     color: #3a6ea5;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 750;
   }
 
@@ -676,7 +676,7 @@
   .providerLinkNote {
     margin: 8px 0 0;
     color: #8290a1;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
   }
 
@@ -723,7 +723,7 @@
     gap: 10px;
     padding: 0 13px;
     color: #193248;
-    font-size: 10.5px;
+    font-size: 14px;
     font-weight: 750;
     list-style: none;
   }
@@ -750,7 +750,7 @@
     margin: 0;
     padding: 0 13px 14px;
     color: #607485;
-    font-size: 9.5px;
+    font-size: 14px;
     line-height: 1.55;
   }
 
@@ -788,7 +788,7 @@
   .finalCta p {
     margin: 0 0 15px;
     color: rgba(235, 244, 251, 0.78);
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
