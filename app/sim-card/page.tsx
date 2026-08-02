@@ -240,7 +240,7 @@ export default function SimCardPage() {
       <Header />
 
       <main>
-        <SimCardMobile />
+        <SimCardMobile faqs={faqs} />
 
         <div className={styles.desktopContent}>
         <section className={styles.hero}>

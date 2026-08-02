@@ -53,7 +53,20 @@ const PLANS = [
   },
 ] as const;
 
-export default function EsimMobile() {
+type EsimFaq = {
+  question: string;
+  answer: string;
+};
+
+type EsimMobileProps = {
+  /**
+   * Shared with app/esim/page.tsx's FAQPage structured data so the
+   * visible FAQ and the schema never drift apart.
+   */
+  faqs: EsimFaq[];
+};
+
+export default function EsimMobile({ faqs }: EsimMobileProps) {
   return (
     <div className={styles.mobilePage}>
       <section className={styles.hero}>
@@ -230,6 +243,24 @@ export default function EsimMobile() {
         </Link>
       </section>
 
+      <section className={styles.faq} aria-labelledby="mobile-esim-faq-title">
+        <span className={styles.fitGuidanceLabel}>FAQ</span>
+        <h2 id="mobile-esim-faq-title">Japan eSIM questions</h2>
+
+        <div className={styles.faqList}>
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>
+                {faq.question}
+                <ChevronIcon />
+              </summary>
+
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.finalCta}>
         <small>Not sure which plan fits?</small>
 
@@ -321,6 +352,14 @@ function PhoneCheckIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <rect x="6" y="2" width="12" height="20" rx="3" />
       <path d="m9 12 2 2 4-5" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }

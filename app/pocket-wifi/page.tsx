@@ -240,7 +240,7 @@ export default function PocketWifiPage() {
       <Header />
 
       <main>
-        <PocketWifiMobile />
+        <PocketWifiMobile faqs={faqs} />
 
         <div className={styles.desktopContent}>
         <section className={styles.hero}>

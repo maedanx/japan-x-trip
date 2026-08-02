@@ -46,7 +46,20 @@ const PRODUCT = {
   affiliateHref: affiliateLinks.sakuraMobile.travelSim,
 } as const;
 
-export default function SimCardMobile() {
+type SimCardFaq = {
+  question: string;
+  answer: string;
+};
+
+type SimCardMobileProps = {
+  /**
+   * Shared with app/sim-card/page.tsx's FAQPage structured data so the
+   * visible FAQ and the schema never drift apart.
+   */
+  faqs: SimCardFaq[];
+};
+
+export default function SimCardMobile({ faqs }: SimCardMobileProps) {
   return (
     <div className={styles.mobilePage}>
       <section className={styles.hero}>
@@ -253,6 +266,24 @@ export default function SimCardMobile() {
         </div>
       </section>
 
+      <section className={styles.faq} aria-labelledby="mobile-sim-card-faq-title">
+        <span className={styles.fitGuidanceLabel}>FAQ</span>
+        <h2 id="mobile-sim-card-faq-title">Japan SIM card questions</h2>
+
+        <div className={styles.faqList}>
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>
+                {faq.question}
+                <ChevronIcon />
+              </summary>
+
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.finalCta}>
         <small>Not sure which option fits?</small>
 
@@ -333,6 +364,14 @@ function AlertIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 3 3 20h18Z" />
       <path d="M12 10v4M12 17h.01" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }

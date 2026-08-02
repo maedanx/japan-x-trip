@@ -217,7 +217,7 @@ export default function EsimPage() {
       <Header />
 
       <main>
-        <EsimMobile />
+        <EsimMobile faqs={faqs} />
 
         <div className={styles.desktopContent}>
         <section className={styles.hero}>

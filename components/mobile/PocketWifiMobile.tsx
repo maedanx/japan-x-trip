@@ -67,7 +67,20 @@ const PROVIDERS: readonly PocketWifiProvider[] = [
   },
 ] as const;
 
-export default function PocketWifiMobile() {
+type PocketWifiFaq = {
+  question: string;
+  answer: string;
+};
+
+type PocketWifiMobileProps = {
+  /**
+   * Shared with app/pocket-wifi/page.tsx's FAQPage structured data so the
+   * visible FAQ and the schema never drift apart.
+   */
+  faqs: PocketWifiFaq[];
+};
+
+export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
   return (
     <div className={styles.mobilePage}>
       <section className={styles.hero}>
@@ -240,6 +253,24 @@ export default function PocketWifiMobile() {
         </div>
       </section>
 
+      <section className={styles.faq} aria-labelledby="mobile-pocket-wifi-faq-title">
+        <small>FAQ</small>
+        <h2 id="mobile-pocket-wifi-faq-title">Japan pocket Wi-Fi questions</h2>
+
+        <div className={styles.faqList}>
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>
+                {faq.question}
+                <ChevronIcon />
+              </summary>
+
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.finalCta}>
         <small>Not sure what your group needs?</small>
 
@@ -315,6 +346,14 @@ function ReturnIcon() {
       <path d="M8 7H5v3" />
       <path d="M5 10a7 7 0 1 1 1 6" />
       <path d="M12 8v4l3 2" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }

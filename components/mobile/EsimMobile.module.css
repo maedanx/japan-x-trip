@@ -433,6 +433,75 @@
     text-decoration: none;
   }
 
+  .faq {
+    margin: 0 15px 18px;
+    padding: 18px 16px;
+    border: 1px solid #e2e9f0;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 7px 20px rgba(11, 42, 65, 0.055);
+  }
+
+  .faq > h2 {
+    margin: 3px 0 14px;
+    color: #102a40;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .faqList {
+    overflow: hidden;
+    border: 1px solid #e2eaf1;
+    border-radius: 14px;
+  }
+
+  .faqList details {
+    border-bottom: 1px solid #e2eaf1;
+  }
+
+  .faqList details:last-child {
+    border-bottom: 0;
+  }
+
+  .faqList summary {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 13px;
+    color: #193248;
+    font-size: 14px;
+    font-weight: 750;
+    list-style: none;
+  }
+
+  .faqList summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faqList summary svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.18s ease;
+  }
+
+  .faqList details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .faqList details p {
+    margin: 0;
+    padding: 0 13px 14px;
+    color: #607485;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
   .finalCta {
     margin: 0 15px 18px;
     padding: 23px 17px;
