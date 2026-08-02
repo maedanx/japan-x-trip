@@ -221,6 +221,16 @@ export default function FamilyPocketWifiPage() {
             </p>
 
             <p className={styles.heroText}>
+              A single Pocket WiFi router works well for families who
+              travel together and stay within a short distance of each
+              other, since only the people near the router keep the
+              connection. If your family plans to split up during the
+              day — for example, teens exploring separately or parents
+              attending different activities — individual eSIMs or a
+              backup eSIM alongside the router are usually more reliable.
+            </p>
+
+            <p className={styles.heroText}>
               Answer a few questions below to see whether your family
               should use one Pocket WiFi, multiple eSIMs, or a combination
               of both.
@@ -233,6 +243,16 @@ export default function FamilyPocketWifiPage() {
               Find the Best Option for My Family
               <span aria-hidden="true">↓</span>
             </a>
+
+            <p className={styles.heroText} style={{ marginTop: 22 }}>
+              Editorial review updated: July 2026. Provider details may
+              change — confirm current pickup, return, and device-limit
+              conditions on the official site. Read our{" "}
+              <Link href="/how-we-review-providers">
+                review methodology
+              </Link>
+              .
+            </p>
           </div>
         </section>
 

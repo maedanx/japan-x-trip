@@ -93,6 +93,67 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "Travelers staying for either a short trip or a longer period",
       "People who prefer a provider focused specifically on Japan",
     ],
+    quickVerdict:
+      "Sakura Mobile is a strong starting point for travelers who want to compare eSIM, physical SIM, and Pocket Wi-Fi from one Japan-focused provider. It may be especially useful for travelers who value English-language guidance or need a physical connectivity option. The best product depends on phone compatibility, group size, pickup needs, and trip length — always confirm current product details, activation, and pickup or delivery conditions on the official website before purchasing.",
+    atAGlance: [
+      { label: "Product formats", value: "Travel eSIM, Travel SIM, and Travel Pocket Wi-Fi" },
+      {
+        label: "Best for",
+        value: "Travelers who want Japan-focused guidance and product choice",
+      },
+      { label: "Setup", value: "Digital or physical, depending on the selected product" },
+      { label: "Support", value: "English-language guidance available" },
+      {
+        label: "Main limitation",
+        value: "Conditions differ by product — compare the exact plan before buying",
+      },
+      {
+        label: "Review basis",
+        value: "Official Sakura Mobile information and editorial comparison criteria",
+      },
+    ],
+    notIdealFor: [
+      "Travelers who have already chosen a single connection type and just want the simplest checkout",
+      "Solo travelers who only need a basic digital eSIM with no other product comparison",
+      "Travelers prioritizing the lowest possible price over Japan-focused guidance and support",
+    ],
+    faqs: [
+      {
+        question: "Is Sakura Mobile legitimate?",
+        answer:
+          "Sakura Mobile is an established Japan-focused connectivity provider offering eSIM, physical SIM, and Pocket Wi-Fi products. As with any purchase, confirm current terms and reviews on the official website before booking.",
+      },
+      {
+        question: "Does Sakura Mobile offer eSIM?",
+        answer:
+          "Yes, Sakura Mobile offers a Travel eSIM product alongside its physical SIM and Pocket Wi-Fi options. Confirm current device compatibility and activation details on the official website before purchasing.",
+      },
+      {
+        question: "Can Sakura Mobile products be collected at the airport?",
+        answer:
+          "Airport pickup and delivery options may be available for some Sakura Mobile products, depending on the exact item and location. Confirm current pickup options on the official website before booking.",
+      },
+      {
+        question: "Does Sakura Mobile provide English support?",
+        answer:
+          "Sakura Mobile is generally positioned as offering English-language guidance for travelers. Confirm current support channels and availability on the official website.",
+      },
+      {
+        question: "Is Sakura Mobile the best option for every traveler?",
+        answer:
+          "No single provider is the best option for every traveler. Sakura Mobile may suit travelers who want Japan-focused guidance and a choice between eSIM, SIM, and Pocket Wi-Fi, while other travelers may prefer a different provider or connection type.",
+      },
+      {
+        question: "Which Sakura Mobile product is best for families?",
+        answer:
+          "Families and groups often benefit from Sakura Mobile's Pocket Wi-Fi option, since it can share one connection across several devices. Compare this against the eSIM and physical SIM products before deciding.",
+      },
+      {
+        question: "Does Sakura Mobile Pocket Wi-Fi need to be returned?",
+        answer:
+          "Rental Pocket Wi-Fi products generally need to be returned at the end of the rental period. Confirm the exact return method, location, and deadline on the official website before booking.",
+      },
+    ],
     strengths: [
       "Several connection types",
       "Japan-focused support",
@@ -123,6 +184,7 @@ export const connectivityProviders: ConnectivityProvider[] = [
     officialUrl: "https://www.sakuramobile.jp/",
     affiliateUrl: getGeneralAffiliateLink("sakuraMobile"),
     affiliateStatus: "approved",
+    ctaLabel: "Check Sakura Mobile Plans",
     products: [
       { label: "Travel eSIM", affiliateUrl: affiliateLinks.sakuraMobile.travelEsim },
       { label: "Travel SIM", affiliateUrl: affiliateLinks.sakuraMobile.travelSim },

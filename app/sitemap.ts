@@ -92,6 +92,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${siteConfig.url}/best-pocket-wifi-japan`,
+      lastModified: updated,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/sim-card-vs-esim`,
       lastModified: updated,
       changeFrequency: "weekly",

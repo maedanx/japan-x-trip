@@ -3,7 +3,9 @@ import Link from "next/link";
 import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
 import PocketWifiMobile from "@/components/mobile/PocketWifiMobile";
+import AffiliateCtaLink from "@/components/ui/AffiliateCtaLink";
 import { siteConfig } from "@/data/site";
+import { affiliateLinks } from "@/data/affiliateLinks";
 import styles from "./page.module.css";
 import "@/styles/home-redesign.css";
 
@@ -256,6 +258,14 @@ export default function PocketWifiPage() {
                 collect, charge, carry, protect, and return the device.
               </p>
 
+              <p className={styles.heroText}>
+                For most families, groups, or travelers carrying several
+                devices, pocket Wi-Fi is a practical way to share one
+                connection without changing any phone settings. Solo
+                travelers with a single compatible phone are often better
+                served by an eSIM.
+              </p>
+
               <div className={styles.heroActions}>
                 <Link className={styles.primaryButton} href="/compare">
                   Compare Japan internet options
@@ -267,8 +277,15 @@ export default function PocketWifiPage() {
               </div>
 
               <p className={styles.disclosure}>
-                Provider affiliate applications are currently under review.
-                Recommendations are not based on commission availability.
+                Some links on this page may be affiliate links.
+                Recommendations are based on traveler suitability, not
+                commission availability.
+              </p>
+
+              <p className={styles.disclosure}>
+                Editorial review updated: July 2026. Provider details may
+                change — confirm current pricing, pickup, and return
+                conditions on the official site.
               </p>
             </div>
 
@@ -293,7 +310,7 @@ export default function PocketWifiPage() {
                 <li>You would rather not carry, charge, or return equipment</li>
               </ul>
 
-              <Link href="/diagnosis">Take the 30-sec check →</Link>
+              <Link href="/diagnosis">Find My Best Option →</Link>
             </aside>
           </div>
         </section>
@@ -486,8 +503,9 @@ export default function PocketWifiPage() {
               <p className={styles.eyebrow}>Provider guides</p>
               <h2>Review Japan-focused pocket Wi-Fi options</h2>
               <p>
-                Current purchase links are being prepared while partnership
-                applications are under review.
+                Confirm current pricing, availability, and pickup or return
+                conditions on each provider&apos;s official site before
+                booking.
               </p>
             </div>
 
@@ -527,7 +545,16 @@ export default function PocketWifiPage() {
                   <Link href="/reviews/ninja-wifi">
                     Read our review
                   </Link>
-                  <span>Official link coming soon</span>
+                  <AffiliateCtaLink
+                    href={affiliateLinks.ninjaWifi.travelPocketWifi}
+                    rel="sponsored nofollow noopener noreferrer"
+                    page="/pocket-wifi"
+                    provider="NINJA WiFi"
+                    product="NINJA WiFi Pocket WiFi"
+                    placement="card"
+                  >
+                    Check current plans
+                  </AffiliateCtaLink>
                 </div>
               </article>
 
@@ -546,7 +573,16 @@ export default function PocketWifiPage() {
                   <Link href="/reviews/sakura-mobile">
                     Read our review
                   </Link>
-                  <span>Official link coming soon</span>
+                  <AffiliateCtaLink
+                    href={affiliateLinks.sakuraMobile.travelPocketWifi}
+                    rel="sponsored nofollow noopener noreferrer"
+                    page="/pocket-wifi"
+                    provider="Sakura Mobile"
+                    product="Travel Pocket WiFi"
+                    placement="card"
+                  >
+                    Check current plans
+                  </AffiliateCtaLink>
                 </div>
               </article>
             </div>
@@ -588,7 +624,7 @@ export default function PocketWifiPage() {
               </Link>
 
               <Link className={styles.secondaryButton} href="/diagnosis">
-                Take the 30-sec check
+                Find My Best Option
               </Link>
             </div>
           </div>
