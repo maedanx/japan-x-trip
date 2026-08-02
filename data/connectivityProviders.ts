@@ -456,6 +456,68 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "Visitors who prefer airport pickup or physical delivery",
       "People who do not want to change the SIM in their phone",
     ],
+    quickVerdict:
+      "NINJA WiFi is worth considering for families, groups, and travelers who want to connect several devices in Japan using a rental Pocket Wi-Fi router, or who prefer a physical SIM or eSIM as separate product options. Each product has its own setup, compatibility, and logistics, so the right choice depends on the exact product selected. It may be less suitable for solo travelers who prefer not to carry, charge, or return a device — always confirm current pickup, return, and plan details on the official website before booking.",
+    atAGlance: [
+      {
+        label: "Product formats",
+        value: "Pocket Wi-Fi rental, physical SIM (SHOGUN SIM), and eSIM",
+      },
+      { label: "Best for", value: "Families, groups, and multiple connected devices" },
+      { label: "Pocket Wi-Fi setup", value: "Collected or delivered as rental equipment" },
+      { label: "Pocket Wi-Fi return", value: "Required at the end of the rental" },
+      {
+        label: "Main limitation",
+        value: "Pickup, carrying, charging, and return logistics for Pocket Wi-Fi",
+      },
+      {
+        label: "Review basis",
+        value: "Official NINJA WiFi information and editorial comparison criteria",
+      },
+    ],
+    notIdealFor: [
+      "Solo travelers who prefer not to carry, charge, or return a rental device",
+      "Travelers who will split up and need independent connections",
+      "Minimalist travelers who prefer a fully digital eSIM instead",
+      "Travelers concerned about forgetting to return rental equipment",
+    ],
+    faqs: [
+      {
+        question: "Is NINJA WiFi good for Japan?",
+        answer:
+          "NINJA WiFi can be a good option for families, groups, and travelers who want to connect several devices, or who want a choice between a rental Pocket Wi-Fi router, a physical SIM, or an eSIM. Whether it's the right choice depends on your group size, devices, and how comfortable you are carrying and returning rental equipment.",
+      },
+      {
+        question: "How many devices can connect to a NINJA WiFi router?",
+        answer:
+          "The number of devices a Pocket Wi-Fi router can connect depends on the exact router model and plan. Check the current device-limit specifications on the official NINJA WiFi website before booking.",
+      },
+      {
+        question: "Does the Pocket Wi-Fi router need to be returned?",
+        answer:
+          "Rental Pocket Wi-Fi routers are generally expected to be returned at the end of the rental period. Confirm the exact return method, location, and deadline for your booking on the official website.",
+      },
+      {
+        question: "Is NINJA WiFi Unlimited really unlimited?",
+        answer:
+          "Plans labeled unlimited may still be subject to fair-use policies, speed reductions, or other conditions that vary by plan. Review the exact terms for your selected plan on the official website before booking.",
+      },
+      {
+        question: "What happens if I lose or damage the router?",
+        answer:
+          "Rental equipment may involve additional charges for loss, damage, or late return. Review the current official terms and any available protection options before booking.",
+      },
+      {
+        question: "Does NINJA WiFi offer a physical SIM or eSIM instead of Pocket Wi-Fi?",
+        answer:
+          "Yes, NINJA WiFi offers SHOGUN SIM as a physical SIM option and a separate NINJA WiFi eSIM product, in addition to Pocket Wi-Fi rental. Each product has its own compatibility, setup, and terms, so check the specific product page before choosing.",
+      },
+      {
+        question: "Can I get a refund from NINJA WiFi?",
+        answer:
+          "Refund eligibility can depend on the product, booking status, and NINJA WiFi's current policy. Review the official refund terms before booking if this is a concern.",
+      },
+    ],
     strengths: [
       "Multiple-device connection",
       "No phone SIM replacement",
@@ -486,6 +548,7 @@ export const connectivityProviders: ConnectivityProvider[] = [
     officialUrl: "https://ninjawifi.com/en/",
     affiliateUrl: getGeneralAffiliateLink("ninjaWifi"),
     affiliateStatus: "approved",
+    ctaLabel: "Check NINJA WiFi Options",
     products: [
       {
         label: "NINJA WiFi Pocket WiFi",
