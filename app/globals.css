@@ -4272,6 +4272,21 @@ legend > span {
   line-height: 1.75;
 }
 
+.best-esim-quick-answer {
+  padding: 26px 30px;
+  margin-bottom: 48px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.best-esim-quick-answer p:not(.eyebrow) {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
 .best-esim-pick-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4471,6 +4486,20 @@ legend > span {
   line-height: 1.6;
 }
 
+.best-esim-fit-line {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  background: var(--paper);
+}
+
+.best-esim-fit-line strong {
+  color: var(--ink);
+}
+
 .best-esim-provider-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4573,6 +4602,56 @@ legend > span {
   color: rgba(255, 255, 255, 0.66);
   font-size: 0.72rem;
   line-height: 1.55;
+}
+
+.best-esim-scenarios {
+  margin-top: 85px;
+}
+
+.best-esim-scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 36px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  background: var(--line);
+}
+
+.best-esim-scenario-grid article {
+  padding: 22px;
+  background: #fff;
+}
+
+.best-esim-scenario-grid h3 {
+  margin: 0 0 9px;
+  color: var(--ink);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.best-esim-scenario-grid > article > p:first-of-type {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.best-esim-scenario-check {
+  margin: 10px 0 0 !important;
+  color: #819195;
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+
+.best-esim-scenario-grid a {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
 .best-esim-method {
@@ -4689,6 +4768,19 @@ legend > span {
   flex: 0 0 auto;
 }
 
+.best-esim-final-actions {
+  flex: 0 0 auto;
+  display: grid;
+  gap: 13px;
+}
+
+.best-esim-final-actions > a:last-child {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
 @media (max-width: 1050px) {
   .best-esim-pick-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4715,7 +4807,8 @@ legend > span {
     gap: 23px;
   }
 
-  .best-esim-choice-grid {
+  .best-esim-choice-grid,
+  .best-esim-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -4735,8 +4828,13 @@ legend > span {
   }
 
   .best-esim-pick-grid,
-  .best-esim-choice-grid {
+  .best-esim-choice-grid,
+  .best-esim-scenario-grid {
     grid-template-columns: 1fr;
+  }
+
+  .best-esim-quick-answer {
+    padding: 20px 19px;
   }
 
   .best-esim-provider-card {

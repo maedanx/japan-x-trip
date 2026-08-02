@@ -52,6 +52,7 @@ const providerNotes: Record<
   {
     label: string;
     fit: string;
+    notIdealFor: string;
     setup: string;
     pickup: string;
     support: string;
@@ -60,6 +61,8 @@ const providerNotes: Record<
   "sakura-mobile": {
     label: "Japan-focused starting point",
     fit: "Travelers who want several connection types and Japan-focused guidance.",
+    notIdealFor:
+      "Travelers who want a single simple digital-only plan rather than comparing several product types.",
     setup: "Digital or physical, depending on product",
     pickup: "Available for some physical products",
     support: "English-language guidance available",
@@ -67,6 +70,8 @@ const providerNotes: Record<
   airalo: {
     label: "Simple digital eSIM",
     fit: "Solo travelers with an unlocked eSIM-compatible phone.",
+    notIdealFor:
+      "Travelers who need a local phone number, calls, or SMS, or whose phone does not support eSIM.",
     setup: "Digital installation",
     pickup: "Not required",
     support: "Online support and setup resources",
@@ -74,6 +79,8 @@ const providerNotes: Record<
   ubigi: {
     label: "Alternative digital eSIM",
     fit: "Travelers comparing multiple prepaid eSIM options.",
+    notIdealFor:
+      "Travelers with a locked or non-eSIM-compatible phone, or who prefer a single provider rather than comparing options.",
     setup: "Digital installation",
     pickup: "Not required",
     support: "Online support resources",
@@ -81,6 +88,8 @@ const providerNotes: Record<
   "nomad-esim": {
     label: "Additional eSIM option",
     fit: "Travelers comparing current data allowances and validity periods.",
+    notIdealFor:
+      "Travelers who prefer a fully guided setup rather than managing plan details themselves.",
     setup: "Digital installation",
     pickup: "Not required",
     support: "Online support resources",
@@ -88,6 +97,8 @@ const providerNotes: Record<
   "japan-wireless": {
     label: "Japan travel alternative",
     fit: "Travelers comparing eSIM and physical connectivity options.",
+    notIdealFor:
+      "Travelers who want to avoid physical pickup, delivery, or return logistics entirely.",
     setup: "Depends on selected product",
     pickup: "Available for some products",
     support: "Japan-focused traveler information",
@@ -95,6 +106,8 @@ const providerNotes: Record<
   "ninja-wifi": {
     label: "Family and group alternative",
     fit: "Families and groups connecting several phones, tablets, or laptops.",
+    notIdealFor:
+      "Solo travelers with one eSIM-compatible phone who prefer a fully digital setup without carrying or returning a device.",
     setup: "Physical rental or selected digital product",
     pickup: "Airport or delivery options may be available",
     support: "English-language traveler guidance",
@@ -237,19 +250,19 @@ export default function BestEsimJapanPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(articleSchema),
+            __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(breadcrumbSchema),
+            __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema),
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
           }}
         />
 
@@ -276,15 +289,15 @@ export default function BestEsimJapanPage() {
             </p>
 
             <div className="best-esim-hero-actions">
-              <Link className="button" href="/#quick-check">
-                Get a 30-second recommendation
+              <Link className="button" href="/diagnosis">
+                Find My Best Option
                 <span aria-hidden="true">→</span>
               </Link>
 
-              <a href="#comparison">
-                Compare providers
-                <span aria-hidden="true">↓</span>
-              </a>
+              <Link href="/compare">
+                Compare All Options
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
 
             <p className="best-esim-update">
@@ -296,6 +309,20 @@ export default function BestEsimJapanPage() {
 
         <section className="best-esim-content">
           <div className="container">
+            <section className="best-esim-quick-answer">
+              <p className="eyebrow">Quick answer</p>
+              <p>
+                For most solo travelers with an unlocked,
+                eSIM-compatible phone, an eSIM is the most
+                convenient way to get mobile data in Japan. The
+                right provider depends on trip length, data use,
+                hotspot needs, support preferences, and current
+                plan terms. Families sharing several devices are
+                often better served by{" "}
+                <Link href="/pocket-wifi">pocket Wi-Fi</Link>.
+              </p>
+            </section>
+
             <section className="best-esim-picks">
               <header className="best-esim-section-heading">
                 <div>
@@ -304,8 +331,10 @@ export default function BestEsimJapanPage() {
                 </div>
 
                 <p>
-                  These are use-case labels, not paid rankings.
-                  The most suitable option depends on the traveler.
+                  These are use-case starting points, not a ranked
+                  list. The order shown is not a claim that one
+                  provider is best overall — the most suitable
+                  option depends on your own trip.
                 </p>
               </header>
 
@@ -448,6 +477,14 @@ export default function BestEsimJapanPage() {
                       {provider.summary}
                     </p>
 
+                    <p className="best-esim-fit-line">
+                      <strong>Best for:</strong>{" "}
+                      {providerNotes[provider.slug]?.fit}
+                      <br />
+                      <strong>Not ideal for:</strong>{" "}
+                      {providerNotes[provider.slug]?.notIdealFor}
+                    </p>
+
                     <div className="best-esim-provider-columns">
                       <div>
                         <h4>Potential advantages</h4>
@@ -557,6 +594,117 @@ export default function BestEsimJapanPage() {
               </div>
             </section>
 
+            <section className="best-esim-scenarios">
+              <header className="best-esim-section-heading">
+                <div>
+                  <p className="eyebrow">Match your trip</p>
+                  <h2>Common traveler scenarios.</h2>
+                </div>
+
+                <p>
+                  These are general starting points, not a
+                  guarantee of the best option for every situation.
+                  Confirm details for the exact plan before buying.
+                </p>
+              </header>
+
+              <div className="best-esim-scenario-grid">
+                <article>
+                  <h3>Solo traveler, unlocked phone</h3>
+                  <p>
+                    A digital eSIM installed before departure is
+                    usually the simplest option.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: exact model support and carrier-unlock
+                    status.
+                  </p>
+                  <Link href="/esim">
+                    Japan eSIM Guide
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+
+                <article>
+                  <h3>Family or group sharing devices</h3>
+                  <p>
+                    Sharing data across several phones, tablets, or
+                    laptops may be easier with one shared connection
+                    than several individual eSIMs.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: device count, tethering limits, and
+                    rental logistics.
+                  </p>
+                  <Link href="/esim-vs-pocket-wifi-japan">
+                    eSIM vs Pocket Wi-Fi
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+
+                <article>
+                  <h3>Heavy data use or hotspot needs</h3>
+                  <p>
+                    Navigation, video, remote work, and tethering
+                    can use far more data than expected.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: estimated daily data use for your trip.
+                  </p>
+                  <Link href="/data-calculator">
+                    Data Calculator
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+
+                <article>
+                  <h3>Locked or non-eSIM phone</h3>
+                  <p>
+                    A physical SIM or pocket Wi-Fi may be the more
+                    practical choice.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: whether your phone is carrier-unlocked.
+                  </p>
+                  <Link href="/sim-card-vs-esim">
+                    eSIM vs physical SIM
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+
+                <article>
+                  <h3>First-time eSIM user</h3>
+                  <p>
+                    Confirm your device supports eSIM before
+                    choosing a provider.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: your exact phone model on the checker.
+                  </p>
+                  <Link href="/esim-checker">
+                    eSIM Compatibility Checker
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+
+                <article>
+                  <h3>Arriving and setting up on the go</h3>
+                  <p>
+                    Some travelers prefer to activate or pick up
+                    connectivity after landing.
+                  </p>
+                  <p className="best-esim-scenario-check">
+                    Verify: available setup and pickup options at
+                    the airport.
+                  </p>
+                  <Link href="/airport">
+                    Airport Internet Guide
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+              </div>
+            </section>
+
             <section className="best-esim-method">
               <div>
                 <p className="eyebrow">Editorial transparency</p>
@@ -619,10 +767,17 @@ export default function BestEsimJapanPage() {
                 </p>
               </div>
 
-              <Link className="button" href="/#quick-check">
-                View 30-second recommendation
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="best-esim-final-actions">
+                <Link className="button" href="/diagnosis">
+                  Find My Best Option
+                  <span aria-hidden="true">→</span>
+                </Link>
+
+                <Link href="/compare">
+                  Compare All Options
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </section>
           </div>
         </section>
