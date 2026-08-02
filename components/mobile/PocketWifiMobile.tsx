@@ -96,7 +96,11 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
         <p className={styles.intro}>
           Share internet with family and friends.
           <br />
-          Connect phones, tablets, and laptops.
+          Connect phones, tablets, and laptops. See the{" "}
+          <Link href="/best-pocket-wifi-japan">
+            Best Pocket WiFi for Japan comparison
+          </Link>{" "}
+          for a side-by-side summary of these options.
         </p>
 
         <div className={styles.heroGrid}>

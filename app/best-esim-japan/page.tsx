@@ -382,7 +382,12 @@ export default function BestEsimJapanPage() {
                 <p>
                   Exact prices, allowances, validity periods, and
                   promotional offers should be confirmed on the
-                  provider’s official website.
+                  provider’s official website. Deciding specifically
+                  between Airalo and Ubigi? See the{" "}
+                  <Link href="/airalo-vs-ubigi-japan">
+                    Airalo vs Ubigi comparison
+                  </Link>{" "}
+                  for a closer look.
                 </p>
               </header>
 

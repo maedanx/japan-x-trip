@@ -505,7 +505,11 @@ export default function PocketWifiPage() {
               <p>
                 Confirm current pricing, availability, and pickup or return
                 conditions on each provider&apos;s official site before
-                booking.
+                booking. See the{" "}
+                <Link href="/best-pocket-wifi-japan">
+                  Best Pocket WiFi for Japan comparison
+                </Link>{" "}
+                for a side-by-side summary of these options.
               </p>
             </div>
 

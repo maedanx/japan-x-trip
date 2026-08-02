@@ -363,7 +363,10 @@ export default function EsimPage() {
               <h2>How to install and use a Japan eSIM</h2>
               <p>
                 The exact menus vary by phone and provider, but the overall
-                process is usually similar.
+                process is usually similar. For device-specific steps, see
+                the <Link href="/japan-esim-iphone">iPhone eSIM guide</Link>{" "}
+                or the{" "}
+                <Link href="/japan-esim-android">Android eSIM guide</Link>.
               </p>
             </div>
 

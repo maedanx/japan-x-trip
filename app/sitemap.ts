@@ -127,6 +127,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${siteConfig.url}/esim-vs-pocket-wifi-japan`,
+      lastModified: updated,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/about`,
       lastModified: updated,
       changeFrequency: "monthly",
