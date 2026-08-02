@@ -196,6 +196,62 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "People using an unlocked eSIM-compatible device",
       "Travelers who may need connectivity in other destinations",
     ],
+    quickVerdict:
+      "Ubigi is worth considering for travelers with an unlocked, eSIM-compatible phone who want to arrange mobile data digitally before a Japan trip, with no physical pickup required. It works as one option among several prepaid eSIM providers for Japan. It may be less suitable for travelers who need a phone number, physical SIM, pocket Wi-Fi, or in-person Japan-specific support — always confirm current plan details, activation, and network conditions on the official website before purchasing.",
+    atAGlance: [
+      { label: "Product type", value: "Data-only eSIM" },
+      { label: "Setup", value: "Fully digital — no physical pickup required" },
+      { label: "Device requirement", value: "Unlocked, eSIM-compatible phone" },
+      { label: "Best for", value: "Comparing prepaid eSIM options for Japan" },
+      { label: "Main limitation", value: "Requires a compatible unlocked device" },
+      {
+        label: "Review basis",
+        value: "Official Ubigi information and editorial comparison criteria",
+      },
+    ],
+    notIdealFor: [
+      "Families or groups who want to share one connection across several devices",
+      "Travelers with a locked or non-eSIM-compatible phone",
+      "Travelers who need a phone number or standard calls and SMS",
+      "Travelers who prefer in-person, Japan-focused support",
+    ],
+    faqs: [
+      {
+        question: "Is Ubigi good for Japan?",
+        answer:
+          "Ubigi can be a good option for travelers with an unlocked, eSIM-compatible phone who want a fully digital setup with no physical pickup. Whether it is the right choice for you depends on your device, trip length, data needs, and whether you need a phone number or physical connectivity option.",
+      },
+      {
+        question: "Does Ubigi include a phone number, calls, or SMS?",
+        answer:
+          "Ubigi is generally positioned as a data-focused eSIM service. Confirm the exact features included with your selected plan on the official Ubigi website before purchasing, especially if you need calls or SMS.",
+      },
+      {
+        question: "Can I install Ubigi before arriving in Japan?",
+        answer:
+          "Many Ubigi eSIM plans can be installed digitally before departure. Confirm the exact activation process and timing for your selected plan on the official website, since this can vary by product.",
+      },
+      {
+        question: "Can I use hotspot with Ubigi?",
+        answer:
+          "Hotspot or tethering support can depend on your device and the selected plan. Check the current plan conditions on the official Ubigi website before purchasing if hotspot use is important for your trip.",
+      },
+      {
+        question: "Is Ubigi Unlimited really unlimited?",
+        answer:
+          "Plans labeled unlimited may still be subject to fair-use policies, speed reductions, or other conditions. Review the exact Fair Use terms for your selected plan on the official website before purchasing.",
+      },
+      {
+        question: "What happens if my phone is locked?",
+        answer:
+          "A carrier-locked phone generally cannot use another provider's eSIM, including Ubigi. Confirm your phone's unlock status with your home carrier before purchasing, or check compatibility using Japan X Trip's eSIM Compatibility Checker.",
+      },
+      {
+        question: "Can I get a refund from Ubigi?",
+        answer:
+          "Refund eligibility can depend on whether the plan was used, the reason for the request, and Ubigi's current terms. Review the official refund policy before purchasing if this is a concern.",
+      },
+    ],
     strengths: [
       "Digital setup",
       "No rental device",
@@ -226,6 +282,7 @@ export const connectivityProviders: ConnectivityProvider[] = [
     officialUrl: "https://cellulardata.ubigi.com/",
     affiliateUrl: getGeneralAffiliateLink("ubigi"),
     affiliateStatus: "approved",
+    ctaLabel: "Check Ubigi Plans",
     products: [
       { label: "General", affiliateUrl: affiliateLinks.ubigi.general },
       { label: "Unlimited 15 Days", affiliateUrl: affiliateLinks.ubigi.unlimitedFifteenDays },
