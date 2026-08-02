@@ -63,6 +63,10 @@ const connectionTypes = [
     limitations:
       "Requires an unlocked compatible device and careful activation timing",
     href: "/best-esim-japan",
+    secondaryLinks: [
+      { label: "eSIM Compatibility Checker", href: "/esim-checker" },
+      { label: "Japan eSIM Guide", href: "/esim" },
+    ],
   },
   {
     name: "Physical SIM",
@@ -76,6 +80,7 @@ const connectionTypes = [
     limitations:
       "You may need to remove and safely store your home SIM",
     href: "/sim-card-vs-esim",
+    secondaryLinks: [{ label: "Japan SIM Card Guide", href: "/sim-card" }],
   },
   {
     name: "Pocket Wi-Fi",
@@ -88,11 +93,37 @@ const connectionTypes = [
     arrival: "Usually collected or delivered as rental equipment",
     limitations:
       "Must be charged, carried, protected, and returned after the trip",
-    href: "/#provider-list",
+    href: "/pocket-wifi",
+    secondaryLinks: [
+      { label: "Airport Internet Guide", href: "/airport" },
+      { label: "Family Pocket Wi-Fi Guide", href: "/pocket-wifi-for-family-japan" },
+    ],
   },
 ];
 
 const providers = connectivityProviders;
+
+/**
+ * Page-local "Not ideal for" editorial notes, grounded in each provider's
+ * existing considerations/bestFor data already published on their review and
+ * best-esim-japan pages. Not stored on ConnectivityProvider itself so the
+ * shared provider data stays untouched; shared with CompareMobile as a prop
+ * so desktop and mobile can never drift apart.
+ */
+const notIdealForByProvider: Record<string, string> = {
+  "sakura-mobile":
+    "Travelers who want a single simple digital-only plan rather than comparing several product types.",
+  airalo:
+    "Travelers who need a local phone number, calls, or SMS, or whose phone does not support eSIM.",
+  ubigi:
+    "Travelers with a locked or non-eSIM-compatible phone, or who prefer a single provider rather than comparing options.",
+  "nomad-esim":
+    "Travelers who prefer a fully guided setup rather than managing plan details themselves.",
+  "japan-wireless":
+    "Travelers who want to avoid physical pickup, delivery, or return logistics entirely.",
+  "ninja-wifi":
+    "Solo travelers with one eSIM-compatible phone who prefer a fully digital setup without carrying or returning a device.",
+};
 
 /**
  * Single source of truth for Compare's FAQ content -- used both for the
@@ -162,7 +193,7 @@ export default function ComparePage() {
       <Header />
 
       <main>
-        <CompareMobile faqs={faqs} />
+        <CompareMobile faqs={faqs} notIdealForByProvider={notIdealForByProvider} />
 
         <div className={styles.desktopContent}>
         <section className={styles.hero}>
@@ -177,9 +208,18 @@ export default function ComparePage() {
               connection type, then compare providers.
             </p>
 
+            <p className={styles.quickAnswer}>
+              For most solo travelers with an unlocked, compatible phone,
+              eSIM is the simplest starting point. A physical SIM may suit
+              phones without eSIM support, while pocket Wi-Fi is often more
+              practical when several nearby devices will share one
+              connection. Start with the connection type, then compare
+              providers.
+            </p>
+
             <div className={styles.heroActions}>
               <Link className={styles.primaryButton} href="/diagnosis">
-                Take the 30-sec check
+                Find My Best Option
               </Link>
 
               <Link className={styles.secondaryButton} href="#providers">
@@ -190,6 +230,12 @@ export default function ComparePage() {
             <p className={styles.notice}>
               Provider affiliate links are currently being prepared. Rankings
               and comparisons are not based on commission availability.
+            </p>
+
+            <p className={styles.notice}>
+              Editorial review updated: July 2026. Prices, promotions, and
+              plan conditions may change — confirm current details on the
+              provider&apos;s official website.
             </p>
           </div>
         </section>
@@ -256,6 +302,20 @@ export default function ComparePage() {
                   <Link className={styles.textLink} href={type.href}>
                     Read the detailed guide →
                   </Link>
+
+                  {type.secondaryLinks.length > 0 ? (
+                    <div className={styles.secondaryLinks}>
+                      {type.secondaryLinks.map((link) => (
+                        <Link
+                          className={styles.secondaryLink}
+                          href={link.href}
+                          key={link.href}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
                 </article>
               ))}
             </div>
@@ -275,13 +335,9 @@ export default function ComparePage() {
             </div>
 
             <div className={styles.providerGrid}>
-              {providers.map((provider, index) => (
+              {providers.map((provider) => (
                 <article className={styles.providerCard} key={provider.name}>
                   <div className={styles.providerTop}>
-                    <span className={styles.number}>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
                     <div>
                       <p className={styles.category}>{provider.category}</p>
                       <h3>{provider.name}</h3>
@@ -303,6 +359,13 @@ export default function ComparePage() {
                     <strong>Check before buying:</strong>
                     <span>{provider.caution}</span>
                   </div>
+
+                  {notIdealForByProvider[provider.slug] ? (
+                    <div className={styles.caution}>
+                      <strong>Not ideal for:</strong>
+                      <span>{notIdealForByProvider[provider.slug]}</span>
+                    </div>
+                  ) : null}
 
                   <div className={styles.cardActions}>
                     <Link
@@ -361,7 +424,14 @@ export default function ComparePage() {
                 <strong>Compare pocket Wi-Fi</strong>
                 <p>
                   Useful when several people and devices stay together during
-                  the trip.
+                  the trip. See{" "}
+                  <Link
+                    className={styles.textLink}
+                    href="/esim-vs-pocket-wifi-japan"
+                  >
+                    eSIM vs pocket Wi-Fi
+                  </Link>{" "}
+                  for a full comparison.
                 </p>
               </article>
 
@@ -379,7 +449,11 @@ export default function ComparePage() {
                 <strong>Consider eSIM</strong>
                 <p>
                   Keeping the home SIM installed can make dual-SIM use and
-                  message access easier.
+                  message access easier. Use the{" "}
+                  <Link className={styles.textLink} href="/data-calculator">
+                    Data Calculator
+                  </Link>{" "}
+                  to estimate your daily use.
                 </p>
               </article>
             </div>
@@ -414,7 +488,7 @@ export default function ComparePage() {
             </p>
 
             <Link className={styles.primaryButton} href="/diagnosis">
-              Start the 30-sec check
+              Find My Best Option
             </Link>
           </div>
         </section>

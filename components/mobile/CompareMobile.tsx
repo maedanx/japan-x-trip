@@ -196,9 +196,17 @@ type CompareMobileProps = {
    * visible FAQ and the schema never drift apart.
    */
   faqs: CompareFaq[];
+  /**
+   * Shared with app/compare/page.tsx's desktop provider cards so the
+   * "Not ideal for" note can never drift between desktop and mobile.
+   */
+  notIdealForByProvider: Record<string, string>;
 };
 
-export default function CompareMobile({ faqs }: CompareMobileProps) {
+export default function CompareMobile({
+  faqs,
+  notIdealForByProvider,
+}: CompareMobileProps) {
   const providers = connectivityProviders.slice(0, 6);
   const [diagnosis, setDiagnosis] = useState<DiagnosisAnalysis | null>(null);
 
@@ -261,6 +269,11 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
           Some links on this page may be affiliate links. Recommendations
           are based on traveler suitability, not commission availability.{" "}
           <Link href="/affiliate-disclosure">Learn more</Link>
+        </p>
+
+        <p className={styles.disclosure}>
+          Editorial review updated: July 2026. Prices and plan conditions
+          may change — confirm current details on the official site.
         </p>
       </section>
 
@@ -461,7 +474,7 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
               className={styles.diagnosisPromptButton}
               onClick={() => trackDiagnosisEntryClick("compare-method-diagnosis")}
             >
-              Take the 30-second diagnosis
+              Find My Best Option
               <ArrowIcon />
             </Link>
           </div>
@@ -498,7 +511,7 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
         </div>
 
         <div className={styles.providerList}>
-          {providers.map((provider, index) => {
+          {providers.map((provider) => {
             const destination = getProviderDestination(provider);
             const outbound = hasProviderOutboundUrl(provider);
             const isAffiliate = isAffiliateProviderLink(provider);
@@ -512,10 +525,6 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
             return (
               <article className={styles.providerCard} key={provider.slug}>
                 <div className={styles.providerHeader}>
-                  <span className={styles.providerNumber}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
                   <SectionHeading variant="provider">
                     {provider.name}
                   </SectionHeading>
@@ -566,6 +575,17 @@ export default function CompareMobile({ faqs }: CompareMobileProps) {
                     </p>
                     <p className={styles.providerCaution}>
                       {provider.caution}
+                    </p>
+                  </div>
+                ) : null}
+
+                {notIdealForByProvider[provider.slug] ? (
+                  <div className={styles.providerBlock}>
+                    <p className={styles.providerBlockLabel}>
+                      Not ideal for
+                    </p>
+                    <p className={styles.providerCaution}>
+                      {notIdealForByProvider[provider.slug]}
                     </p>
                   </div>
                 ) : null}

@@ -118,7 +118,7 @@ export default function EsimCheckerClient() {
                   <div><span>eSIM menu</span><strong>{answerLabel(menu)}</strong></div>
                 </div>
                 <div className={styles.nextAction}><strong>What to do next</strong><p>{result.action}</p></div>
-                <div className={styles.resultLinks}>{result.status === "supported" ? <><Link href="/best-esim">See recommended eSIMs</Link><Link href="/data-calculator">Calculate your data needs</Link></> : <><Link href="/pocket-wifi">See pocket Wi-Fi options</Link><Link href="/sim-card-vs-esim">Compare SIM, eSIM, and Wi-Fi</Link></>}</div>
+                <div className={styles.resultLinks}>{result.status === "supported" ? <><Link href="/best-esim-japan">See recommended eSIMs</Link><Link href="/data-calculator">Calculate your data needs</Link></> : <><Link href="/pocket-wifi">See pocket Wi-Fi options</Link><Link href="/sim-card-vs-esim">Compare SIM, eSIM, and Wi-Fi</Link></>}</div>
                 <p className={styles.resultDisclaimer}>Final compatibility can depend on exact model number, software, carrier, and eSIM provider.</p>
               </div>}
           </aside>
