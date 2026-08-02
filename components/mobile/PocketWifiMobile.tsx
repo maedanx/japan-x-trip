@@ -50,7 +50,7 @@ const PROVIDERS: readonly PocketWifiProvider[] = [
       "Delivery or pickup",
       "Return after use",
     ],
-    reviewHref: "/reviews/sakura-mobile",
+    reviewHref: "/sakura-mobile-review",
     affiliateHref: affiliateLinks.sakuraMobile.travelPocketWifi,
   },
   {

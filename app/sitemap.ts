@@ -5,12 +5,17 @@ import { connectivityProviders } from "@/data/connectivityProviders";
 export default function sitemap(): MetadataRoute.Sitemap {
   const updated = new Date();
 
-  const providerReviewPages = connectivityProviders.map((provider) => ({
-    url: `${siteConfig.url}/reviews/${provider.slug}`,
-    lastModified: updated,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
+  const providerReviewPages = connectivityProviders
+    // Sakura Mobile's canonical review lives at /sakura-mobile-review
+    // (listed separately below); /reviews/sakura-mobile redirects there
+    // and must not appear in the sitemap as a second indexable URL.
+    .filter((provider) => provider.slug !== "sakura-mobile")
+    .map((provider) => ({
+      url: `${siteConfig.url}/reviews/${provider.slug}`,
+      lastModified: updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    }));
 
   return [
     {

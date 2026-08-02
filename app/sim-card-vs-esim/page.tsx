@@ -164,6 +164,8 @@ const providerCards = [
   {
     name: "Sakura Mobile",
     slug: "sakura-mobile",
+    // Canonical Sakura Mobile review; /reviews/sakura-mobile redirects here.
+    href: "/sakura-mobile-review",
     label: "Japan-focused options",
     text: "A useful starting point when comparing eSIM, physical SIM, pocket Wi-Fi, and longer-stay choices.",
   },
@@ -552,7 +554,7 @@ export default function SimCardVsEsimPage() {
                   <p className={styles.cardLabel}>{provider.label}</p>
                   <h3>{provider.name}</h3>
                   <p>{provider.text}</p>
-                  <Link href={`/reviews/${provider.slug}`}>
+                  <Link href={provider.href ?? `/reviews/${provider.slug}`}>
                     Read review <span aria-hidden="true">→</span>
                   </Link>
                 </article>

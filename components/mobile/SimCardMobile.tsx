@@ -42,7 +42,7 @@ const PRODUCT = {
     "Setup guidance in English",
     "Check delivery or pickup conditions",
   ],
-  reviewHref: "/reviews/sakura-mobile",
+  reviewHref: "/sakura-mobile-review",
   affiliateHref: affiliateLinks.sakuraMobile.travelSim,
 } as const;
 

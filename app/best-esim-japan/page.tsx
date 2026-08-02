@@ -342,7 +342,7 @@ export default function BestEsimJapanPage() {
                 {providers.slice(0, 4).map((provider, index) => (
                   <Link
                     className="best-esim-pick-card"
-                    href={`/reviews/${provider.slug}`}
+                    href={provider.reviewHref}
                     key={provider.slug}
                   >
                     <span className="best-esim-pick-number">
@@ -408,9 +408,7 @@ export default function BestEsimJapanPage() {
                         <tr key={provider.slug}>
                           <td>
                             <strong>{provider.name}</strong>
-                            <Link
-                              href={`/reviews/${provider.slug}`}
-                            >
+                            <Link href={provider.reviewHref}>
                               Read review
                             </Link>
                           </td>
@@ -510,7 +508,7 @@ export default function BestEsimJapanPage() {
                     </div>
 
                     <div className="best-esim-provider-actions">
-                      <Link href={`/reviews/${provider.slug}`}>
+                      <Link href={provider.reviewHref}>
                         Read full review
                         <span aria-hidden="true">→</span>
                       </Link>

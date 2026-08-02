@@ -180,7 +180,9 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "Tethering and fair-use conditions",
       "Cancellation and refund terms",
     ],
-    reviewHref: "/reviews/sakura-mobile",
+    // Canonical Sakura Mobile review; /reviews/sakura-mobile (the shared-
+    // template duplicate) now redirects here (see next.config.ts).
+    reviewHref: "/sakura-mobile-review",
     officialUrl: "https://www.sakuramobile.jp/",
     affiliateUrl: getGeneralAffiliateLink("sakuraMobile"),
     affiliateStatus: "approved",

@@ -14,6 +14,18 @@ const nextConfig: NextConfig = {
   // Allow the iPhone/Android browser on the same Wi-Fi to load the
   // Next.js development client and hydrate interactive React controls.
   allowedDevOrigins: localDevOrigins,
+  async redirects() {
+    return [
+      {
+        // /sakura-mobile-review is the canonical Sakura Mobile review;
+        // /reviews/sakura-mobile is the shared-template duplicate and must
+        // not remain independently indexable.
+        source: "/reviews/sakura-mobile",
+        destination: "/sakura-mobile-review",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     // Next.js 15+ defaults this to "attachment", which makes browsers
     // refuse to decode/paint optimized images used as inline <img> content

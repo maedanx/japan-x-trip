@@ -570,7 +570,7 @@ export default function PocketWifiPage() {
                 </p>
 
                 <div className={styles.providerActions}>
-                  <Link href="/reviews/sakura-mobile">
+                  <Link href="/sakura-mobile-review">
                     Read our review
                   </Link>
                   <AffiliateCtaLink

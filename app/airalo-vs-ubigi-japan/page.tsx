@@ -119,7 +119,7 @@ const faqs = [
   {
     question: "Is Airalo or Ubigi better for Japan?",
     answer:
-      "Neither is universally better. Airalo may suit travelers who already use its app or want several fixed-data options, while Ubigi may suit travelers who prefer a reusable eSIM and Smartstart activation. Compare both current reviews and package details before deciding.",
+      "Neither is universally better. Airalo may suit travelers who already use its app or want several fixed-data options, while Ubigi may suit travelers who prefer a reusable eSIM and Smartstart activation on supported plans. Compare both current reviews and package details before deciding.",
   },
   {
     question: "Which is cheaper, Airalo or Ubigi?",

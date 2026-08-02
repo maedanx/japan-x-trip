@@ -228,8 +228,9 @@ export default function ComparePage() {
             </div>
 
             <p className={styles.notice}>
-              Provider affiliate links are currently being prepared. Rankings
-              and comparisons are not based on commission availability.
+              Some links on this page are affiliate links. Recommendations
+              are based on traveler suitability, not commission
+              availability.
             </p>
 
             <p className={styles.notice}>
