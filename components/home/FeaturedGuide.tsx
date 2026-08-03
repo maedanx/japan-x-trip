@@ -41,7 +41,7 @@ export default function FeaturedGuide() {
             </h2>
 
             <p className={styles.description}>
-              Compare the two options and find the best fit for your trip.
+              Compare both options and choose the best fit for your trip.
             </p>
 
             <Link
