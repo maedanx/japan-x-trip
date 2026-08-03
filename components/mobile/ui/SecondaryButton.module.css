@@ -18,11 +18,11 @@
 
 .provider {
   min-width: 96px;
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 14px;
-  border: 1px solid #dbe5ee;
-  border-radius: 10px;
-  background: #ffffff;
+  border: var(--jxt-button-secondary-border);
+  border-radius: var(--jxt-button-radius);
+  background: var(--jxt-button-secondary-surface);
   color: #173d70;
   font-size: 12px;
   font-weight: 800;
@@ -30,12 +30,12 @@
 }
 
 .more {
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 17px;
   gap: 8px;
-  border: 1px solid #dde6ee;
-  border-radius: 10px;
-  background: #ffffff;
+  border: var(--jxt-button-secondary-border);
+  border-radius: var(--jxt-button-radius);
+  background: var(--jxt-button-secondary-surface);
   color: #183d70;
   font-size: 12px;
   font-weight: 800;
@@ -45,11 +45,11 @@
 
 .compact {
   width: 100%;
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 16px;
-  border: 1px solid #d9e3ec;
+  border: var(--jxt-button-secondary-border);
   border-radius: var(--jxt-radius-full);
-  background: #ffffff;
+  background: var(--jxt-button-secondary-surface);
   color: #17334b;
   font-size: 12px;
   font-weight: 800;
@@ -69,4 +69,33 @@
   font-size: 13px;
   font-weight: 700;
   line-height: 1;
+}
+
+.button {
+  color: var(--jxt-button-secondary-text);
+  transition: var(--jxt-button-motion);
+}
+
+.button:hover {
+  border-color: var(--jxt-border-medium);
+  background: var(--jxt-button-secondary-surface-hover);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--jxt-button-focus-ring);
+}
+
+.button[aria-disabled="true"],
+.button:disabled {
+  color: var(--jxt-button-disabled-text);
+  border-color: var(--jxt-border-soft);
+  background: var(--jxt-button-disabled-surface);
+  cursor: not-allowed;
+  transform: none;
 }

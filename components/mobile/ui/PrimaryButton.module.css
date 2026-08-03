@@ -3,16 +3,16 @@
   align-items: center;
   justify-content: center;
   border: 0;
-  border-radius: var(--jxt-radius-full);
+  border-radius: var(--jxt-button-radius);
   color: #ffffff;
   text-align: center;
   text-decoration: none;
 }
 
 .compact {
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 16px;
-  background: #ff383e;
+  background: var(--jxt-button-primary-surface);
   font-size: 12px;
   font-weight: 800;
   line-height: 1.3;
@@ -20,10 +20,10 @@
 
 .plan {
   min-width: 130px;
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 14px;
-  background: #ff3b40;
-  box-shadow: 0 7px 15px rgba(255, 54, 59, 0.18);
+  background: var(--jxt-button-primary-surface);
+  box-shadow: var(--jxt-button-primary-shadow);
   font-size: 12px;
   font-weight: 800;
   line-height: 1.3;
@@ -31,10 +31,39 @@
 
 .provider {
   min-width: 96px;
-  min-height: var(--jxt-tap-target);
+  min-height: var(--jxt-button-height-compact);
   padding: 0 10px;
-  background: #ff3b40;
+  background: var(--jxt-button-primary-surface);
   font-size: 12px;
   font-weight: 800;
   line-height: 1.3;
+}
+
+.button {
+  color: var(--jxt-button-primary-text);
+  transition: var(--jxt-button-motion);
+}
+
+.button:hover {
+  background: var(--jxt-button-primary-surface-hover);
+  box-shadow: var(--jxt-button-primary-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--jxt-button-focus-ring);
+}
+
+.button[aria-disabled="true"],
+.button:disabled {
+  color: var(--jxt-button-disabled-text);
+  background: var(--jxt-button-disabled-surface);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
 }

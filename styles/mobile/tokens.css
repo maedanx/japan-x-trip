@@ -122,10 +122,41 @@
   --jxt-shadow-floating:
     0 18px 44px rgba(13, 49, 72, 0.16);
 
+  /* Button System */
+  --jxt-button-height-compact: var(--jxt-tap-target);
+  --jxt-button-height-default: 54px;
+  --jxt-button-height-large: 58px;
+
+  --jxt-button-radius: var(--jxt-radius-full);
+
+  --jxt-button-primary-surface: #ff3b40;
+  --jxt-button-primary-surface-hover: var(--jxt-brand-primary-hover);
+  --jxt-button-primary-text: var(--jxt-text-inverse);
+  --jxt-button-primary-shadow:
+    0 7px 15px rgba(255, 54, 59, 0.18);
+  --jxt-button-primary-shadow-hover:
+    0 10px 22px rgba(255, 54, 59, 0.24);
+
+  --jxt-button-secondary-surface: var(--jxt-surface);
+  --jxt-button-secondary-surface-hover: var(--jxt-surface-soft);
+  --jxt-button-secondary-border: 1px solid #dbe5ee;
+  --jxt-button-secondary-text: var(--jxt-ink);
+
+  --jxt-button-disabled-surface: #e8edf2;
+  --jxt-button-disabled-text: #8b98a7;
+
+  --jxt-button-focus-ring:
+    0 0 0 4px rgba(37, 99, 235, 0.18);
+
+  --jxt-button-motion:
+    transform var(--jxt-motion-fast) var(--jxt-ease-standard),
+    box-shadow var(--jxt-motion-fast) var(--jxt-ease-standard),
+    background-color var(--jxt-motion-fast) var(--jxt-ease-standard),
+    border-color var(--jxt-motion-fast) var(--jxt-ease-standard);
+
   /* Controls */
   --jxt-tap-target: 44px;
-  --jxt-button-height: 54px;
-  --jxt-button-height-large: 58px;
+  --jxt-button-height: var(--jxt-button-height-default);
   --jxt-input-height: 52px;
 
   /* Motion */
