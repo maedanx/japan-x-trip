@@ -181,15 +181,23 @@ export default function ConnectionFinder() {
           </header>
 
           <div className={styles.questionList}>
-            <fieldset className={styles.questionCard}>
-              <legend>
-                <span className={styles.questionNumber}>1</span>
+            <div
+              className={styles.questionCard}
+              role="group"
+              aria-labelledby="quick-diagnosis-people-title"
+            >
+              <div className={styles.questionHeader}>
+                <span className={styles.questionNumber} aria-hidden="true">
+                  1
+                </span>
 
                 <span>
-                  <strong>How many people?</strong>
+                  <strong id="quick-diagnosis-people-title">
+                    How many people?
+                  </strong>
                   <small>Include everyone sharing the connection.</small>
                 </span>
-              </legend>
+              </div>
 
               <div className={styles.optionGrid}>
                 {PEOPLE_OPTIONS.map((option) => {
@@ -217,17 +225,25 @@ export default function ConnectionFinder() {
                   );
                 })}
               </div>
-            </fieldset>
+            </div>
 
-            <fieldset className={styles.questionCard}>
-              <legend>
-                <span className={styles.questionNumber}>2</span>
+            <div
+              className={styles.questionCard}
+              role="group"
+              aria-labelledby="quick-diagnosis-purpose-title"
+            >
+              <div className={styles.questionHeader}>
+                <span className={styles.questionNumber} aria-hidden="true">
+                  2
+                </span>
 
                 <span>
-                  <strong>How will you use mobile data?</strong>
+                  <strong id="quick-diagnosis-purpose-title">
+                    How will you use mobile data?
+                  </strong>
                   <small>Choose the activity that matters most.</small>
                 </span>
-              </legend>
+              </div>
 
               <div className={styles.optionGrid}>
                 {PURPOSE_OPTIONS.map((option) => {
@@ -260,17 +276,25 @@ export default function ConnectionFinder() {
                   );
                 })}
               </div>
-            </fieldset>
+            </div>
 
-            <fieldset className={styles.questionCard}>
-              <legend>
-                <span className={styles.questionNumber}>3</span>
+            <div
+              className={styles.questionCard}
+              role="group"
+              aria-labelledby="quick-diagnosis-days-title"
+            >
+              <div className={styles.questionHeader}>
+                <span className={styles.questionNumber} aria-hidden="true">
+                  3
+                </span>
 
                 <span>
-                  <strong>How long are you staying?</strong>
+                  <strong id="quick-diagnosis-days-title">
+                    How long are you staying?
+                  </strong>
                   <small>Select the total length of your Japan trip.</small>
                 </span>
-              </legend>
+              </div>
 
               <div className={styles.daysGrid}>
                 {DAYS_OPTIONS.map((option) => {
@@ -294,7 +318,7 @@ export default function ConnectionFinder() {
                   );
                 })}
               </div>
-            </fieldset>
+            </div>
           </div>
 
           <div className={styles.actionArea}>

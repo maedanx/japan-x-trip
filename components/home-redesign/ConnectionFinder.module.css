@@ -110,12 +110,11 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.96);
   }
 
-  .questionCard legend {
+  .questionHeader {
     display: flex;
     align-items: flex-start;
     gap: 11px;
     width: 100%;
-    padding: 0;
   }
 
   .questionNumber {
@@ -132,18 +131,18 @@
     font-weight: 800;
   }
 
-  .questionCard legend strong,
-  .questionCard legend small {
+  .questionHeader strong,
+  .questionHeader small {
     display: block;
   }
 
-  .questionCard legend strong {
+  .questionHeader strong {
     color: #17364b;
     font-size: 14px;
     line-height: 1.3;
   }
 
-  .questionCard legend small {
+  .questionHeader small {
     margin-top: 3px;
     color: #71838f;
     font-size: 10.5px;

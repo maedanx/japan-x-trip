@@ -143,14 +143,16 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
         className={styles.devices}
         aria-labelledby="mobile-pocket-wifi-title"
       >
-        <h2 id="mobile-pocket-wifi-title" className={styles.srOnly}>
-          Pocket WiFi options for Japan
-        </h2>
+        <div className={styles.devicesHeading}>
+          <p>Featured options</p>
 
-        <div className={styles.tabs} aria-label="Pocket WiFi categories">
-          <span className={styles.activeTab}>Best Seller</span>
-          <span>Unlimited</span>
-          <span>Long Battery</span>
+          <h2 id="mobile-pocket-wifi-title">
+            Recommended Pocket WiFi
+          </h2>
+
+          <span>
+            Compare the current featured rental options for Japan.
+          </span>
         </div>
 
         <div className={styles.providerList}>
