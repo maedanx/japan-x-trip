@@ -6190,3 +6190,51 @@
     height: 40px;
   }
 }
+
+/* ======================================================================= */
+/* Home Hero V3 — 1.5 second UX                                             */
+/* ======================================================================= */
+
+@media (max-width: 900px) {
+  .jxm-hero-v2__scene,
+  .jxm-hero-v2__content {
+    min-height: 574px;
+  }
+
+  .jxm-hero-v2__content {
+    justify-content: flex-end;
+    padding-bottom: 22px;
+  }
+
+  .jxm-hero-v2__title {
+    margin-bottom: 10px;
+  }
+
+  .jxm-hero-v2__description {
+    max-width: 290px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .jxm-hero-v2__actions {
+    gap: 9px;
+  }
+
+  .jxm-hero-v2__primary,
+  .jxm-hero-v2__secondary {
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 390px) {
+  .jxm-hero-v2__scene,
+  .jxm-hero-v2__content {
+    min-height: 552px;
+  }
+
+  .jxm-hero-v2__description {
+    max-width: 260px;
+    font-size: 12px;
+  }
+}

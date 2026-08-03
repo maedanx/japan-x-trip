@@ -171,12 +171,11 @@ export default function ConnectionFinder() {
             </div>
 
             <h2 id="mobile-quick-diagnosis-title">
-              Find the right connection
-              <span>for your Japan trip.</span>
+              Find Your Best Option
             </h2>
 
             <p className={styles.intro}>
-              Answer three simple questions. No sign-up required.
+              Answer 3 quick questions.
             </p>
           </header>
 
@@ -195,7 +194,6 @@ export default function ConnectionFinder() {
                   <strong id="quick-diagnosis-people-title">
                     How many people?
                   </strong>
-                  <small>Include everyone sharing the connection.</small>
                 </span>
               </div>
 
@@ -241,7 +239,6 @@ export default function ConnectionFinder() {
                   <strong id="quick-diagnosis-purpose-title">
                     How will you use mobile data?
                   </strong>
-                  <small>Choose the activity that matters most.</small>
                 </span>
               </div>
 
@@ -292,7 +289,6 @@ export default function ConnectionFinder() {
                   <strong id="quick-diagnosis-days-title">
                     How long are you staying?
                   </strong>
-                  <small>Select the total length of your Japan trip.</small>
                 </span>
               </div>
 

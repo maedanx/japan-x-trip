@@ -5,21 +5,6 @@ import Link from "next/link";
 import { trackDiagnosisEntryClick, trackHomeNavClick } from "@/lib/analytics";
 import CTAButton from "./CTAButton";
 
-const MOBILE_BENEFITS = [
-  {
-    title: "Compare the best plans",
-    icon: "calendar",
-  },
-  {
-    title: "Personalized recommendation",
-    icon: "shield",
-  },
-  {
-    title: "Clear setup support",
-    icon: "support",
-  },
-] as const;
-
 export default function Hero() {
   return (
     <>
@@ -107,23 +92,8 @@ function MobileHero() {
           </h1>
 
           <p className="jxm-hero-v2__description">
-            Find the best SIM, eSIM or Pocket WiFi
-            for your trip in seconds.
+            Find your best internet option in seconds.
           </p>
-
-          <ul
-            className="jxm-hero-v2__benefits"
-            aria-label="Japan X Trip benefits"
-          >
-            {MOBILE_BENEFITS.map((benefit) => (
-              <li key={benefit.title}>
-                <span className="jxm-hero-v2__benefit-icon" aria-hidden="true">
-                  <BenefitIcon type={benefit.icon} />
-                </span>
-                <span>{benefit.title}</span>
-              </li>
-            ))}
-          </ul>
 
           <div className="jxm-hero-v2__actions">
             <Link
@@ -131,7 +101,7 @@ function MobileHero() {
               className="jxm-hero-v2__primary"
               onClick={() => trackDiagnosisEntryClick("home-hero-primary")}
             >
-              Find My Perfect Plan
+              Find My Best Option
               <ArrowIcon />
             </Link>
 
@@ -146,38 +116,6 @@ function MobileHero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function BenefitIcon({
-  type,
-}: {
-  type: (typeof MOBILE_BENEFITS)[number]["icon"];
-}) {
-  if (type === "calendar") {
-    return (
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3v3M18 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z" />
-        <path d="m8 14 2 2 5-5" />
-      </svg>
-    );
-  }
-
-  if (type === "shield") {
-    return (
-      <svg viewBox="0 0 24 24">
-        <path d="M12 3 5 6v5c0 4.6 2.8 8.2 7 10 4.2-1.8 7-5.4 7-10V6l-7-3Z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24">
-      <path d="M4 13v-2a8 8 0 0 1 16 0v2" />
-      <path d="M4 13h3v6H5a1 1 0 0 1-1-1v-5ZM20 13h-3v6h2a1 1 0 0 0 1-1v-5Z" />
-      <path d="M17 19c0 1.1-.9 2-2 2h-3" />
-    </svg>
   );
 }
 

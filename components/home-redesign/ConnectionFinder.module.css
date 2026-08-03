@@ -461,3 +461,68 @@
     transition: none;
   }
 }
+
+/* ======================================================================= */
+/* Home Upper Flow V3 — Quick Diagnosis compression                         */
+/* ======================================================================= */
+
+@media (max-width: 900px) {
+  .mobileDiagnosis {
+    padding-top: 40px;
+    padding-bottom: 44px;
+  }
+
+  .header h2 {
+    margin-top: 16px;
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.05;
+  }
+
+  .intro {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .questionList {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .questionCard {
+    padding: 16px;
+    border-radius: 19px;
+  }
+
+  .questionHeader {
+    align-items: center;
+  }
+
+  .optionGrid,
+  .daysGrid {
+    margin-top: 13px;
+  }
+
+  .actionArea {
+    margin-top: 15px;
+  }
+
+  .status {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileDiagnosis {
+    padding-top: 34px;
+    padding-bottom: 38px;
+  }
+
+  .header h2 {
+    font-size: 28px;
+  }
+
+  .questionCard {
+    padding: 14px;
+  }
+}
