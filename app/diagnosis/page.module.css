@@ -1274,7 +1274,7 @@
 
   .mobileIntro {
     display: block;
-    padding: 14px 18px 0;
+    padding: 10px 18px 0;
     background: #ffffff;
   }
 
@@ -1300,24 +1300,24 @@
   }
 
   .mobileIntroCopy {
-    margin: 26px auto 0;
+    margin: 18px auto 0;
     text-align: center;
   }
 
   .mobileIntroCopy h1 {
     margin: 0;
     color: #0a2035;
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 850;
     letter-spacing: -0.045em;
-    line-height: 1.08;
+    line-height: 1.06;
   }
 
   .mobileIntroCopy p {
-    margin: 10px 0 0;
+    margin: 8px 0 0;
     color: #40566a;
     font-size: 13px;
-    line-height: 1.48;
+    line-height: 1.45;
   }
 
   .finderSection {
@@ -1646,14 +1646,15 @@
   .resultPrimaryButton,
   .resultSecondaryButton {
     width: 100%;
-    min-height: 43px;
+    min-height: 50px;
     padding: 0 13px;
-    font-size: 10px;
+    font-size: 13px;
     text-align: center;
   }
 
   .resultPrimaryButton {
     background: #ff353c;
+    box-shadow: 0 10px 22px rgba(255, 53, 60, 0.32);
   }
 
   .transportOptions {
@@ -1874,7 +1875,7 @@
 @media (max-width: 760px) {
   .finderSection {
     margin-top: 0;
-    padding: 0 16px 48px;
+    padding: 0 16px 36px;
   }
 
   .finderContainer {
@@ -1891,7 +1892,7 @@
   }
 
   .diagnosisIntroCopy {
-    padding: 28px 22px 30px;
+    padding: 22px 20px 24px;
   }
 
   .diagnosisIntroCopy h2 {
@@ -1900,14 +1901,14 @@
   }
 
   .diagnosisIntroText {
-    margin-top: 17px;
+    margin-top: 13px;
     font-size: 0.94rem;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .diagnosisIntroBenefits {
     gap: 7px;
-    margin-top: 20px;
+    margin-top: 16px;
   }
 
   .diagnosisIntroBenefits span {
@@ -1919,7 +1920,7 @@
   .diagnosisStartButton {
     width: 100%;
     min-height: 56px;
-    margin-top: 24px;
+    margin-top: 18px;
   }
 
   .diagnosisIntroPrivacy {

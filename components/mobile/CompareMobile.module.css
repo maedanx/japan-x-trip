@@ -17,34 +17,34 @@
   }
 
   .hero {
-    padding: 21px 20px 19px;
+    padding: 16px 20px 14px;
   }
 
   .hero h1 {
     margin: 0;
     color: #0a1f35;
-    font-size: 29px;
+    font-size: 26px;
     font-weight: 850;
     letter-spacing: -0.045em;
-    line-height: 1.08;
+    line-height: 1.06;
   }
 
   .intro {
-    margin: 11px 0 0;
+    margin: 8px 0 0;
     color: #344a5e;
     font-size: 12px;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .disclosure {
-    margin: 12px 0 0;
-    padding: 10px 12px;
+    margin: 8px 0 0;
+    padding: 8px 10px;
     border: 1px solid #e4ebf2;
     border-radius: 11px;
     background: #f7f9fc;
     color: #566a7c;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
   .disclosure a {
@@ -54,8 +54,8 @@
   }
 
   .diagnosisSummary {
-    margin: 0 15px 19px;
-    padding: 18px 16px 16px;
+    margin: 0 15px 14px;
+    padding: 14px 14px 12px;
     border: 2px solid #ff6a59;
     border-radius: 17px;
     background: #ffffff;
@@ -182,8 +182,8 @@
   }
 
   .comparison {
-    margin: 0 15px 19px;
-    padding: 18px 14px 16px;
+    margin: 0 15px 14px;
+    padding: 14px 14px 12px;
     border: 1px solid #e4ebf2;
     border-radius: 17px;
     background: #ffffff;
@@ -192,12 +192,12 @@
 
   .methodList {
     display: grid;
-    gap: 12px;
-    margin-top: 14px;
+    gap: 10px;
+    margin-top: 10px;
   }
 
   .methodCard {
-    padding: 18px 16px;
+    padding: 14px 14px;
     border: 1px solid #e4ebf2;
     border-radius: 16px;
     background: #fbfcfe;
@@ -271,11 +271,11 @@
   .methodDetails {
     display: grid;
     gap: 0;
-    margin: 14px 0 0;
+    margin: 10px 0 0;
   }
 
   .methodDetails > div {
-    padding: 10px 0;
+    padding: 8px 0;
     border-top: 1px solid #eef2f7;
   }
 
@@ -296,8 +296,8 @@
   }
 
   .methodReasonNote {
-    margin: 14px 0 0;
-    padding-top: 12px;
+    margin: 10px 0 0;
+    padding-top: 8px;
     border-top: 1px solid #eef2f7;
     color: #435268;
     font-size: 13px;
@@ -310,7 +310,7 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin-top: 14px;
+    margin-top: 10px;
     border-radius: 999px;
     background: #0b2436;
     color: #ffffff;
@@ -394,7 +394,7 @@
 
   .providers,
   .faq {
-    padding: 24px 15px;
+    padding: 18px 15px;
   }
 
   .providers {
@@ -430,8 +430,8 @@
   }
 
   .decisionGuide {
-    margin-bottom: 18px;
-    padding: 16px;
+    margin-bottom: 14px;
+    padding: 13px;
     border: 1px solid #e0e8f0;
     border-radius: 15px;
     background: #ffffff;
@@ -582,8 +582,8 @@
   }
 
   .providerBlock {
-    margin-top: 12px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid #eef2f7;
   }
 
@@ -641,8 +641,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 14px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid #eef2f7;
   }
 
@@ -718,7 +718,7 @@
 
   .faqList summary {
     display: flex;
-    min-height: 52px;
+    min-height: 48px;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
@@ -749,15 +749,15 @@
 
   .faqList details p {
     margin: 0;
-    padding: 0 13px 14px;
+    padding: 0 13px 12px;
     color: #607485;
     font-size: 14px;
     line-height: 1.55;
   }
 
   .finalCta {
-    margin: 0 15px 18px;
-    padding: 24px 18px;
+    margin: 0 15px 16px;
+    padding: 20px 18px;
     border-radius: 17px;
     color: #ffffff;
     background:
@@ -779,7 +779,7 @@
   }
 
   .finalCta h2 {
-    margin: 7px 0 9px;
+    margin: 7px 0 8px;
     color: #ffffff;
     font-size: 20px;
     letter-spacing: -0.035em;
@@ -787,17 +787,19 @@
   }
 
   .finalCta p {
-    margin: 0 0 15px;
+    margin: 0 0 14px;
     color: rgba(235, 244, 251, 0.78);
     font-size: 14px;
     line-height: 1.5;
   }
 
   .finalCta > a {
+    min-height: 54px;
     color: #ffffff;
     background: #ff383e;
-    font-size: 12px;
-    font-weight: 820;
+    font-size: 15px;
+    font-weight: 850;
+    box-shadow: 0 10px 26px rgba(255, 56, 62, 0.38);
   }
 }
 
