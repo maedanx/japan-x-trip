@@ -651,15 +651,23 @@ export function isAffiliateProviderLink(provider: ConnectivityProvider) {
 }
 
 /**
- * The outbound URL to use for an "apply" / "check plans" CTA: the approved
- * affiliate link when available, otherwise the official site. Returns
- * undefined when neither exists, so callers can hide the CTA entirely.
+ * The outbound URL to use for an "apply" / "check plans" CTA.
+ *
+ * Revenue CTAs must never silently fall back to a provider's direct official
+ * URL. Only an approved affiliate URL is returned. Callers should hide the CTA
+ * when this returns undefined, while internal review links remain available.
+ *
+ * Official URLs may still be used explicitly for source attribution,
+ * policies, pickup instructions, or other non-commercial reference links.
  */
 export function getProviderDestination(
   provider: ConnectivityProvider,
 ): string | undefined {
-  if (isAffiliateProviderLink(provider)) return provider.affiliateUrl;
-  return provider.officialUrl || undefined;
+  if (isAffiliateProviderLink(provider)) {
+    return provider.affiliateUrl;
+  }
+
+  return undefined;
 }
 
 export function hasProviderOutboundUrl(provider: ConnectivityProvider) {

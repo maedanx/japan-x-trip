@@ -146,11 +146,16 @@ function ProviderLink({
   children: React.ReactNode;
 }) {
   const affiliate = isAffiliateLink(provider);
+  const destination = getProviderUrl(provider);
+
+  if (!destination) {
+    return null;
+  }
 
   return (
     <a
       className={className}
-      href={getProviderUrl(provider)}
+      href={destination}
       target="_blank"
       rel={
         affiliate

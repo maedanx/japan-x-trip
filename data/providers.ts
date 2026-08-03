@@ -114,7 +114,7 @@ export const providers: Provider[] = [
       "Pocket Wi-Fi needs charging and carrying, and rental devices normally need to be returned.",
     priceLabel: "Check current plans",
     officialUrl: "https://ninjawifi.com/en/",
-    affiliateUrl: "",
+    affiliateUrl: getGeneralAffiliateLink("ninjaWifi"),
   },
   {
     id: "ubigi",
@@ -145,8 +145,17 @@ export const providers: Provider[] = [
   },
 ];
 
-export function getProviderUrl(provider: Provider): string {
-  return provider.affiliateUrl.trim() || provider.officialUrl;
+/**
+ * Revenue-facing provider CTAs use affiliate URLs only.
+ *
+ * Returning undefined prevents an unconfigured provider from silently sending
+ * visitors to a direct official URL. Explicit source and policy links may
+ * continue using officialUrl separately where appropriate.
+ */
+export function getProviderUrl(provider: Provider): string | undefined {
+  const affiliateUrl = provider.affiliateUrl.trim();
+
+  return affiliateUrl || undefined;
 }
 
 export function isAffiliateLink(provider: Provider): boolean {
