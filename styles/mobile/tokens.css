@@ -53,6 +53,13 @@
   --jxt-border-medium: #c8d7e7;
   --jxt-border-focus: #2563eb;
 
+  /* Card System */
+  --jxt-card-provider-radius: 15px;
+  --jxt-card-provider-border: 1px solid #e2e9f0;
+  --jxt-card-provider-surface: var(--jxt-surface);
+  --jxt-card-provider-shadow:
+    0 7px 20px rgba(11, 42, 65, 0.055);
+
   /* Layout */
   --jxt-mobile-width-min: 360px;
   --jxt-mobile-width-reference: 390px;

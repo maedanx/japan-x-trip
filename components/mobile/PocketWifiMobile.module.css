@@ -194,10 +194,10 @@
     grid-template-columns: 105px minmax(0, 1fr);
     gap: 11px;
     padding: 12px;
-    border: 1px solid #e2e9f0;
-    border-radius: 15px;
-    background: #ffffff;
-    box-shadow: 0 7px 20px rgba(11, 42, 65, 0.055);
+    border: var(--jxt-card-provider-border);
+    border-radius: var(--jxt-card-provider-radius);
+    background: var(--jxt-card-provider-surface);
+    box-shadow: var(--jxt-card-provider-shadow);
   }
 
   .providerMedia {
