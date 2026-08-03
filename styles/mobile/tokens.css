@@ -30,6 +30,24 @@
   --jxt-bg-surface: #ffffff;
   --jxt-bg-footer: #072b40;
 
+  /* Canonical Design System V2 aliases */
+  --jxt-brand-primary: var(--jxt-red-500);
+  --jxt-brand-primary-hover: var(--jxt-red-600);
+  --jxt-brand-primary-soft: var(--jxt-red-50);
+
+  --jxt-ink: var(--jxt-text-primary);
+  --jxt-ink-soft: var(--jxt-text-secondary);
+  --jxt-surface: var(--jxt-bg-surface);
+  --jxt-surface-soft: var(--jxt-bg-page);
+
+  --jxt-radius-control: var(--jxt-radius-sm);
+  --jxt-radius-panel: var(--jxt-radius-card);
+  --jxt-radius-full: var(--jxt-radius-pill);
+
+  --jxt-shadow-panel: var(--jxt-shadow-card);
+  --jxt-shadow-action: var(--jxt-shadow-cta);
+  --jxt-shadow-overlay: var(--jxt-shadow-floating);
+
   /* Borders */
   --jxt-border-soft: #dce6f2;
   --jxt-border-medium: #c8d7e7;

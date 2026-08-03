@@ -226,7 +226,7 @@
     display: inline-flex;
     min-height: 21px;
     align-items: center;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     padding: 0 7px;
     color: #ffffff;
     background: #8d56e8;
@@ -294,14 +294,14 @@
   .morePlans {
     display: flex;
     width: fit-content;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 6px;
     margin: 12px auto 0;
     padding: 0 17px;
     border: 1px solid #dde6ee;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #183d70;
     background: #ffffff;
     font-size: 12px;
@@ -378,11 +378,11 @@
   .checkSection a {
     grid-column: 1 / -1;
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 7px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #1b579e;
     font-size: 12px;
@@ -429,7 +429,7 @@
 
   .fitGuidance a {
     display: inline-flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     gap: 6px;
     color: #1b579e;
@@ -550,7 +550,7 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #ff3b40;
     font-size: 12px;

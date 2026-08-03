@@ -18,7 +18,7 @@
 
 .provider {
   min-width: 96px;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 14px;
   border: 1px solid #dbe5ee;
   border-radius: 10px;
@@ -30,7 +30,7 @@
 }
 
 .more {
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 17px;
   gap: 8px;
   border: 1px solid #dde6ee;
@@ -45,10 +45,10 @@
 
 .compact {
   width: 100%;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 16px;
   border: 1px solid #d9e3ec;
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   background: #ffffff;
   color: #17334b;
   font-size: 12px;

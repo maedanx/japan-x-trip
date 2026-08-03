@@ -205,7 +205,7 @@
     min-height: 142px;
     align-self: start;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
     background: #f0f5f9;
   }
 
@@ -239,7 +239,7 @@
     min-height: 19px;
     flex: 0 0 auto;
     align-items: center;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     padding: 0 7px;
     color: #ffffff;
     background: #ef454d;
@@ -306,14 +306,14 @@
   .moreDevices {
     display: flex;
     width: fit-content;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 6px;
     margin: 12px auto 0;
     padding: 0 17px;
     border: 1px solid #dde6ee;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #183d70;
     background: #ffffff;
     font-size: 12px;
@@ -363,11 +363,11 @@
 
   .familyContent a {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 6px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #ff3b40;
     font-size: 12px;
@@ -548,7 +548,7 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #ff3b40;
     font-size: 12px;

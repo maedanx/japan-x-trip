@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: center;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   color: #ffffff;
   text-align: center;
   text-decoration: none;
 }
 
 .compact {
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 16px;
   background: #ff383e;
   font-size: 12px;
@@ -20,7 +20,7 @@
 
 .plan {
   min-width: 130px;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 14px;
   background: #ff3b40;
   box-shadow: 0 7px 15px rgba(255, 54, 59, 0.18);
@@ -31,7 +31,7 @@
 
 .provider {
   min-width: 96px;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   padding: 0 10px;
   background: #ff3b40;
   font-size: 12px;

@@ -1,16 +1,16 @@
 /* Japan X Trip — Home Redesign (Phase 3.1: Header + Hero visual refinement) */
 
 :root {
-  --jx-ink: #0b2436;
-  --jx-ink-soft: #4c6270;
-  --jx-white: #ffffff;
+  --jx-ink: var(--jxt-ink);
+  --jx-ink-soft: var(--jxt-ink-soft);
+  --jx-white: var(--jxt-surface);
   --jx-line: rgba(11, 36, 54, 0.08);
-  --jx-shadow: 0 16px 40px rgba(11, 36, 54, 0.1);
+  --jx-shadow: var(--jxt-shadow-panel);
   --jx-header-height: 72px;
   --jx-header-height-mobile: 68px;
-  --jx-radius-pill: 999px;
-  --jx-coral: #e6503f;
-  --jx-coral-dark: #c93d30;
+  --jx-radius-pill: var(--jxt-radius-full);
+  --jx-coral: var(--jxt-brand-primary);
+  --jx-coral-dark: var(--jxt-brand-primary-hover);
   --jx-sky-50: #eef6fc;
   --jx-sky-100: #dbeefb;
   --jx-font: Inter, Arial, Helvetica, system-ui, -apple-system, BlinkMacSystemFont,
@@ -913,7 +913,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   margin-top: auto;
   color: var(--jx-ink);
   font-size: 14px;
@@ -1025,7 +1025,7 @@
   }
 
   .jx-connection-card {
-    border-radius: 22px;
+    border-radius: var(--jxt-radius-panel);
   }
 
   .jx-connection-card__image-wrap {
@@ -1093,7 +1093,7 @@
   height: 38px;
   padding: 0 14px;
   border: 1px solid rgba(11, 36, 54, 0.1);
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   color: var(--jx-ink);
   background: #fff;
   font: inherit;
@@ -1689,7 +1689,7 @@
   max-width: 250px;
   padding: 10px 15px;
   border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 11px 26px rgba(11, 36, 54, 0.11);
   backdrop-filter: blur(10px);
@@ -1726,7 +1726,7 @@
   width: 39px;
   height: 39px;
   flex-basis: 39px;
-  border-radius: 12px;
+  border-radius: var(--jxt-radius-control);
 }
 
 .jx-hero--master .jx-hero__info-card strong {
@@ -2228,7 +2228,7 @@
 .jxt-hero-cta__primary,
 .jxt-hero-cta__secondary {
   min-height: clamp(52px, 3.7vw, 62px);
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   padding-inline: clamp(25px, 2.2vw, 38px);
   font-size: clamp(0.9rem, 1.08vw, 1.12rem);
   font-weight: 750;
@@ -2650,7 +2650,7 @@
     margin: 0 0 12px;
     padding: 5px 8px;
     border: 1px solid rgba(42, 132, 255, 0.12);
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #1571d4;
     background: rgba(238, 247, 255, 0.9);
     font-size: 7.5px;
@@ -2777,7 +2777,7 @@
 
   .jxm-feature {
     display: flex;
-    min-height: 54px;
+    min-height: var(--jxt-button-height);
     align-items: center;
     gap: 10px;
     padding: 7px 12px;
@@ -2795,7 +2795,7 @@
     height: 39px;
     flex: 0 0 39px;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
     background: #eff8ff;
   }
 
@@ -2837,7 +2837,7 @@
     min-height: 52px;
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     font-size: 16px;
     font-weight: 800;
     line-height: 1;
@@ -3034,7 +3034,7 @@
     right: 8px;
     width: 77px;
     padding: 11px 9px;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
     font-size: 9.7px;
   }
 
@@ -3187,7 +3187,7 @@
     width: 44px;
     height: 44px;
     min-width: 44px;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
   }
 }
 
@@ -3430,7 +3430,7 @@
     height: 37px;
     margin-bottom: 5px;
     place-items: center;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
     color: #1975f0;
     background: rgba(231, 243, 255, 0.82);
     filter: drop-shadow(0 5px 7px rgba(39, 110, 207, 0.13));
@@ -3601,7 +3601,7 @@
   }
 
   .jxm-travel-select {
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     grid-template-columns: 74px minmax(0, 1fr);
     border-radius: 8px;
   }
@@ -3879,7 +3879,7 @@
 
   .jxm-footer-group a {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     color: rgba(227, 239, 247, 0.78);
     font-size: 13px;
@@ -3925,7 +3925,7 @@
     height: 39px;
     place-items: center;
     border: 1px solid rgba(225, 239, 248, 0.1);
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: rgba(246, 250, 253, 0.92);
     background: rgba(255, 255, 255, 0.055);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -4129,7 +4129,7 @@
   }
 
   .jx-header .jx-header__logo {
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
   }
 
   .jx-header button.jx-header__menu-button {
@@ -4205,7 +4205,7 @@
     width: 40px;
     height: 40px;
     flex-basis: 40px;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
   }
 
   .jxm-feature__copy strong {
@@ -4265,7 +4265,7 @@
     width: 44px;
     height: 44px;
     margin-bottom: 9px;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
   }
 
   .jx-master-option__mobile-title {
@@ -4302,7 +4302,7 @@
   }
 
   .jxm-travel-select select {
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
   }
 
   .jxm-travel-kit__cta {
@@ -4642,7 +4642,7 @@
   .jxm-hero-v2__primary,
   .jxm-hero-v2__secondary {
     display: flex;
-    min-height: 54px;
+    min-height: var(--jxt-button-height);
     align-items: center;
     justify-content: center;
     border-radius: 10px;
@@ -4792,7 +4792,7 @@
     margin: -1px auto 0;
     padding: 23px 18px 20px;
     border: 1px solid rgba(16, 45, 80, 0.08);
-    border-radius: 22px;
+    border-radius: var(--jxt-radius-panel);
     background: #ffffff;
     box-shadow:
       0 18px 42px rgba(18, 46, 80, 0.1),
@@ -5264,7 +5264,7 @@
   height: 42px;
   margin-bottom: 10px;
   place-items: center;
-  border-radius: 12px;
+  border-radius: var(--jxt-radius-control);
   color: var(--jx-coral);
   background: var(--jx-sky-50);
 }
@@ -5321,7 +5321,7 @@
 }
 
 .jxm-compare-intro__cta {
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   width: 100%;
   max-width: 320px;
 }
@@ -5407,7 +5407,7 @@
 
 .jxm-why-jxt__link {
   display: flex;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
@@ -5507,7 +5507,7 @@
 .jxm-faq-preview__question {
   display: flex;
   width: 100%;
-  min-height: 44px;
+  min-height: var(--jxt-tap-target);
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -5675,7 +5675,7 @@
   align-items: center;
   gap: 10px;
   border: 1px solid rgba(11, 36, 54, 0.11);
-  border-radius: 999px;
+  border-radius: var(--jxt-radius-full);
   color: #10273d;
   background: #ffffff;
   box-shadow: 0 5px 16px rgba(11, 36, 54, 0.06);
@@ -5853,7 +5853,7 @@
   width: 40px;
   height: 40px;
   place-items: center;
-  border-radius: 12px;
+  border-radius: var(--jxt-radius-control);
   color: #3476bd;
   background: #eaf4ff;
 }
@@ -5941,7 +5941,7 @@
   .jx-header__search-trigger {
     display: inline-flex;
     width: clamp(220px, 18vw, 290px);
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     padding: 5px 15px;
   }
 
@@ -6018,7 +6018,7 @@
     display: inline-flex;
     width: 42px;
     height: 42px;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
   }
 
   .jx-header__mobile-menu {
@@ -6155,7 +6155,7 @@
   .jx-header .jx-header__cta:focus-visible {
     outline: 2px solid rgba(52, 118, 189, 0.5);
     outline-offset: 1px;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
   }
 }
 

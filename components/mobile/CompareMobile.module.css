@@ -83,7 +83,7 @@
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     padding: 0 2px;
     color: #0b4f9f;
     font-size: 12px;
@@ -226,7 +226,7 @@
   .methodBadge {
     display: inline-flex;
     margin-bottom: 10px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     padding: 5px 11px;
     font-size: 9px;
     font-weight: 850;
@@ -306,12 +306,12 @@
 
   .methodLink {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 6px;
     margin-top: 10px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     background: #0b2436;
     color: #ffffff;
     font-size: 13px;
@@ -360,7 +360,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     text-decoration: none;
   }
 
@@ -554,7 +554,7 @@
 
   .serviceTypeChip {
     border: 1px solid #d9e3ec;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     background: #f5f8fc;
     padding: 4px 10px;
     color: #2c4258;
@@ -648,10 +648,10 @@
 
   .providerActions > * {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     font-size: 12px;
     font-weight: 800;
     text-align: center;
@@ -683,7 +683,7 @@
 
   .reviewMethodologyLink {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     margin-top: 14px;
@@ -794,7 +794,7 @@
   }
 
   .finalCta > a {
-    min-height: 54px;
+    min-height: var(--jxt-button-height);
     color: #ffffff;
     background: #ff383e;
     font-size: 15px;

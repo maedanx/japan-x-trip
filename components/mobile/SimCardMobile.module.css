@@ -199,7 +199,7 @@
     min-height: 142px;
     align-self: start;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--jxt-radius-control);
     background: #f0f5f9;
   }
 
@@ -240,7 +240,7 @@
     min-height: 19px;
     flex: 0 0 auto;
     align-items: center;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     padding: 0 6px;
     color: #ffffff;
     font-size: 9px;
@@ -309,7 +309,7 @@
 
   .reviewLink {
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: flex-end;
     gap: 4px;
@@ -393,12 +393,12 @@
   .checkSection a {
     grid-column: 1 / -1;
     display: flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     justify-content: center;
     gap: 6px;
     margin-top: 4px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #ff3b40;
     font-size: 12px;
@@ -445,7 +445,7 @@
 
   .fitGuidance a {
     display: inline-flex;
-    min-height: 44px;
+    min-height: var(--jxt-tap-target);
     align-items: center;
     gap: 6px;
     color: #c4433a;
@@ -639,7 +639,7 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    border-radius: 999px;
+    border-radius: var(--jxt-radius-full);
     color: #ffffff;
     background: #ff3b40;
     font-size: 12px;

@@ -1,21 +1,21 @@
 @import "../styles/mobile/tokens.css";
 
 :root {
-  --ink: #102c3b;
-  --ink-soft: #49626f;
+  --ink: var(--jxt-ink);
+  --ink-soft: var(--jxt-ink-soft);
   --paper: #f8faf7;
   --paper-warm: #f1f3eb;
-  --white: #ffffff;
-  --accent: #e44f3f;
-  --accent-dark: #c93d30;
+  --white: var(--jxt-surface);
+  --accent: var(--jxt-brand-primary);
+  --accent-dark: var(--jxt-brand-primary-hover);
   --mint: #d9eee4;
   --mint-dark: #2f745b;
   --gold: #f2c66d;
   --line: #dce5e2;
-  --shadow: 0 24px 70px rgba(16, 44, 59, 0.12);
-  --shadow-small: 0 12px 32px rgba(16, 44, 59, 0.08);
+  --shadow: var(--jxt-shadow-overlay);
+  --shadow-small: var(--jxt-shadow-panel);
   --radius-large: 32px;
-  --radius-medium: 22px;
+  --radius-medium: var(--jxt-radius-panel);
   --radius-small: 14px;
   --container: 1180px;
 }
