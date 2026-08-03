@@ -112,7 +112,9 @@ export type HomeNavPlacement =
   /** WhyJapanXTrip's "How We Review Providers" link. */
   | "home-why-review-method"
   /** WhyJapanXTrip's "Affiliate Disclosure" link. */
-  | "home-why-affiliate-disclosure";
+  | "home-why-affiliate-disclosure"
+  /** FeaturedGuide's "Read the Complete Guide" CTA into /esim-vs-pocket-wifi-japan. */
+  | "home-featured-guide";
 
 /**
  * Tracks a click on a plain internal navigation link on Home. Uses the same
