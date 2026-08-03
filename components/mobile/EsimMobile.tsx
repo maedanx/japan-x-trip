@@ -150,14 +150,16 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
         className={styles.plans}
         aria-labelledby="mobile-esim-plans-title"
       >
-        <h2 id="mobile-esim-plans-title" className={styles.srOnly}>
-          Japan eSIM plans
-        </h2>
+        <div className={styles.plansHeading}>
+          <p>Featured plans</p>
 
-        <div className={styles.tabs} aria-label="Plan categories">
-          <span className={styles.activeTab}>Popular</span>
-          <span>Unlimited</span>
-          <span>Best Value</span>
+          <h2 id="mobile-esim-plans-title">
+            Recommended eSIM Plans
+          </h2>
+
+          <span>
+            Compare the current featured Airalo options for Japan.
+          </span>
         </div>
 
         <div className={styles.planList}>
