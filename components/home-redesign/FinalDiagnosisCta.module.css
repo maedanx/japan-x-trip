@@ -254,3 +254,54 @@
     transition: none;
   }
 }
+
+/* Home content compression — Batch B */
+
+@media (max-width: 900px) {
+  .mobileSection {
+    padding-top: 52px;
+    padding-bottom: 56px;
+  }
+
+  .icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+  }
+
+  .container h2 {
+    margin-top: 10px;
+    font-size: clamp(30px, 8.5vw, 38px);
+    line-height: 1.04;
+  }
+
+  .description {
+    margin-top: 11px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .reassurance {
+    margin-top: 18px;
+  }
+
+  .cta {
+    min-height: 54px;
+    margin-top: 20px;
+  }
+
+  .note {
+    margin-top: 9px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileSection {
+    padding-top: 46px;
+    padding-bottom: 50px;
+  }
+
+  .container h2 {
+    font-size: 32px;
+  }
+}

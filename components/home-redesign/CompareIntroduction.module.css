@@ -362,3 +362,43 @@
     transition: none;
   }
 }
+
+/* Home content compression — Batch A */
+
+@media (max-width: 900px) {
+  .mobileSection {
+    padding-top: 48px;
+    padding-bottom: 52px;
+  }
+
+  .heading {
+    margin-bottom: 22px;
+  }
+
+  .heading h2 {
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.05;
+  }
+
+  .heading > p:last-child {
+    margin-top: 9px;
+    line-height: 1.4;
+  }
+
+  .cardList {
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px 17px;
+  }
+
+  .details {
+    margin-top: 12px;
+  }
+
+  .diagnosis {
+    margin-top: 14px;
+    padding: 13px 14px;
+  }
+}

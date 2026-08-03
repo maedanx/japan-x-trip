@@ -275,3 +275,53 @@
     transition: none;
   }
 }
+
+/* Home content compression — Batch A */
+
+@media (max-width: 900px) {
+  .mobileSection {
+    padding-top: 48px;
+    padding-bottom: 52px;
+  }
+
+  .heading {
+    margin-bottom: 22px;
+  }
+
+  .heading h2 {
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.05;
+  }
+
+  .heading > p:last-child {
+    margin-top: 9px;
+    line-height: 1.4;
+  }
+
+  .cardList {
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card p {
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .proof {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+
+  .proofLink {
+    padding: 12px 13px;
+  }
+
+  .proofLink small {
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+}

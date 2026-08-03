@@ -289,3 +289,61 @@
     transition: none;
   }
 }
+
+/* Home content compression — Batch B */
+
+@media (max-width: 900px) {
+  .mobileSection {
+    padding-top: 48px;
+    padding-bottom: 52px;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .heading h2 {
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.05;
+  }
+
+  .heading > p:last-child {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .list {
+    gap: 8px;
+  }
+
+  .question {
+    min-height: 62px;
+    padding: 11px 13px;
+  }
+
+  .answerInner {
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+
+  .answer p {
+    line-height: 1.5;
+  }
+
+  .allFaqs {
+    margin-top: 14px;
+    padding: 13px 15px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileSection {
+    padding-top: 42px;
+    padding-bottom: 46px;
+  }
+
+  .question {
+    min-height: 60px;
+  }
+}

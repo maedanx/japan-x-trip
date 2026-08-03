@@ -12,7 +12,7 @@ const COMPARE_CARDS = [
   {
     key: "esim",
     title: "eSIM",
-    bestFor: "Best for solo travelers",
+    bestFor: "Solo travelers",
     href: "/esim",
     linkLabel: "Explore eSIM",
     points: [
@@ -21,8 +21,8 @@ const COMPARE_CARDS = [
       "Best for compatible unlocked phones",
     ],
     details: [
-      { label: "Setup", value: "Before arrival" },
-      { label: "Devices", value: "One compatible phone" },
+      { label: "Setup", value: "Before your trip" },
+      { label: "Devices", value: "1 compatible phone" },
       { label: "Carry", value: "Nothing extra" },
     ],
     tone: "blue",
@@ -31,7 +31,7 @@ const COMPARE_CARDS = [
   {
     key: "wifi",
     title: "Pocket Wi-Fi",
-    bestFor: "Best for families and groups",
+    bestFor: "Families & groups",
     href: "/pocket-wifi",
     linkLabel: "Explore Pocket WiFi",
     points: [
@@ -40,9 +40,9 @@ const COMPARE_CARDS = [
       "Best for families and groups",
     ],
     details: [
-      { label: "Setup", value: "Pick up or delivery" },
-      { label: "Devices", value: "Share across devices" },
-      { label: "Carry", value: "One small router" },
+      { label: "Setup", value: "Pickup or delivery" },
+      { label: "Devices", value: "Multiple devices" },
+      { label: "Carry", value: "Small router" },
     ],
     tone: "coral",
     icon: <WifiIcon />,
@@ -50,7 +50,7 @@ const COMPARE_CARDS = [
   {
     key: "sim",
     title: "SIM Card",
-    bestFor: "Best when eSIM is unavailable",
+    bestFor: "When eSIM is unavailable",
     href: "/sim-card",
     linkLabel: "Explore SIM Cards",
     points: [
@@ -59,8 +59,8 @@ const COMPARE_CARDS = [
       "Best for unlocked devices with a SIM slot",
     ],
     details: [
-      { label: "Setup", value: "Insert after arrival" },
-      { label: "Devices", value: "One unlocked phone" },
+      { label: "Setup", value: "Insert on arrival" },
+      { label: "Devices", value: "1 unlocked phone" },
       { label: "Carry", value: "Nothing extra" },
     ],
     tone: "green",
@@ -138,12 +138,11 @@ export default function CompareIntroduction() {
             <p className={styles.eyebrow}>Choose your connection type</p>
 
             <h2 id="mobile-compare-title">
-              What works best
-              <span>for your trip?</span>
+              Choose Your Connection
             </h2>
 
             <p>
-              Start with how you travel, then compare providers and plans.
+              Compare the three main options.
             </p>
           </header>
 
@@ -199,8 +198,8 @@ export default function CompareIntroduction() {
             </span>
 
             <div>
-              <strong>Not sure which type fits?</strong>
-              <p>Get a personalized recommendation in about a minute.</p>
+              <strong>Not sure?</strong>
+              <p>Get your best match.</p>
             </div>
 
             <Link

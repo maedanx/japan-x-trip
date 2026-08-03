@@ -6,9 +6,9 @@ import Container from "./Container";
 import styles from "./FinalDiagnosisCta.module.css";
 
 const REASSURANCE_ITEMS = [
-  "Takes about 30 seconds",
-  "Free to use",
-  "No sign-up required",
+  "30 seconds",
+  "Free",
+  "No sign-up",
 ] as const;
 
 export default function FinalDiagnosisCta() {
@@ -54,16 +54,14 @@ export default function FinalDiagnosisCta() {
             <SparkIcon />
           </span>
 
-          <p className={styles.eyebrow}>Your next step</p>
+          <p className={styles.eyebrow}>Ready?</p>
 
           <h2 id="mobile-final-cta-title">
-            Ready to find
-            <span>your best option?</span>
+            Find Your Best Option
           </h2>
 
           <p className={styles.description}>
-            Get a personalized recommendation based on your trip, devices,
-            and how you plan to use mobile data.
+            Get a recommendation matched to your trip.
           </p>
 
           <ul className={styles.reassurance} aria-label="Diagnosis details">
@@ -89,7 +87,7 @@ export default function FinalDiagnosisCta() {
           </Link>
 
           <p className={styles.note}>
-            We’ll explain why each option fits your answers.
+            See why each option fits.
           </p>
         </div>
       </section>

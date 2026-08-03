@@ -27,21 +27,21 @@ const MOBILE_TRUST_ITEMS = [
   {
     title: "Independent comparisons",
     description:
-      "We compare options using consistent criteria instead of promoting one provider for every traveler.",
+      "Consistent criteria for every option.",
     icon: <CompareIcon />,
     tone: "blue",
   },
   {
     title: "Transparent recommendations",
     description:
-      "Some links are affiliate links, but you pay the same price and we clearly explain the trade-offs.",
+      "Clear affiliate disclosure. No extra cost to you.",
     icon: <ShieldIcon />,
     tone: "coral",
   },
   {
     title: "Built for Japan travelers",
     description:
-      "Our guidance focuses on compatibility, setup, trip length, group size, and real travel situations.",
+      "Advice built around real Japan trips.",
     icon: <JapanIcon />,
     tone: "green",
   },
@@ -103,13 +103,11 @@ export default function WhyJapanXTrip() {
             <p className={styles.eyebrow}>Why Japan X Trip</p>
 
             <h2 id="mobile-why-jxt-title">
-              Guidance you can
-              <span>understand and trust.</span>
+              Clear, Honest Guidance
             </h2>
 
             <p>
-              We help international travelers make informed choices without
-              hiding important limitations or trade-offs.
+              Compare confidently before you buy.
             </p>
           </header>
 
@@ -146,7 +144,7 @@ export default function WhyJapanXTrip() {
               <span>
                 <strong>How we review providers</strong>
                 <small>
-                  Read the criteria behind our comparisons and recommendations.
+                  See our review criteria.
                 </small>
               </span>
 
@@ -167,8 +165,7 @@ export default function WhyJapanXTrip() {
               <span>
                 <strong>Affiliate disclosure</strong>
                 <small>
-                  Learn how the site may earn commission without increasing
-                  your price.
+                  See how commissions work.
                 </small>
               </span>
 

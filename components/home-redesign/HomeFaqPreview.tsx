@@ -96,16 +96,14 @@ export default function HomeFaqPreview() {
       >
         <div className={styles.container}>
           <header className={styles.heading}>
-            <p className={styles.eyebrow}>Before you choose</p>
+            <p className={styles.eyebrow}>Quick answers</p>
 
             <h2 id="mobile-home-faq-title">
-              Questions travelers
-              <span>often ask first.</span>
+              Common Questions
             </h2>
 
             <p>
-              Clear answers to the most common concerns about staying
-              connected in Japan.
+              What travelers ask before choosing.
             </p>
           </header>
 
@@ -162,10 +160,9 @@ export default function HomeFaqPreview() {
 
           <Link href="/faq" className={styles.allFaqs}>
             <span>
-              <strong>Explore all FAQs</strong>
+              <strong>View All FAQs</strong>
               <small>
-                Read more answers about setup, compatibility, and connection
-                options.
+                Setup, compatibility, and more.
               </small>
             </span>
 
