@@ -94,13 +94,7 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
         <h1>Pocket WiFi for Japan</h1>
 
         <p className={styles.intro}>
-          Share internet with family and friends.
-          <br />
-          Connect phones, tablets, and laptops. See the{" "}
-          <Link href="/best-pocket-wifi-japan">
-            Best Pocket WiFi for Japan comparison
-          </Link>{" "}
-          for a side-by-side summary of these options.
+          Share internet across phones, tablets, and laptops.
         </p>
 
         <div className={styles.heroGrid}>
@@ -151,7 +145,7 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
           </h2>
 
           <span>
-            Compare the current featured rental options for Japan.
+            Compare featured rental options.
           </span>
         </div>
 
@@ -253,15 +247,14 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
             Check pickup and return details
           </SectionHeading>
           <p>
-            Confirm the terminal, opening hours, delivery deadline, and
-            return method.
+            Confirm pickup, delivery, and return details.
           </p>
         </div>
       </section>
 
       <section className={styles.faq} aria-labelledby="mobile-pocket-wifi-faq-title">
         <small>FAQ</small>
-        <h2 id="mobile-pocket-wifi-faq-title">Japan pocket Wi-Fi questions</h2>
+        <h2 id="mobile-pocket-wifi-faq-title">Common Pocket WiFi Questions</h2>
 
         <div className={styles.faqList}>
           {faqs.map((faq) => (
@@ -285,7 +278,7 @@ export default function PocketWifiMobile({ faqs }: PocketWifiMobileProps) {
           </SectionHeading>
 
         <p>
-          Answer a few questions about travelers, devices, and trip style.
+          Get a recommendation matched to your group.
         </p>
 
         <Link href="/diagnosis">

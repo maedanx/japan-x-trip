@@ -80,9 +80,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
         <h1>eSIM Plans for Japan</h1>
 
         <p className={styles.intro}>
-          Instant digital setup. No physical SIM needed.
-          <br />
-          A simple option for compatible phones.
+          Instant setup for compatible unlocked phones.
         </p>
 
         <div className={styles.heroGrid}>
@@ -158,7 +156,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
           </h2>
 
           <span>
-            Compare the current featured Airalo options for Japan.
+            Compare featured Airalo plans.
           </span>
         </div>
 
@@ -235,8 +233,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
             Check that your phone supports eSIM
           </SectionHeading>
           <p>
-            Your phone must support eSIM and be carrier-unlocked. For
-            device-specific setup steps, choose the{" "}
+            Confirm eSIM support and carrier-unlocked status. See the{" "}
             <Link href="/japan-esim-iphone">iPhone guide</Link> or{" "}
             <Link href="/japan-esim-android">Android guide</Link>.
           </p>
@@ -250,7 +247,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
 
       <section className={styles.faq} aria-labelledby="mobile-esim-faq-title">
         <span className={styles.fitGuidanceLabel}>FAQ</span>
-        <h2 id="mobile-esim-faq-title">Japan eSIM questions</h2>
+        <h2 id="mobile-esim-faq-title">Common eSIM Questions</h2>
 
         <div className={styles.faqList}>
           {faqs.map((faq) => (
@@ -274,7 +271,7 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
           </SectionHeading>
 
         <p>
-          Answer a few questions about your phone, trip length, and data use.
+          Get a recommendation matched to your trip.
         </p>
 
         <Link href="/diagnosis">

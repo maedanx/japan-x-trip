@@ -588,3 +588,59 @@
     margin-inline: 11px;
   }
 }
+
+/* Mobile page content compression */
+
+@media (max-width: 900px) {
+  .hero {
+    padding-bottom: 8px;
+  }
+
+  .intro {
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  .fitGuidance,
+  .checkSection,
+  .notice,
+  .familyCard,
+  .faq,
+  .finalCta {
+    margin-bottom: 14px;
+  }
+
+  .plans,
+  .products,
+  .devices {
+    padding-bottom: 18px;
+  }
+
+  .planCard,
+  .productCard,
+  .providerCard {
+    padding: 13px;
+  }
+
+  .checkSection,
+  .notice {
+    padding: 14px;
+  }
+
+  .faq {
+    padding: 16px 14px;
+  }
+
+  .faqList details > p {
+    line-height: 1.5;
+  }
+
+  .finalCta {
+    padding: 18px 15px;
+  }
+
+  .finalCta p {
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+}

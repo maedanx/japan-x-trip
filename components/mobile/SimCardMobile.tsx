@@ -73,9 +73,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
         <h1>SIM Cards for Japan</h1>
 
         <p className={styles.intro}>
-          Use mobile data directly on your phone.
-          <br />
-          A practical option for compatible unlocked devices.
+          Mobile data for compatible unlocked phones.
         </p>
 
         <div className={styles.heroGrid}>
@@ -151,7 +149,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
           </h2>
 
           <span>
-            Review the current featured physical SIM option for Japan.
+            Review the featured physical SIM.
           </span>
         </div>
 
@@ -237,8 +235,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
             Check that your phone can use a physical SIM
           </SectionHeading>
           <p>
-            Confirm that the device is carrier-unlocked and accepts the
-            correct SIM size.
+            Confirm unlocked status and the correct SIM size.
           </p>
         </div>
 
@@ -270,7 +267,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
 
       <section className={styles.faq} aria-labelledby="mobile-sim-card-faq-title">
         <span className={styles.fitGuidanceLabel}>FAQ</span>
-        <h2 id="mobile-sim-card-faq-title">Japan SIM card questions</h2>
+        <h2 id="mobile-sim-card-faq-title">Common SIM Questions</h2>
 
         <div className={styles.faqList}>
           {faqs.map((faq) => (
@@ -294,7 +291,7 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
           </SectionHeading>
 
         <p>
-          Answer a few questions about your phone, trip, and travel style.
+          Get a recommendation matched to your trip.
         </p>
 
         <Link href="/diagnosis">
