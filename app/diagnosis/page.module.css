@@ -387,9 +387,9 @@
 }
 
 .resultPanel {
-  border: 1px solid #dfe6ee;
-  border-radius: 20px;
-  padding: 23px;
+  border: var(--jxt-panel-nested-border);
+  border-radius: var(--jxt-panel-nested-radius);
+  padding: var(--jxt-panel-padding-nested);
 }
 
 .resultPanel h3 {
@@ -831,10 +831,10 @@
 
 .providerSection {
   margin-top: 28px;
-  border: 1px solid #dce4ee;
-  border-radius: 22px;
-  background: #f7f9fc;
-  padding: 26px;
+  border: var(--jxt-panel-soft-border);
+  border-radius: var(--jxt-panel-soft-radius);
+  background: var(--jxt-panel-soft-surface);
+  padding: var(--jxt-panel-padding);
 }
 
 .providerHeading {
@@ -931,16 +931,16 @@
   }
 
   .providerSection {
-    padding: 20px;
+    padding: var(--jxt-panel-padding-mobile);
   }
 }
 
 .fitComparison {
   margin-top: 28px;
-  border: 1px solid #dce4ee;
-  border-radius: 22px;
-  background: #ffffff;
-  padding: 26px;
+  border: var(--jxt-panel-surface-border);
+  border-radius: var(--jxt-panel-surface-radius);
+  background: var(--jxt-panel-surface-bg);
+  padding: var(--jxt-panel-padding);
 }
 
 .fitComparisonHeading {
@@ -1071,7 +1071,7 @@
 
 @media (max-width: 720px) {
   .fitComparison {
-    padding: 20px;
+    padding: var(--jxt-panel-padding-mobile);
   }
 
   .fitComparisonHeading,
@@ -1097,10 +1097,10 @@
 /* Phase 16: separate transport planning options shown after the internet result */
 .transportOptions {
   margin-top: 30px;
-  border: 1px solid #dfe6ee;
-  border-radius: 22px;
-  background: #f7f9fc;
-  padding: 26px;
+  border: var(--jxt-panel-soft-border);
+  border-radius: var(--jxt-panel-soft-radius);
+  background: var(--jxt-panel-soft-surface);
+  padding: var(--jxt-panel-padding);
 }
 
 .transportOptionsHeading {
@@ -1214,7 +1214,7 @@
 
 @media (max-width: 520px) {
   .transportOptions {
-    padding: 20px;
+    padding: var(--jxt-panel-padding-mobile);
   }
 }
 
@@ -1569,8 +1569,8 @@
   .providerSection,
   .fitComparison,
   .transportOptions {
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: var(--jxt-panel-radius-compact);
+    padding: var(--jxt-panel-padding-compact);
   }
 
   .resultPanel h3 {
@@ -2124,10 +2124,10 @@
 
 .recommendationOverview {
   margin-top: 30px;
-  border: 1px solid #dce4ee;
-  border-radius: 24px;
-  background: #f7f9fc;
-  padding: 28px;
+  border: var(--jxt-panel-soft-border);
+  border-radius: var(--jxt-panel-soft-radius-large);
+  background: var(--jxt-panel-soft-surface);
+  padding: var(--jxt-panel-padding-overview);
 }
 
 .recommendationOverviewHeading {
@@ -2365,7 +2365,7 @@
 
 @media (max-width: 720px) {
   .recommendationOverview {
-    padding: 21px 18px;
+    padding: var(--jxt-panel-padding-overview-mobile);
   }
 
   .recommendationOverviewHeading {

@@ -78,6 +78,29 @@
   --jxt-card-state-unavailable-border: #d9dfe6;
   --jxt-card-state-unavailable-surface: #f6f7f9;
 
+  /* Panel System */
+  --jxt-panel-soft-border: 1px solid #dce4ee;
+  --jxt-panel-soft-radius: 22px;
+  --jxt-panel-soft-radius-large: 24px;
+  --jxt-panel-soft-surface: #f7f9fc;
+
+  --jxt-panel-surface-border: 1px solid #dce4ee;
+  --jxt-panel-surface-radius: 22px;
+  --jxt-panel-surface-bg: var(--jxt-surface);
+
+  --jxt-panel-nested-border: 1px solid #dfe6ee;
+  --jxt-panel-nested-radius: 20px;
+
+  --jxt-panel-padding: 26px;
+  --jxt-panel-padding-overview: 28px;
+  --jxt-panel-padding-nested: 23px;
+
+  --jxt-panel-padding-mobile: 20px;
+  --jxt-panel-padding-overview-mobile: 21px 18px;
+
+  --jxt-panel-radius-compact: 15px;
+  --jxt-panel-padding-compact: 15px;
+
   /* Layout */
   --jxt-mobile-width-min: 360px;
   --jxt-mobile-width-reference: 390px;
