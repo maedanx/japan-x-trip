@@ -198,29 +198,29 @@
 
   .methodCard {
     padding: 14px 14px;
-    border: 1px solid #e4ebf2;
-    border-radius: 16px;
-    background: #fbfcfe;
-    box-shadow: 0 7px 18px rgba(12, 42, 65, 0.055);
+    border: var(--jxt-card-interactive-border);
+    border-radius: var(--jxt-card-interactive-radius);
+    background: var(--jxt-card-interactive-surface);
+    box-shadow: var(--jxt-card-interactive-shadow);
   }
 
   .methodCardBest {
-    border-color: #ff6a59;
-    box-shadow: 0 12px 28px rgba(215, 56, 41, 0.1);
+    border-color: var(--jxt-card-state-recommended-border);
+    box-shadow: var(--jxt-card-state-recommended-shadow);
   }
 
   .methodCardAlternative {
-    border-color: #9dbbdc;
+    border-color: var(--jxt-card-state-alternative-border);
   }
 
   .methodCardCheck {
-    border-color: #ecca9c;
-    background: #fffaf2;
+    border-color: var(--jxt-card-state-conditional-border);
+    background: var(--jxt-card-state-conditional-surface);
   }
 
   .methodCardNotRecommended {
-    border-color: #d9dfe6;
-    background: #f6f7f9;
+    border-color: var(--jxt-card-state-unavailable-border);
+    background: var(--jxt-card-state-unavailable-surface);
   }
 
   .methodBadge {
@@ -512,10 +512,10 @@
     flex-direction: column;
     min-height: 280px;
     padding: 14px;
-    border: 1px solid #e0e8f0;
-    border-radius: 15px;
-    background: #ffffff;
-    box-shadow: 0 7px 18px rgba(12, 42, 65, 0.055);
+    border: var(--jxt-card-provider-border);
+    border-radius: var(--jxt-card-provider-radius);
+    background: var(--jxt-card-provider-surface);
+    box-shadow: var(--jxt-card-provider-shadow);
   }
 
   .providerHeader {

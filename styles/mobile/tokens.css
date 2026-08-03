@@ -60,6 +60,24 @@
   --jxt-card-provider-shadow:
     0 7px 20px rgba(11, 42, 65, 0.055);
 
+  --jxt-card-interactive-radius: 16px;
+  --jxt-card-interactive-border: 1px solid #e4ebf2;
+  --jxt-card-interactive-surface: #fbfcfe;
+  --jxt-card-interactive-shadow:
+    0 7px 18px rgba(12, 42, 65, 0.055);
+
+  --jxt-card-state-recommended-border: #ff6a59;
+  --jxt-card-state-recommended-shadow:
+    0 12px 28px rgba(215, 56, 41, 0.1);
+
+  --jxt-card-state-alternative-border: #9dbbdc;
+
+  --jxt-card-state-conditional-border: #ecca9c;
+  --jxt-card-state-conditional-surface: #fffaf2;
+
+  --jxt-card-state-unavailable-border: #d9dfe6;
+  --jxt-card-state-unavailable-surface: #f6f7f9;
+
   /* Layout */
   --jxt-mobile-width-min: 360px;
   --jxt-mobile-width-reference: 390px;
