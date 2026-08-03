@@ -143,14 +143,16 @@ export default function SimCardMobile({ faqs }: SimCardMobileProps) {
         className={styles.products}
         aria-labelledby="mobile-sim-card-title"
       >
-        <h2 id="mobile-sim-card-title" className={styles.srOnly}>
-          SIM card options for Japan
-        </h2>
+        <div className={styles.productsHeading}>
+          <p>Featured option</p>
 
-        <div className={styles.tabs} aria-label="SIM card categories">
-          <span className={styles.activeTab}>Popular</span>
-          <span>Easy Setup</span>
-          <span>Before Arrival</span>
+          <h2 id="mobile-sim-card-title">
+            Recommended Physical SIM
+          </h2>
+
+          <span>
+            Review the current featured physical SIM option for Japan.
+          </span>
         </div>
 
         <div className={styles.productList}>
