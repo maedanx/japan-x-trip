@@ -1,85 +1,221 @@
 "use client";
 
 import Link from "next/link";
-import { trackHomeNavClick } from "@/lib/analytics";
+import {
+  trackDiagnosisEntryClick,
+  trackHomeNavClick,
+} from "@/lib/analytics";
 import Container from "./Container";
+import styles from "./CompareIntroduction.module.css";
 
 const COMPARE_CARDS = [
   {
     key: "esim",
     title: "eSIM",
+    bestFor: "Best for solo travelers",
+    href: "/esim",
+    linkLabel: "Explore eSIM",
     points: [
       "Fast digital setup",
       "No physical SIM swap",
       "Best for compatible unlocked phones",
     ],
-    icon: <EsimIcon />,
-  },
-  {
-    key: "sim",
-    title: "SIM Card",
-    points: [
-      "Physical SIM for your phone",
-      "Useful when eSIM is not supported",
-      "Best for unlocked devices with a SIM slot",
+    details: [
+      { label: "Setup", value: "Before arrival" },
+      { label: "Devices", value: "One compatible phone" },
+      { label: "Carry", value: "Nothing extra" },
     ],
-    icon: <SimIcon />,
+    tone: "blue",
+    icon: <EsimIcon />,
   },
   {
     key: "wifi",
     title: "Pocket Wi-Fi",
+    bestFor: "Best for families and groups",
+    href: "/pocket-wifi",
+    linkLabel: "Explore Pocket WiFi",
     points: [
       "Connect multiple devices",
       "No phone compatibility concerns",
       "Best for families and groups",
     ],
+    details: [
+      { label: "Setup", value: "Pick up or delivery" },
+      { label: "Devices", value: "Share across devices" },
+      { label: "Carry", value: "One small router" },
+    ],
+    tone: "coral",
     icon: <WifiIcon />,
+  },
+  {
+    key: "sim",
+    title: "SIM Card",
+    bestFor: "Best when eSIM is unavailable",
+    href: "/sim-card",
+    linkLabel: "Explore SIM Cards",
+    points: [
+      "Physical SIM for your phone",
+      "Useful when eSIM is not supported",
+      "Best for unlocked devices with a SIM slot",
+    ],
+    details: [
+      { label: "Setup", value: "Insert after arrival" },
+      { label: "Devices", value: "One unlocked phone" },
+      { label: "Carry", value: "Nothing extra" },
+    ],
+    tone: "green",
+    icon: <SimIcon />,
   },
 ] as const;
 
 export default function CompareIntroduction() {
+  function trackOption(href: (typeof COMPARE_CARDS)[number]["href"]) {
+    if (href === "/esim") {
+      trackHomeNavClick("home-option-esim");
+      return;
+    }
+
+    if (href === "/pocket-wifi") {
+      trackHomeNavClick("home-option-pocket-wifi");
+      return;
+    }
+
+    trackHomeNavClick("home-option-sim-card");
+  }
+
   return (
-    <section
-      className="jxm-compare-intro"
-      aria-labelledby="jxm-compare-intro-title"
-    >
-      <Container>
-        <div className="jxm-compare-intro__heading">
-          <p className="jxm-compare-intro__eyebrow">Compare Options</p>
-          <h2 id="jxm-compare-intro-title">Compare Your Options</h2>
-          <p className="jxm-compare-intro__subtitle">
-            See the key differences between eSIM, SIM cards, and Pocket
-            Wi-Fi.
-          </p>
-        </div>
+    <>
+      <section
+        className={`${styles.desktopOnly} jxm-compare-intro`}
+        aria-labelledby="jxm-compare-intro-title"
+      >
+        <Container>
+          <div className="jxm-compare-intro__heading">
+            <p className="jxm-compare-intro__eyebrow">Compare Options</p>
+            <h2 id="jxm-compare-intro-title">Compare Your Options</h2>
+            <p className="jxm-compare-intro__subtitle">
+              See the key differences between eSIM, SIM cards, and Pocket
+              Wi-Fi.
+            </p>
+          </div>
 
-        <div className="jxm-compare-intro__grid">
-          {COMPARE_CARDS.map((card) => (
-            <div className="jxm-compare-intro__card" key={card.key}>
-              <span className="jxm-compare-intro__icon" aria-hidden="true">
-                {card.icon}
-              </span>
-              <h3>{card.title}</h3>
-              <ul>
-                {card.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
+          <div className="jxm-compare-intro__grid">
+            {COMPARE_CARDS.map((card) => (
+              <div className="jxm-compare-intro__card" key={card.key}>
+                <span className="jxm-compare-intro__icon" aria-hidden="true">
+                  {card.icon}
+                </span>
+
+                <h3>{card.title}</h3>
+
+                <ul>
+                  {card.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="jxm-compare-intro__cta-row">
+            <Link
+              href="/compare"
+              className="jx-cta jx-cta--secondary jx-cta--default jxm-compare-intro__cta"
+              onClick={() => trackHomeNavClick("home-compare-all-options")}
+            >
+              Compare All Options
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      <section
+        className={styles.mobileSection}
+        aria-labelledby="mobile-compare-title"
+      >
+        <div className={styles.mobileContainer}>
+          <header className={styles.heading}>
+            <p className={styles.eyebrow}>Choose your connection type</p>
+
+            <h2 id="mobile-compare-title">
+              What works best
+              <span>for your trip?</span>
+            </h2>
+
+            <p>
+              Start with how you travel, then compare providers and plans.
+            </p>
+          </header>
+
+          <div className={styles.cardList}>
+            {COMPARE_CARDS.map((card) => (
+              <Link
+                key={card.key}
+                href={card.href}
+                className={`${styles.card} ${styles[card.tone]}`}
+                onClick={() => trackOption(card.href)}
+              >
+                <div className={styles.cardTop}>
+                  <span className={styles.icon} aria-hidden="true">
+                    {card.icon}
+                  </span>
+
+                  <div className={styles.cardTitle}>
+                    <span className={styles.bestFor}>{card.bestFor}</span>
+                    <h3>{card.title}</h3>
+                  </div>
+                </div>
+
+                <dl className={styles.details}>
+                  {card.details.map((detail) => (
+                    <div key={detail.label}>
+                      <dt>{detail.label}</dt>
+                      <dd>{detail.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <span className={styles.cardAction}>
+                  {card.linkLabel}
+                  <ArrowIcon />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className={styles.compareAction}>
+            <Link
+              href="/compare"
+              onClick={() => trackHomeNavClick("home-compare-all-options")}
+            >
+              Compare all connection options
+              <ArrowIcon />
+            </Link>
+          </div>
+
+          <aside className={styles.diagnosis}>
+            <span className={styles.diagnosisIcon} aria-hidden="true">
+              <SparkIcon />
+            </span>
+
+            <div>
+              <strong>Not sure which type fits?</strong>
+              <p>Get a personalized recommendation in about a minute.</p>
             </div>
-          ))}
-        </div>
 
-        <div className="jxm-compare-intro__cta-row">
-          <Link
-            href="/compare"
-            className="jx-cta jx-cta--secondary jx-cta--default jxm-compare-intro__cta"
-            onClick={() => trackHomeNavClick("home-compare-all-options")}
-          >
-            Compare All Options
-          </Link>
+            <Link
+              href="/diagnosis"
+              onClick={() =>
+                trackDiagnosisEntryClick("home-mid-diagnosis")
+              }
+              aria-label="Find my best connection option"
+            >
+              <ArrowIcon />
+            </Link>
+          </aside>
         </div>
-      </Container>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -108,6 +244,23 @@ function WifiIcon() {
       <rect x="4" y="5" width="16" height="14" rx="3" />
       <path d="M8 11a6 6 0 0 1 8 0M10 14a3 3 0 0 1 4 0" />
       <circle cx="12" cy="16.5" r=".8" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h13M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function SparkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m12 3 1.3 4.2L17 9l-3.7 1.8L12 15l-1.3-4.2L7 9l3.7-1.8L12 3Z" />
+      <path d="m18.5 14 .7 2.1 1.8.9-1.8.9-.7 2.1-.7-2.1-1.8-.9 1.8-.9.7-2.1Z" />
     </svg>
   );
 }

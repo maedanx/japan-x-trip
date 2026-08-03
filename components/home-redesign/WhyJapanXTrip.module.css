@@ -1,0 +1,277 @@
+.mobileSection {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileSection {
+    display: block;
+    padding: 72px 0 76px;
+    overflow: hidden;
+    color: #0b2436;
+    font-family:
+      Inter,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    background:
+      radial-gradient(
+        circle at 0% 10%,
+        rgba(219, 238, 251, 0.72),
+        transparent 31%
+      ),
+      radial-gradient(
+        circle at 100% 88%,
+        rgba(255, 229, 220, 0.58),
+        transparent 28%
+      ),
+      linear-gradient(180deg, #f8fbfd 0%, #ffffff 48%, #fafcfd 100%);
+  }
+
+  .container {
+    width: min(100% - 32px, 520px);
+    margin: 0 auto;
+  }
+
+  .heading {
+    margin-bottom: 30px;
+  }
+
+  .eyebrow {
+    margin: 0 0 10px;
+    color: #c94739;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .heading h2 {
+    margin: 0;
+    color: #0b2436;
+    font-size: clamp(32px, 9vw, 40px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+  }
+
+  .heading h2 span {
+    display: block;
+    color: #315d78;
+  }
+
+  .heading > p:last-child {
+    max-width: 355px;
+    margin: 15px 0 0;
+    color: #586e7b;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .cardList {
+    display: grid;
+    gap: 12px;
+  }
+
+  .card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 14px;
+    padding: 19px;
+    overflow: hidden;
+    border: 1px solid rgba(11, 36, 54, 0.08);
+    border-radius: 21px;
+    box-shadow:
+      0 11px 28px rgba(11, 36, 54, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  }
+
+  .card::after {
+    position: absolute;
+    right: -46px;
+    bottom: -54px;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    background: currentColor;
+    content: "";
+    opacity: 0.035;
+    pointer-events: none;
+  }
+
+  .blue {
+    color: #2e668f;
+    background: linear-gradient(145deg, #f2f8fd 0%, #fcfeff 100%);
+  }
+
+  .coral {
+    color: #bd4e42;
+    background: linear-gradient(145deg, #fff5f2 0%, #fffdfc 100%);
+  }
+
+  .green {
+    color: #34785a;
+    background: linear-gradient(145deg, #f2faf5 0%, #fcfefd 100%);
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid currentColor;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow:
+      0 8px 18px rgba(11, 36, 54, 0.07),
+      inset 0 1px 0 #fff;
+  }
+
+  .icon svg,
+  .proofIcon svg,
+  .proofLink > svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .card h3 {
+    margin: 1px 0 0;
+    color: #17364b;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .card p {
+    margin: 7px 0 0;
+    color: #647984;
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  .proof {
+    margin-top: 27px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(11, 36, 54, 0.09);
+  }
+
+  .proofLabel {
+    margin: 0 0 11px;
+    color: #667b87;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .proofLink {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 22px;
+    align-items: center;
+    gap: 12px;
+    min-height: 76px;
+    padding: 13px 14px;
+    border: 1px solid rgba(11, 36, 54, 0.08);
+    border-radius: 18px;
+    color: #17364b;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 9px 23px rgba(11, 36, 54, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      transform 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .proofLink + .proofLink {
+    margin-top: 9px;
+  }
+
+  .proofLink:active {
+    transform: scale(0.985);
+    border-color: rgba(11, 36, 54, 0.16);
+    box-shadow:
+      0 6px 16px rgba(11, 36, 54, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .proofLink:focus-visible {
+    outline: 3px solid rgba(230, 80, 63, 0.7);
+    outline-offset: 3px;
+  }
+
+  .proofIcon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: #315d78;
+    border-radius: 13px;
+    background: #edf5fa;
+  }
+
+  .proofLink strong,
+  .proofLink small {
+    display: block;
+  }
+
+  .proofLink strong {
+    font-size: 12.5px;
+    line-height: 1.3;
+  }
+
+  .proofLink small {
+    margin-top: 3px;
+    color: #748690;
+    font-size: 9.5px;
+    line-height: 1.45;
+  }
+
+  .proofLink > svg {
+    width: 20px;
+    height: 20px;
+    color: #526c7b;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileSection {
+    padding-top: 64px;
+  }
+
+  .container {
+    width: min(100% - 28px, 520px);
+  }
+
+  .card {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    padding: 17px;
+    border-radius: 19px;
+  }
+
+  .icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proofLink {
+    transition: none;
+  }
+}

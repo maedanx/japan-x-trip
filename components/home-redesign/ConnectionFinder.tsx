@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { trackDiagnosisEntryClick, trackHomeNavClick } from "@/lib/analytics";
 import { saveQuickDiagnosis } from "@/lib/diagnosisStorage";
 import Container from "./Container";
+import styles from "./ConnectionFinder.module.css";
 
 const DESKTOP_OPTIONS = [
   {
@@ -94,10 +95,13 @@ export default function ConnectionFinder() {
   const [purpose, setPurpose] = useState<PurposeValue | null>(null);
   const [days, setDays] = useState<DaysValue | null>(null);
 
-  const isComplete = useMemo(
-    () => Boolean(people && purpose && days),
+  const answeredCount = useMemo(
+    () => [people, purpose, days].filter(Boolean).length,
     [people, purpose, days],
   );
+
+  const isComplete = answeredCount === 3;
+  const progressPercent = (answeredCount / 3) * 100;
 
   function startDiagnosis() {
     if (!people || !purpose || !days) {
@@ -139,137 +143,200 @@ export default function ConnectionFinder() {
   return (
     <>
       <section
-        className="jxm-quick-diagnosis"
-        aria-labelledby="jxm-quick-diagnosis-title"
+        className={styles.mobileDiagnosis}
+        aria-labelledby="mobile-quick-diagnosis-title"
       >
-        <div className="jxm-quick-diagnosis__card">
-          <header className="jxm-quick-diagnosis__header">
-            <p className="jxm-quick-diagnosis__eyebrow">
-              Quick Diagnosis
-            </p>
+        <div className={styles.container}>
+          <header className={styles.header}>
+            <div className={styles.headerTop}>
+              <p className={styles.eyebrow}>Quick recommendation</p>
 
-            <h2 id="jxm-quick-diagnosis-title">
-              Find your best connection
-              <br />
-              in 30 seconds
+              <span className={styles.progressLabel}>
+                {answeredCount} of 3 answered
+              </span>
+            </div>
+
+            <div
+              className={styles.progressTrack}
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={3}
+              aria-valuenow={answeredCount}
+              aria-label={`${answeredCount} of 3 questions answered`}
+            >
+              <span
+                className={styles.progressValue}
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+
+            <h2 id="mobile-quick-diagnosis-title">
+              Find the right connection
+              <span>for your Japan trip.</span>
             </h2>
 
-            <p>Answer 3 quick questions to start your recommendation</p>
+            <p className={styles.intro}>
+              Answer three simple questions. No sign-up required.
+            </p>
           </header>
 
-          <div className="jxm-quick-diagnosis__divider" />
+          <div className={styles.questionList}>
+            <fieldset className={styles.questionCard}>
+              <legend>
+                <span className={styles.questionNumber}>1</span>
 
-          <fieldset className="jxm-quick-diagnosis__question">
-            <legend>
-              <span>1.</span>
-              How many people are using?
-            </legend>
+                <span>
+                  <strong>How many people?</strong>
+                  <small>Include everyone sharing the connection.</small>
+                </span>
+              </legend>
 
-            <div className="jxm-quick-diagnosis__grid jxm-quick-diagnosis__grid--four">
-              {PEOPLE_OPTIONS.map((option) => {
-                const selected = people === option.value;
+              <div className={styles.optionGrid}>
+                {PEOPLE_OPTIONS.map((option) => {
+                  const selected = people === option.value;
 
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    className="jxm-quick-choice"
-                    data-selected={selected}
-                    aria-pressed={selected}
-                    onClick={() => setPeople(option.value)}
-                  >
-                    <span className="jxm-quick-choice__icon">
-                      {option.icon}
-                    </span>
-                    <span>{option.label}</span>
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={styles.option}
+                      data-selected={selected}
+                      aria-pressed={selected}
+                      onClick={() => setPeople(option.value)}
+                    >
+                      <span className={styles.optionIcon} aria-hidden="true">
+                        {option.icon}
+                      </span>
+
+                      <span className={styles.optionLabel}>{option.label}</span>
+
+                      <span className={styles.check} aria-hidden="true">
+                        <CheckIcon />
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            <fieldset className={styles.questionCard}>
+              <legend>
+                <span className={styles.questionNumber}>2</span>
+
+                <span>
+                  <strong>How will you use mobile data?</strong>
+                  <small>Choose the activity that matters most.</small>
+                </span>
+              </legend>
+
+              <div className={styles.optionGrid}>
+                {PURPOSE_OPTIONS.map((option) => {
+                  const selected = purpose === option.value;
+
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={`${styles.option} ${styles.purposeOption}`}
+                      data-selected={selected}
+                      aria-pressed={selected}
+                      onClick={() => setPurpose(option.value)}
+                    >
+                      <span className={styles.optionIcon} aria-hidden="true">
+                        {option.icon}
+                      </span>
+
+                      <span className={styles.optionLabel}>
+                        {option.label}
+                        {"subLabel" in option && option.subLabel ? (
+                          <small>{option.subLabel}</small>
+                        ) : null}
+                      </span>
+
+                      <span className={styles.check} aria-hidden="true">
+                        <CheckIcon />
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            <fieldset className={styles.questionCard}>
+              <legend>
+                <span className={styles.questionNumber}>3</span>
+
+                <span>
+                  <strong>How long are you staying?</strong>
+                  <small>Select the total length of your Japan trip.</small>
+                </span>
+              </legend>
+
+              <div className={styles.daysGrid}>
+                {DAYS_OPTIONS.map((option) => {
+                  const selected = days === option.value;
+
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={styles.dayOption}
+                      data-selected={selected}
+                      aria-pressed={selected}
+                      onClick={() => setDays(option.value)}
+                    >
+                      <span>{option.label}</span>
+
+                      <span className={styles.dayCheck} aria-hidden="true">
+                        <CheckIcon />
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          </div>
+
+          <div className={styles.actionArea}>
+            <button
+              type="button"
+              className={styles.submit}
+              disabled={!isComplete}
+              onClick={startDiagnosis}
+            >
+              <span>
+                {isComplete
+                  ? "Continue to My Recommendation"
+                  : "Answer All 3 Questions"}
+              </span>
+
+              <ArrowIcon />
+            </button>
+
+            <div
+              className={styles.status}
+              data-ready={isComplete}
+              aria-live="polite"
+            >
+              <span className={styles.statusIcon} aria-hidden="true">
+                {isComplete ? <CheckIcon /> : <LockIcon />}
+              </span>
+
+              <span>
+                <strong>
+                  {isComplete
+                    ? "Great — you’re ready."
+                    : "Your answers stay on this device."}
+                </strong>
+
+                <small>
+                  {isComplete
+                    ? "We’ll use your answers to personalize the next step."
+                    : "Complete all three questions to continue."}
+                </small>
+              </span>
             </div>
-          </fieldset>
-
-          <fieldset className="jxm-quick-diagnosis__question">
-            <legend>
-              <span>2.</span>
-              How will you use mobile data?
-            </legend>
-
-            <div className="jxm-quick-diagnosis__grid jxm-quick-diagnosis__grid--four">
-              {PURPOSE_OPTIONS.map((option) => {
-                const selected = purpose === option.value;
-
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    className="jxm-quick-choice jxm-quick-choice--purpose"
-                    data-selected={selected}
-                    aria-pressed={selected}
-                    onClick={() => setPurpose(option.value)}
-                  >
-                    <span className="jxm-quick-choice__icon">
-                      {option.icon}
-                    </span>
-
-                    <span>
-                      {option.label}
-                      {"subLabel" in option && option.subLabel ? (
-                        <>
-                          <br />
-                          {option.subLabel}
-                        </>
-                      ) : null}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </fieldset>
-
-          <fieldset className="jxm-quick-diagnosis__question">
-            <legend>
-              <span>3.</span>
-              How many days in Japan?
-            </legend>
-
-            <div className="jxm-quick-diagnosis__grid jxm-quick-diagnosis__grid--days">
-              {DAYS_OPTIONS.map((option) => {
-                const selected = days === option.value;
-
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    className="jxm-quick-choice jxm-quick-choice--days"
-                    data-selected={selected}
-                    aria-pressed={selected}
-                    onClick={() => setDays(option.value)}
-                  >
-                    <span>{option.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </fieldset>
-
-          <button
-            type="button"
-            className="jxm-quick-diagnosis__submit"
-            disabled={!isComplete}
-            onClick={startDiagnosis}
-          >
-            <span>Continue with My Answers</span>
-            <ArrowIcon />
-          </button>
-
-          <p
-            className="jxm-quick-diagnosis__status"
-            aria-live="polite"
-          >
-            {isComplete
-              ? "Ready — continue to your personalized diagnosis."
-              : "Select one answer for each question."}
-          </p>
+          </div>
         </div>
       </section>
 
@@ -392,6 +459,23 @@ function MoreIcon() {
       <circle cx="6" cy="12" r="1.5" />
       <circle cx="12" cy="12" r="1.5" />
       <circle cx="18" cy="12" r="1.5" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <path d="m7 12.5 3.2 3.2L17.5 8.5" />
+    </svg>
+  );
+}
+
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 24 24">
+      <rect x="5" y="10" width="14" height="10" rx="2" />
+      <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10" />
     </svg>
   );
 }
