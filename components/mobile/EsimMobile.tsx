@@ -236,9 +236,9 @@ export default function EsimMobile({ faqs }: EsimMobileProps) {
           </SectionHeading>
           <p>
             Your phone must support eSIM and be carrier-unlocked. For
-            device-specific steps, see the{" "}
-            <Link href="/japan-esim-iphone">iPhone eSIM guide</Link> or the{" "}
-            <Link href="/japan-esim-android">Android eSIM guide</Link>.
+            device-specific setup steps, choose the{" "}
+            <Link href="/japan-esim-iphone">iPhone guide</Link> or{" "}
+            <Link href="/japan-esim-android">Android guide</Link>.
           </p>
         </div>
 
