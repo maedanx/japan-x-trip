@@ -90,6 +90,13 @@ export default async function ProviderReviewPage({
   const destination = getProviderDestination(provider);
   const ctaLabel = getProviderCtaLabel(provider, "Check current plans");
   const pageUrl = `${siteConfig.url}/reviews/${provider.slug}`;
+  const showReviewInfographics = new Set([
+    "sakura-mobile",
+    "airalo",
+    "ubigi",
+    "japan-wireless",
+    "ninja-wifi",
+  ]).has(provider.slug);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -247,6 +254,18 @@ export default async function ProviderReviewPage({
                 </section>
               ) : null}
 
+              {showReviewInfographics ? (
+                <figure className="review-infographic">
+                  <Image
+                    src="/assets/infographics/reviews/review-guide-01-who-should-choose-this.webp"
+                    alt="Who should choose an eSIM or Pocket WiFi for travel in Japan"
+                    width={1024}
+                    height={1536}
+                    sizes="(max-width: 760px) 100vw, 760px"
+                  />
+                </figure>
+              ) : null}
+
               {provider.atAGlance && provider.atAGlance.length > 0 ? (
                 <section className="review-section review-at-a-glance">
                   <p className="eyebrow">At a glance</p>
@@ -372,6 +391,18 @@ export default async function ProviderReviewPage({
                 </div>
               </section>
 
+              {showReviewInfographics ? (
+                <figure className="review-infographic">
+                  <Image
+                    src="/assets/infographics/reviews/review-guide-02-pros-and-cons.webp"
+                    alt="Pros and cons of travel connectivity options in Japan"
+                    width={1024}
+                    height={1536}
+                    sizes="(max-width: 760px) 100vw, 760px"
+                  />
+                </figure>
+              ) : null}
+
               <section className="review-section">
                 <p className="eyebrow">Before checkout</p>
                 <h2>What to verify before buying</h2>
@@ -382,6 +413,18 @@ export default async function ProviderReviewPage({
                   ))}
                 </ul>
               </section>
+
+              {showReviewInfographics ? (
+                <figure className="review-infographic">
+                  <Image
+                    src="/assets/infographics/reviews/review-guide-03-how-it-works.webp"
+                    alt="How to get connected in Japan in five simple steps"
+                    width={1024}
+                    height={1536}
+                    sizes="(max-width: 760px) 100vw, 760px"
+                  />
+                </figure>
+              ) : null}
 
               <section className="review-method-note">
                 <div>
@@ -419,6 +462,18 @@ export default async function ProviderReviewPage({
                   </Link>
                 </div>
               </section>
+
+              {showReviewInfographics ? (
+                <figure className="review-infographic">
+                  <Image
+                    src="/assets/infographics/reviews/review-guide-04-esim-vs-pocket-wifi.webp"
+                    alt="eSIM versus Pocket WiFi comparison for Japan travel"
+                    width={1024}
+                    height={1536}
+                    sizes="(max-width: 760px) 100vw, 760px"
+                  />
+                </figure>
+              ) : null}
 
               {provider.faqs && provider.faqs.length > 0 ? (
                 <section className="review-section review-faq">

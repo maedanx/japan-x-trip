@@ -3916,6 +3916,30 @@ legend > span {
   font-weight: 850;
 }
 
+.review-infographic {
+  width: 100%;
+  max-width: 760px;
+  margin: 28px auto;
+}
+
+.review-infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+@media (max-width: 620px) {
+  .review-infographic {
+    width: calc(100% + 16px);
+    margin: 22px -8px;
+  }
+
+  .review-infographic img {
+    border-radius: 14px;
+  }
+}
+
 .review-final-cta {
   display: flex;
   justify-content: space-between;

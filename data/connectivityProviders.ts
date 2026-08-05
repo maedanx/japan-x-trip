@@ -468,11 +468,45 @@ export const connectivityProviders: ConnectivityProvider[] = [
     fit: "Groups who want a shareable Pocket WiFi router, and solo travelers who prefer a fully digital eSIM setup.",
     summary:
       "Japan Wireless offers both a Pocket WiFi rental and an eSIM data plan for travelers in Japan. Pocket WiFi suits groups sharing one connection, while the eSIM option suits solo travelers who prefer a fully digital setup with no physical pickup or return.",
+    quickVerdict:
+      "Japan Wireless is most relevant for travelers deciding between a shared Pocket WiFi router and a fully digital eSIM. Groups may prefer the router, while solo travelers with an unlocked eSIM-compatible phone may prefer the eSIM. The right choice depends on device compatibility, group size, pickup or delivery needs, and current plan terms.",
+    atAGlance: [
+      {
+        label: "Connection types",
+        value: "Pocket WiFi and eSIM",
+      },
+      {
+        label: "Best suited to",
+        value: "Groups sharing devices or solo eSIM users",
+      },
+      {
+        label: "Setup",
+        value: "Rental delivery or pickup, or digital eSIM installation",
+      },
+      {
+        label: "Physical return",
+        value: "Required for Pocket WiFi; not required for eSIM",
+      },
+      {
+        label: "Support focus",
+        value: "Japan-focused traveler connectivity",
+      },
+      {
+        label: "Affiliate status",
+        value: "Approved eSIM link",
+      },
+    ],
     bestFor: [
       "Families and groups who want a shared Pocket WiFi router",
       "Solo travelers using an unlocked eSIM-compatible phone",
-      "Visitors comparing pocket Wi-Fi and eSIM options from one provider",
+      "Visitors comparing Pocket WiFi and eSIM options from one provider",
       "People who want a Japan-focused travel service",
+    ],
+    notIdealFor: [
+      "Travelers who do not want to carry, charge, or return rental equipment",
+      "Travelers with a locked or non-eSIM-compatible phone who want the eSIM",
+      "People who need a local phone number, voice calls, or SMS without checking the exact plan",
+      "Travelers who want to choose without comparing pickup, delivery, activation, and return conditions",
     ],
     strengths: [
       "Pocket Wi-Fi and eSIM options from one provider",
@@ -500,10 +534,53 @@ export const connectivityProviders: ConnectivityProvider[] = [
       "Phone eSIM compatibility if choosing the eSIM option",
       "Current plan availability and cancellation policy",
     ],
+    faqs: [
+      {
+        question: "Is Japan Wireless good for Japan travel?",
+        answer:
+          "Japan Wireless may suit travelers who want to compare a shareable Pocket WiFi rental with a fully digital eSIM from one Japan-focused provider. The better product depends on group size, device compatibility, pickup or delivery preferences, and whether carrying and returning a router is acceptable.",
+      },
+      {
+        question: "Should I choose Japan Wireless Pocket WiFi or eSIM?",
+        answer:
+          "Pocket WiFi may suit families, groups, laptops, or several connected devices that stay together. The eSIM may suit a solo traveler with an unlocked eSIM-compatible phone who wants to avoid physical pickup, charging, and return logistics.",
+      },
+      {
+        question: "Does Japan Wireless Pocket WiFi need to be returned?",
+        answer:
+          "A rental Pocket WiFi device generally needs to be returned after the rental period. Confirm the current return method, location, deadline, and any loss or damage conditions on the official website before booking.",
+      },
+      {
+        question: "Can I use Japan Wireless eSIM on a locked phone?",
+        answer:
+          "A carrier-locked phone generally cannot use another provider's eSIM. Confirm that the exact phone model supports eSIM and is carrier-unlocked before purchasing.",
+      },
+      {
+        question: "Can several devices use Japan Wireless?",
+        answer:
+          "A Pocket WiFi router is intended to share one connection across several nearby devices, subject to the exact router's supported-device limit. An eSIM normally provides data to one compatible phone, although hotspot availability may depend on the selected plan and device.",
+      },
+      {
+        question: "Does Japan Wireless include calls or SMS?",
+        answer:
+          "Do not assume that a travel eSIM includes a local phone number, voice calls, or SMS. Check the exact product details on the official website before purchase if these features are important.",
+      },
+    ],
     reviewHref: "/reviews/japan-wireless",
     officialUrl: "https://www.japan-wireless.com/",
     affiliateUrl: "https://www.japan-wireless.com/esim?via=koichi",
     affiliateStatus: "approved",
+    ctaLabel: "Check Japan Wireless eSIM",
+    products: [
+      {
+        label: "Japan Wireless eSIM",
+        affiliateUrl: "https://www.japan-wireless.com/esim?via=koichi",
+        image: {
+          src: "/assets/affiliates/japan-wireless/esim/banners/japan-wireless-esim-1200x628.webp",
+          alt: "Japan Wireless eSIM for travelers in Japan",
+        },
+      },
+    ],
   },
   {
     slug: "ninja-wifi",
