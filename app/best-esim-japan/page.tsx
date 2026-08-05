@@ -44,7 +44,6 @@ const displayOrder = [
   "sakura-mobile",
   "airalo",
   "ubigi",
-  "nomad-esim",
   "japan-wireless",
   "ninja-wifi",
 ];
@@ -83,15 +82,6 @@ const providerNotes: Record<
     fit: "Travelers comparing multiple prepaid eSIM options.",
     notIdealFor:
       "Travelers with a locked or non-eSIM-compatible phone, or who prefer a single provider rather than comparing options.",
-    setup: "Digital installation",
-    pickup: "Not required",
-    support: "Online support resources",
-  },
-  "nomad-esim": {
-    label: "Additional eSIM option",
-    fit: "Travelers comparing current data allowances and validity periods.",
-    notIdealFor:
-      "Travelers who prefer a fully guided setup rather than managing plan details themselves.",
     setup: "Digital installation",
     pickup: "Not required",
     support: "Online support resources",
