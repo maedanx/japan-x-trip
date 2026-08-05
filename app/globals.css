@@ -4228,14 +4228,19 @@ legend > span {
 
 .best-esim-hero {
   padding: 74px 0 84px;
-  color: #fff;
+  color: var(--ink);
   background:
     radial-gradient(
-      circle at 86% 10%,
-      rgba(216, 238, 228, 0.18),
-      transparent 31%
+      circle at 88% 10%,
+      rgba(64, 152, 255, 0.12),
+      transparent 34%
     ),
-    var(--ink);
+    linear-gradient(
+      180deg,
+      #f8fbff 0%,
+      #eef7ff 58%,
+      #ffffff 100%
+    );
 }
 
 .best-esim-hero-inner {
@@ -4248,22 +4253,22 @@ legend > span {
   flex-wrap: wrap;
   gap: 9px;
   margin-bottom: 47px;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--ink-soft);
   font-size: 0.75rem;
 }
 
 .best-esim-breadcrumb a {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
 }
 
 .best-esim-hero .eyebrow {
-  color: #f5a297;
+  color: #e95b4f;
 }
 
 .best-esim-hero h1 {
   max-width: 900px;
   margin: 0;
-  color: #fff;
+  color: var(--ink);
   font-size: clamp(3.1rem, 7vw, 6rem);
   line-height: 0.93;
   letter-spacing: -0.065em;
@@ -4272,7 +4277,7 @@ legend > span {
 .best-esim-intro {
   max-width: 760px;
   margin: 27px 0 0;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--ink-soft);
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.75;
 }
@@ -4288,14 +4293,14 @@ legend > span {
 .best-esim-hero-actions > a:last-child {
   display: inline-flex;
   gap: 11px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
   font-size: 0.78rem;
   font-weight: 800;
 }
 
 .best-esim-update {
   margin: 27px 0 0;
-  color: rgba(255, 255, 255, 0.44);
+  color: var(--ink-soft);
   font-size: 0.7rem;
 }
 
@@ -4416,6 +4421,13 @@ legend > span {
 .best-esim-faq {
   scroll-margin-top: 100px;
   margin-top: 100px;
+}
+
+.best-esim-picks,
+.best-esim-comparison,
+.best-esim-provider-sections,
+.best-esim-faq {
+  background: var(--jxt-bg-soft-blue);
 }
 
 .best-esim-table-wrap {
@@ -4617,12 +4629,16 @@ legend > span {
 .best-esim-choose {
   padding: 48px;
   border-radius: 28px;
-  color: #fff;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    var(--jxt-bg-soft-blue) 100%
+  );
 }
 
 .best-esim-choose h2 {
-  color: #fff;
+  color: var(--ink);
 }
 
 .best-esim-choice-grid {
@@ -4631,14 +4647,14 @@ legend > span {
   gap: 1px;
   margin-top: 36px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--line);
   border-radius: 19px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255,255,255,.55);
 }
 
 .best-esim-choice-grid article {
   padding: 22px;
-  background: var(--ink);
+  background:#fff;
 }
 
 .best-esim-choice-grid span {
@@ -4649,13 +4665,13 @@ legend > span {
 
 .best-esim-choice-grid h3 {
   margin: 19px 0 8px;
-  color: #fff;
+  color: var(--ink);
   font-size: 1rem;
 }
 
 .best-esim-choice-grid p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.66);
+  color: var(--ink-soft);
   font-size: 0.72rem;
   line-height: 1.55;
 }
@@ -4798,26 +4814,33 @@ legend > span {
 }
 
 .best-esim-final {
-  display: flex;
-  justify-content: space-between;
-  gap: 45px;
-  align-items: end;
   margin-top: 95px;
   padding: 42px;
   border-radius: 26px;
-  color: #fff;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    var(--jxt-bg-soft-blue) 100%
+  );
+}
+
+.best-esim-final-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 45px;
 }
 
 .best-esim-final h2 {
   max-width: 650px;
-  color: #fff;
+  color: var(--ink);
 }
 
 .best-esim-final p:not(.eyebrow) {
   max-width: 630px;
   margin: 16px 0 0;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--ink-soft);
 }
 
 .best-esim-final .button {
@@ -4828,13 +4851,57 @@ legend > span {
   flex: 0 0 auto;
   display: grid;
   gap: 13px;
+  margin-top: -16px;
 }
 
 .best-esim-final-actions > a:last-child {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
   font-size: 0.72rem;
   font-weight: 800;
   text-align: center;
+}
+
+.best-esim-final .best-esim-article-image--on-dark {
+  border-color: var(--line);
+}
+
+.best-esim-hero-image {
+  width: min(82vw, 350px);
+  margin: 32px auto 0;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+}
+
+.best-esim-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.best-esim-article-image {
+  max-width: 880px;
+  margin: 32px auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  overflow: hidden;
+}
+
+.best-esim-article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.best-esim-article-image--on-dark {
+  border-color: var(--line);
+}
+
+@media (min-width: 780px) {
+  .best-esim-hero-image {
+    width: min(33vw, 400px);
+  }
 }
 
 @media (max-width: 1050px) {
@@ -4866,11 +4933,6 @@ legend > span {
   .best-esim-choice-grid,
   .best-esim-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .best-esim-final {
-    align-items: stretch;
-    flex-direction: column;
   }
 }
 
@@ -4913,6 +4975,14 @@ legend > span {
   .best-esim-method,
   .best-esim-final {
     padding: 27px 20px;
+  }
+
+  .best-esim-hero-image {
+    margin-top: 24px;
+  }
+
+  .best-esim-article-image {
+    margin: 24px auto;
   }
 }
 
@@ -5799,3 +5869,93 @@ legend > span {
     border-radius:18px;
   }
 }
+
+/* ===== BEST ESIM IMAGE EDGE BLEND START ===== */
+
+.best-esim-article-image {
+  position: relative;
+  border: 0;
+  background: transparent;
+}
+
+.best-esim-article-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow:
+    inset 18px 0 20px -18px var(--jxt-bg-soft-blue),
+    inset -18px 0 20px -18px var(--jxt-bg-soft-blue),
+    inset 0 18px 20px -18px var(--jxt-bg-soft-blue),
+    inset 0 -18px 20px -18px var(--jxt-bg-soft-blue);
+}
+
+.best-esim-article-image img {
+  position: relative;
+  z-index: 0;
+}
+
+/* ===== BEST ESIM IMAGE EDGE BLEND END ===== */
+
+/* ===== BEST ESIM HERO IMAGE EDGE BLEND START ===== */
+
+.best-esim-hero-image {
+  position: relative;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.best-esim-hero-image::before,
+.best-esim-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.best-esim-hero-image::before {
+  background:
+    linear-gradient(
+      to right,
+      rgba(238, 247, 255, 0.9) 0,
+      rgba(238, 247, 255, 0.42) 16px,
+      rgba(238, 247, 255, 0) 44px
+    ) left center / 44px 100% no-repeat,
+    linear-gradient(
+      to left,
+      rgba(238, 247, 255, 0.9) 0,
+      rgba(238, 247, 255, 0.42) 16px,
+      rgba(238, 247, 255, 0) 44px
+    ) right center / 44px 100% no-repeat;
+}
+
+.best-esim-hero-image::after {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(238, 247, 255, 0.88) 0,
+      rgba(238, 247, 255, 0.38) 16px,
+      rgba(238, 247, 255, 0) 46px
+    ) top center / 100% 46px no-repeat,
+    linear-gradient(
+      to top,
+      rgba(238, 247, 255, 0.88) 0,
+      rgba(238, 247, 255, 0.38) 16px,
+      rgba(238, 247, 255, 0) 46px
+    ) bottom center / 100% 46px no-repeat;
+}
+
+.best-esim-hero-image img {
+  position: relative;
+  z-index: 0;
+  border-radius: inherit;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* ===== BEST ESIM HERO IMAGE EDGE BLEND END ===== */

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/home-redesign/Header";
@@ -14,6 +15,7 @@ import {
 } from "@/data/connectivityProviders";
 
 const pageUrl = `${siteConfig.url}/best-esim-japan`;
+const imageDir = "/images/article/best-esim-japan";
 
 export const metadata: Metadata = {
   title: "Best eSIM for Japan (2026 Guide)",
@@ -281,6 +283,17 @@ export default function BestEsimJapanPage() {
 
             <h1>Best eSIM for Japan (2026 Guide)</h1>
 
+            <div className="best-esim-hero-image">
+              <Image
+                src={`${imageDir}/best-esim-japan-hero-mobile.webp`}
+                alt="Traveler using an eSIM while exploring Japan"
+                width={1024}
+                height={1536}
+                priority
+                sizes="(max-width: 780px) 82vw, 400px"
+              />
+            </div>
+
             <p className="best-esim-intro">
               Choosing an eSIM for Japan can be confusing. This
               guide compares practical options by setup, device
@@ -338,6 +351,16 @@ export default function BestEsimJapanPage() {
                 </p>
               </header>
 
+              <figure className="best-esim-article-image">
+                <Image
+                  src={`${imageDir}/best-esim-japan-is-esim-right-for-your-trip.webp`}
+                  alt="Guide showing who should choose an eSIM for a trip to Japan"
+                  width={1535}
+                  height={1024}
+                  sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                />
+              </figure>
+
               <div className="best-esim-pick-grid">
                 {providers.slice(0, 4).map((provider, index) => (
                   <Link
@@ -390,6 +413,16 @@ export default function BestEsimJapanPage() {
                   for a closer look.
                 </p>
               </header>
+
+              <figure className="best-esim-article-image">
+                <Image
+                  src={`${imageDir}/best-esim-japan-which-esim-fits-your-trip.webp`}
+                  alt="Quick guide comparing Sakura Mobile, Ubigi, and Airalo for Japan"
+                  width={1448}
+                  height={1086}
+                  sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                />
+              </figure>
 
               <div className="best-esim-table-wrap">
                 <table className="best-esim-table">
@@ -458,6 +491,16 @@ export default function BestEsimJapanPage() {
                   terms before deciding.
                 </p>
               </header>
+
+              <figure className="best-esim-article-image">
+                <Image
+                  src={`${imageDir}/best-esim-japan-pros-and-cons.webp`}
+                  alt="Summary of eSIM benefits and things to know before traveling to Japan"
+                  width={1535}
+                  height={1024}
+                  sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                />
+              </figure>
 
               <div className="best-esim-provider-list">
                 {providers.map((provider, index) => (
@@ -536,6 +579,16 @@ export default function BestEsimJapanPage() {
                 <p className="eyebrow">How to choose</p>
                 <h2>Match the connection to your trip.</h2>
               </header>
+
+              <figure className="best-esim-article-image best-esim-article-image--on-dark">
+                <Image
+                  src={`${imageDir}/best-esim-japan-how-to-set-up-esim.webp`}
+                  alt="Four-step guide to setting up an eSIM for Japan"
+                  width={1535}
+                  height={1024}
+                  sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                />
+              </figure>
 
               <div className="best-esim-choice-grid">
                 <article>
@@ -747,6 +800,16 @@ export default function BestEsimJapanPage() {
                 </div>
               </header>
 
+              <figure className="best-esim-article-image">
+                <Image
+                  src={`${imageDir}/best-esim-japan-coverage-across-japan.webp`}
+                  alt="Map showing eSIM coverage across Japan"
+                  width={1535}
+                  height={1024}
+                  sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                />
+              </figure>
+
               <div className="best-esim-faq-list">
                 {faqs.map((faq) => (
                   <details key={faq.question}>
@@ -758,28 +821,40 @@ export default function BestEsimJapanPage() {
             </section>
 
             <section className="best-esim-final">
-              <div>
-                <p className="eyebrow">Still deciding?</p>
-                <h2>
-                  Get a recommendation based on your own trip.
-                </h2>
+              <div className="best-esim-final-row">
+                <div>
+                  <p className="eyebrow">Still deciding?</p>
+                  <h2>
+                    Get a recommendation based on your own trip.
+                  </h2>
 
-                <p>
-                  Answer a few questions about your phone, trip
-                  length, devices, and priorities.
-                </p>
-              </div>
+                  <p>
+                    Answer a few questions about your phone, trip
+                    length, devices, and priorities.
+                  </p>
 
-              <div className="best-esim-final-actions">
-                <Link className="button" href="/diagnosis">
-                  Find My Best Option
-                  <span aria-hidden="true">→</span>
-                </Link>
+                  <figure className="best-esim-article-image best-esim-article-image--on-dark">
+                    <Image
+                      src={`${imageDir}/best-esim-japan-ready-for-japan.webp`}
+                      alt="Traveler ready to explore Japan with an active eSIM connection"
+                      width={1535}
+                      height={1024}
+                      sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, 880px"
+                    />
+                  </figure>
+                </div>
 
-                <Link href="/compare">
-                  Compare All Options
-                  <span aria-hidden="true">→</span>
-                </Link>
+                <div className="best-esim-final-actions">
+                  <Link className="button" href="/diagnosis">
+                    Find My Best Option
+                    <span aria-hidden="true">→</span>
+                  </Link>
+
+                  <Link href="/compare">
+                    Compare All Options
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
               </div>
             </section>
           </div>
