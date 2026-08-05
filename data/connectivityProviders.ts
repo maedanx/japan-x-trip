@@ -502,8 +502,8 @@ export const connectivityProviders: ConnectivityProvider[] = [
     ],
     reviewHref: "/reviews/japan-wireless",
     officialUrl: "https://www.japan-wireless.com/",
-    affiliateUrl: "",
-    affiliateStatus: "pending",
+    affiliateUrl: "https://www.japan-wireless.com/esim?via=koichi",
+    affiliateStatus: "approved",
   },
   {
     slug: "ninja-wifi",
