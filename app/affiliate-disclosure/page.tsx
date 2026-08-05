@@ -29,7 +29,7 @@ export default function AffiliateDisclosurePage() {
           title: "Potential affiliate partners",
           paragraphs: [
             "The site may include affiliate links for eSIM, physical SIM, pocket Wi-Fi, travel-connectivity, or related services.",
-            "Potential providers may include Sakura Mobile, NINJA WiFi, Airalo, Ubigi, Nomad eSIM, Japan Wireless, and other relevant services. This list may change as products, partnerships, and traveler needs change.",
+            "Potential providers may include Sakura Mobile, NINJA WiFi, Airalo, Ubigi, Japan Wireless, and other relevant services. This list may change as products, partnerships, and traveler needs change.",
             "Mentioning a provider on this page does not mean that an active affiliate relationship currently exists.",
           ],
         },
