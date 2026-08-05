@@ -40,9 +40,11 @@ type ProductRecommendationRule = {
 
 /**
  * Evaluated top-to-bottom per bucket; the first matching rule wins.
- * To add NINJA WiFi later, add rules with bucket: "wifi" (and providerSlug:
- * "ninja-wifi" once its connectivityProviders entry gains a `products` array)
- * -- no logic changes needed here or in DiagnosisClient.tsx.
+ *
+ * Pocket Wi-Fi recommendations use only providers with a confirmed
+ * product-specific Pocket Wi-Fi affiliate URL. Japan Wireless can be added
+ * after its Pocket Wi-Fi destination is confirmed; its current approved URL
+ * is for eSIM and must not be used for a Pocket Wi-Fi recommendation.
  */
 const productRecommendationRules: ProductRecommendationRule[] = [
   // eSIM bucket -- Airalo and Ubigi only (both are eSIM-only providers)
@@ -103,13 +105,33 @@ const productRecommendationRules: ProductRecommendationRule[] = [
     reason: "A physical SIM option with English setup guidance for unlocked phones.",
   },
 
-  // Pocket Wi-Fi bucket -- Sakura Mobile only for now. NINJA WiFi rules
-  // belong here once its affiliate link and products array are confirmed.
+  // Pocket Wi-Fi bucket.
+  {
+    bucket: "wifi",
+    providerSlug: "ninja-wifi",
+    productLabel: "NINJA WiFi Pocket WiFi",
+    reason:
+      "A shareable Pocket WiFi option matched to a larger group or several connected devices.",
+    when: (ctx) =>
+      ctx.flags.has("sharedGroup") || ctx.flags.has("largeGroup"),
+    matchSignals: ["dataNeeds"],
+  },
+  {
+    bucket: "wifi",
+    providerSlug: "ninja-wifi",
+    productLabel: "NINJA WiFi Pocket WiFi",
+    reason:
+      "A Pocket WiFi router matched to heavy data use, tethering, or laptop-based remote work.",
+    when: (ctx) =>
+      ctx.flags.has("heavyUse") || ctx.flags.has("remoteWork"),
+    matchSignals: ["dataNeeds"],
+  },
   {
     bucket: "wifi",
     providerSlug: "sakura-mobile",
     productLabel: "Travel Pocket WiFi",
-    reason: "Shareable Wi-Fi for groups or multiple devices, from a Japan-focused provider.",
+    reason:
+      "A shareable Pocket WiFi option with Japan-focused English guidance.",
   },
 ];
 

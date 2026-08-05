@@ -279,6 +279,7 @@ export default function DiagnosisClient() {
   );
 
   const relevantProviders = connectivityProviders
+    .filter((provider) => provider.slug !== "nomad-esim")
     .filter((provider) => {
       if (analysis.primary === "esim") return provider.category.includes("eSIM");
       if (analysis.primary === "sim") return provider.category.includes("SIM");
@@ -293,7 +294,20 @@ export default function DiagnosisClient() {
         <div className={styles.progressHeader}>
           <div>
             <p>{showResult ? "Your recommendation" : `Question ${currentStep + 1} of ${questions.length}`}</p>
-            <span>{progress}% complete</span>
+
+            <div className={styles.progressHeaderActions}>
+              <span>{progress}% complete</span>
+
+              {showResult ? (
+                <button
+                  className={styles.topRestartButton}
+                  onClick={restart}
+                  type="button"
+                >
+                  Start again
+                </button>
+              ) : null}
+            </div>
           </div>
           <div
             aria-label={`Question ${Math.min(currentStep + 1, questions.length)} of ${questions.length}, ${progress}% complete`}

@@ -144,6 +144,52 @@
   font-weight: 700;
 }
 
+.progressHeaderActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.topRestartButton {
+  min-height: 44px;
+  border: 1px solid #cbd6e2;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 8px 15px;
+  color: #071f49;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.topRestartButton:hover {
+  border-color: #0c4d97;
+  background: #eef5fc;
+}
+
+.topRestartButton:focus-visible {
+  outline: 3px solid rgba(12, 77, 151, 0.25);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  .progressHeader > div:first-child {
+    align-items: center;
+  }
+
+  .progressHeaderActions {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
+
+  .topRestartButton {
+    min-height: 40px;
+    padding: 6px 13px;
+  }
+}
+
 .progressTrack {
   height: 8px;
   overflow: hidden;
