@@ -101,7 +101,9 @@ const connectionTypes = [
   },
 ];
 
-const providers = connectivityProviders;
+const providers = connectivityProviders.filter(
+  (provider) => provider.slug !== "nomad-esim",
+);
 
 /**
  * Page-local "Not ideal for" editorial notes, grounded in each provider's
@@ -117,8 +119,6 @@ const notIdealForByProvider: Record<string, string> = {
     "Travelers who need a local phone number, calls, or SMS, or whose phone does not support eSIM.",
   ubigi:
     "Travelers with a locked or non-eSIM-compatible phone, or who prefer a single provider rather than comparing options.",
-  "nomad-esim":
-    "Travelers who prefer a fully guided setup rather than managing plan details themselves.",
   "japan-wireless":
     "Travelers who want to avoid physical pickup, delivery, or return logistics entirely.",
   "ninja-wifi":

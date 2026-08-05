@@ -207,7 +207,9 @@ export default function CompareMobile({
   faqs,
   notIdealForByProvider,
 }: CompareMobileProps) {
-  const providers = connectivityProviders.slice(0, 6);
+  const providers = connectivityProviders.filter(
+    (provider) => provider.slug !== "nomad-esim",
+  );
   const [diagnosis, setDiagnosis] = useState<DiagnosisAnalysis | null>(null);
 
   useEffect(() => {
