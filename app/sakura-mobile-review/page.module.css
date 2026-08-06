@@ -139,6 +139,31 @@
   padding: 88px 24px;
 }
 
+.reviewInfographicSection {
+  background: #ffffff;
+  padding: 34px 24px 76px;
+}
+
+.reviewInfographicSectionSoft {
+  background: #f5f8fc;
+}
+
+.reviewInfographicSectionMuted {
+  background: #eef4fa;
+}
+
+.reviewInfographicInner {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.reviewInfographicInner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
 .summarySection,
 .audienceSection,
 .pickupSection,
@@ -581,6 +606,14 @@
   .faqSection,
   .sourcesSection {
     padding: 66px 20px;
+  }
+
+  .reviewInfographicSection {
+    padding: 24px 16px 58px;
+  }
+
+  .reviewInfographicInner img {
+    border-radius: 16px;
   }
 
   .scoreGrid,

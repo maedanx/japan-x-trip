@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/home-redesign/Header";
 import Footer from "@/components/layout/Footer";
@@ -241,7 +242,7 @@ export default function SakuraMobileReviewPage() {
       name: siteConfig.name,
     },
     datePublished: "2026-07-22",
-    dateModified: "2026-08-01",
+    dateModified: "2026-08-06",
   };
 
   const breadcrumbSchema = {
@@ -299,7 +300,7 @@ export default function SakuraMobileReviewPage() {
                 <AffiliateCtaLink
                   className={styles.primaryButton}
                   href={sakuraMobileCtaUrl}
-                  rel="sponsored noopener noreferrer"
+                  rel="sponsored nofollow noopener noreferrer"
                   page="/sakura-mobile-review"
                   provider="Sakura Mobile"
                   product="General"
@@ -341,6 +342,22 @@ export default function SakuraMobileReviewPage() {
           </div>
         </section>
 
+        <section
+          className={styles.reviewInfographicSection}
+          aria-label="Sakura Mobile option guide"
+        >
+          <div className={styles.reviewInfographicInner}>
+            <Image
+              src="/assets/infographics/reviews/sakura-mobile-review-guide-01-choose-option.webp"
+              alt="Visual guide for choosing between Sakura Mobile eSIM, Pocket WiFi, and SIM card"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 760px) calc(100vw - 32px), 760px"
+              priority
+            />
+          </div>
+        </section>
+
         <section className={styles.summarySection}>
           <div className={styles.container}>
             <div className={styles.sectionHeading}>
@@ -357,6 +374,21 @@ export default function SakuraMobileReviewPage() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section
+          className={`${styles.reviewInfographicSection} ${styles.reviewInfographicSectionSoft}`}
+          aria-label="Sakura Mobile key strengths"
+        >
+          <div className={styles.reviewInfographicInner}>
+            <Image
+              src="/assets/infographics/reviews/sakura-mobile-review-guide-02-key-strengths.webp"
+              alt="Illustrated summary of Sakura Mobile key strengths for Japan travelers"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 760px) calc(100vw - 32px), 760px"
+            />
           </div>
         </section>
 
@@ -413,6 +445,21 @@ export default function SakuraMobileReviewPage() {
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        <section
+          className={`${styles.reviewInfographicSection} ${styles.reviewInfographicSectionMuted}`}
+          aria-label="Sakura Mobile product comparison"
+        >
+          <div className={styles.reviewInfographicInner}>
+            <Image
+              src="/assets/infographics/reviews/sakura-mobile-review-guide-03-compare-options.webp"
+              alt="Visual comparison of Sakura Mobile eSIM, Pocket WiFi, and SIM card options"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 760px) calc(100vw - 32px), 760px"
+            />
           </div>
         </section>
 
@@ -666,6 +713,21 @@ export default function SakuraMobileReviewPage() {
           </div>
         </section>
 
+        <section
+          className={`${styles.reviewInfographicSection} ${styles.reviewInfographicSectionSoft}`}
+          aria-label="Sakura Mobile review summary"
+        >
+          <div className={styles.reviewInfographicInner}>
+            <Image
+              src="/assets/infographics/reviews/sakura-mobile-review-guide-04-final-summary.webp"
+              alt="Final illustrated summary of Sakura Mobile options and traveler benefits"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 760px) calc(100vw - 32px), 760px"
+            />
+          </div>
+        </section>
+
         <section className={styles.finalCta}>
           <div className={styles.finalCtaInner}>
             <p className={styles.eyebrow}>Final recommendation</p>
@@ -682,7 +744,7 @@ export default function SakuraMobileReviewPage() {
               <AffiliateCtaLink
                 className={styles.primaryButton}
                 href={sakuraMobileCtaUrl}
-                rel="sponsored noopener noreferrer"
+                rel="sponsored nofollow noopener noreferrer"
                 page="/sakura-mobile-review"
                 provider="Sakura Mobile"
                 product="General"
